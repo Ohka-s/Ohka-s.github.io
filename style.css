@@ -43,3 +43,10 @@ button:hover {
     padding: 20px;
   }
 }
+
+hr {
+  border: none;
+  border-top: 1px solid #aadcec;  /* 薄い水色の線 */
+  margin: 30px 0;
+  width: 80%;
+}
