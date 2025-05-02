@@ -1,65 +1,57 @@
-/* 背景と文字 */
+/* 全体の背景と文字設定 */
 body {
   background-color: #e6f7ff;  /* 薄い水色 */
   color: #333;
   font-family: Arial, sans-serif;
   text-align: center;
-  padding: 50px;
+  padding: 60px;
   margin: 0;
 }
 
-/* タイトル */
+/* タイトル・見出しの色 */
 h1, h2 {
-  color: #006d99;  /* 少し濃い青 */
+  color: #006d99;  /* 濃い青 */
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
-/* ボタン全体のスタイル */
-button {
-  background-color: #cceeff;  /* 背景より少し濃い水色 */
-  color: #003344;
+/* セクション区切り線 */
+hr {
   border: none;
-  padding: 12px 24px;
-  margin: 10px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 0px; /* ← 角を四角に */
+  border-top: 1px solid #aadcec;  /* 薄い線 */
+  width: 120px;  /* 短めの線 */
+  margin: 20px auto;  /* 中央配置 */
 }
 
-/* ボタンを横並びにするグループ */
+/* ボタン行（2つ横並び） */
 .button-row {
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin-bottom: 30px;
-  flex-wrap: wrap; /* 画面が狭いと折り返す */
+  margin-bottom: 20px;
+  flex-wrap: wrap;  /* スマホで縦並びに */
 }
 
-/* ホバー時 */
+/* ボタン共通スタイル */
+button {
+  background-color: #cceeff;  /* 少し濃い水色 */
+  color: #003344;
+  border: none;
+  width: 160px;     /* 幅統一 */
+  height: 48px;     /* 高さ統一 */
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px;
+  border-radius: 0;  /* 四角形 */
+  display: inline-block;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* ボタンにマウスを乗せたときの色 */
 button:hover {
   background-color: #b3e6ff;
 }
 
-/* 区切り線（中央に短く） */
-hr {
-  border: none;
-  border-top: 1px solid #aadcec;  /* 薄い水色の線 */
-  margin: 20px auto;
-  width: 180px;  /* 短めに */
-}
-
 /* スマホ対応 */
 @media screen and (max-width: 600px) {
-  .button-row {
-    flex-direction: column; /* ボタンを縦並びに */
-    align-items: center;
-  }
-
-  button {
-    width: 80%;
-    font-size: 18px;
-  }
-
-  body {
-    padding: 20px;
-  }
-}
