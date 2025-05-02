@@ -2,20 +2,37 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>語彙1（全5問）</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>語彙1（スライド式）</title>
   <link rel="stylesheet" href="style.css">
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e6f7ff;
+      color: #333;
+      text-align: center;
+      padding: 30px;
+    }
+
     .question {
       display: none;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      margin: 10px;
     }
+
     .question.active {
       display: block;
     }
+
     .progress {
       display: flex;
       justify-content: center;
       margin-top: 40px;
     }
+
     .dot {
       height: 16px;
       width: 16px;
@@ -24,108 +41,131 @@
       border-radius: 50%;
       display: inline-block;
     }
+
     .dot.active {
       background-color: #006d99;
     }
-    #result {
+
+    .result {
       font-weight: bold;
       margin-top: 10px;
     }
+
+    #finish {
+      font-size: 18px;
+      color: green;
+      margin-top: 30px;
+      display: none;
+    }
+
+    /* スライド効果 */
+    .question {
+      transition: transform 0.5s ease-in-out;
+    }
+
   </style>
 </head>
 <body>
-  <h2>語彙1 - 練習</h2>
 
-  <div id="quiz-container">
-    <!-- 各問題 -->
-    <div class="question active">
-      <p>1. 「apple」の意味は？</p>
-      <input type="text" id="answer0">
-      <button onclick="checkAnswer(0, 'りんご')">答えを確認</button>
-      <p id="result0"></p>
-    </div>
+<h2>語彙1 - 練習</h2>
 
-    <div class="question">
-      <p>2. 「dog」の意味は？</p>
-      <input type="text" id="answer1">
-      <button onclick="checkAnswer(1, 'いぬ')">答えを確認</button>
-      <p id="result1"></p>
-    </div>
-
-    <div class="question">
-      <p>3. 「book」の意味は？</p>
-      <input type="text" id="answer2">
-      <button onclick="checkAnswer(2, 'ほん')">答えを確認</button>
-      <p id="result2"></p>
-    </div>
-
-    <div class="question">
-      <p>4. 「car」の意味は？</p>
-      <input type="text" id="answer3">
-      <button onclick="checkAnswer(3, 'くるま')">答えを確認</button>
-      <p id="result3"></p>
-    </div>
-
-    <div class="question">
-      <p>5. 「sun」の意味は？</p>
-      <input type="text" id="answer4">
-      <button onclick="checkAnswer(4, 'たいよう')">答えを確認</button>
-      <p id="result4"></p>
-    </div>
+<div id="quiz-container">
+  <!-- 問題1 -->
+  <div class="question active">
+    <p>1. 「apple」の意味は？</p>
+    <input type="text" id="answer0">
+    <button onclick="checkAnswer(0, 'りんご')">答えを確認</button>
+    <p id="result0" class="result"></p>
   </div>
 
-  <!-- インジケーター -->
-  <div class="progress">
-    <span class="dot active"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
+  <!-- 問題2 -->
+  <div class="question">
+    <p>2. 「dog」の意味は？</p>
+    <input type="text" id="answer1">
+    <button onclick="checkAnswer(1, 'いぬ')">答えを確認</button>
+    <p id="result1" class="result"></p>
   </div>
 
-  <!-- 次へボタン -->
-  <div style="margin-top: 30px;">
-    <button onclick="nextQuestion()">次へ</button>
+  <!-- 問題3 -->
+  <div class="question">
+    <p>3. 「book」の意味は？</p>
+    <input type="text" id="answer2">
+    <button onclick="checkAnswer(2, 'ほん')">答えを確認</button>
+    <p id="result2" class="result"></p>
   </div>
 
-  <p id="finish" style="display:none; font-size: 18px; color: green; margin-top: 30px;">
-    全問終了！お疲れさまでした 🎉
-  </p>
+  <!-- 問題4 -->
+  <div class="question">
+    <p>4. 「car」の意味は？</p>
+    <input type="text" id="answer3">
+    <button onclick="checkAnswer(3, 'くるま')">答えを確認</button>
+    <p id="result3" class="result"></p>
+  </div>
 
-  <script>
-    let current = 0;
+  <!-- 問題5 -->
+  <div class="question">
+    <p>5. 「sun」の意味は？</p>
+    <input type="text" id="answer4">
+    <button onclick="checkAnswer(4, 'たいよう')">答えを確認</button>
+    <p id="result4" class="result"></p>
+  </div>
+</div>
 
-    function checkAnswer(index, correct) {
-      const input = document.getElementById(`answer${index}`).value.trim();
-      const result = document.getElementById(`result${index}`);
-      if (input === correct) {
-        result.textContent = "正解！";
-        result.style.color = "green";
-      } else {
-        result.textContent = "ちがいます。";
-        result.style.color = "red";
-      }
+<div class="progress">
+  <span class="dot active"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+
+<p id="finish">全問終了！お疲れさまでした 🎉</p>
+
+<script>
+  let current = 0;
+
+  // 答えをチェックする関数
+  function checkAnswer(index, correct) {
+    const input = document.getElementById(`answer${index}`).value.trim();
+    const result = document.getElementById(`result${index}`);
+    if (input === correct) {
+      result.textContent = "正解！";
+      result.style.color = "green";
+    } else {
+      result.textContent = "ちがいます。";
+      result.style.color = "red";
+    }
+  }
+
+  // 学習者が手動で次に進む関数
+  function nextQuestion() {
+    const questions = document.querySelectorAll(".question");
+    const dots = document.querySelectorAll(".dot");
+
+    if (current < questions.length) {
+      questions[current].classList.remove("active");
+      dots[current].classList.remove("active");
     }
 
-    function nextQuestion() {
-      const questions = document.querySelectorAll(".question");
-      const dots = document.querySelectorAll(".dot");
+    current++;
 
-      // 今の問題を非表示
-      if (current < questions.length) {
-        questions[current].classList.remove("active");
-        dots[current].classList.remove("active");
-      }
-
-      current++;
-
-      if (current < questions.length) {
-        questions[current].classList.add("active");
-        dots[current].classList.add("active");
-      } else {
-        document.getElementById("finish").style.display = "block";
-      }
+    if (current < questions.length) {
+      questions[current].classList.add("active");
+      dots[current].classList.add("active");
+    } else {
+      document.getElementById("finish").style.display = "block";
     }
-  </script>
+  }
+
+  // スライドで進む設定
+  document.querySelectorAll('.question').forEach((question, index) => {
+    question.addEventListener('click', () => {
+      if (index === current) {
+        nextQuestion();
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
