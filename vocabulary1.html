@@ -144,49 +144,50 @@
 
 <script>
   let current = 0;
+  const questions = document.querySelectorAll(".question");
 
-  // 答えをチェックする関数
-  function checkAnswer(index, correct) {
-    const input = document.getElementById(`answer${index}`).value.trim();
-    const result = document.getElementById(`result${index}`);
-    if (input === correct) {
-      result.textContent = "正解！";
-      result.style.color = "green";
-    } else {
-      result.textContent = "ちがいます。";
-      result.style.color = "red";
-    }
-  }
-
-  // 学習者が手動で次に進む関数
-  function nextQuestion() {
-    const questions = document.querySelectorAll(".question");
-    const dots = document.querySelectorAll(".dot");
-
-    if (current < questions.length) {
-      questions[current].classList.remove("active");
-      dots[current].classList.remove("active");
-    }
-
-    current++;
-
-    if (current < questions.length) {
-      questions[current].classList.add("active");
-      dots[current].classList.add("active");
-    } else {
-      document.getElementById("finish").style.display = "block"; // 終了メッセージを表示
-    }
-  }
-
-  // 学習者が問題をクリックして進むこともできる
-  document.querySelectorAll('.question').forEach((question, index) => {
-    question.addEventListener('click', () => {
-      if (index === current) {
-        nextQuestion();
-      }
+  function showQuestion(index) {
+    questions.forEach((q, i) => {
+      q.classList.toggle("active", i === index);
     });
-  });
+    updateNavigation();
+  }
+
+  function nextQuestion() {
+    if (current < questions.length - 1) {
+      current++;
+      showQuestion(current);
+    }
+  }
+
+  function prevQuestion() {
+    if (current > 0) {
+      current--;
+      showQuestion(current);
+    }
+  }
+
+  function updateNavigation() {
+    const dots = document.querySelectorAll(".dot");
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("active", index === current);
+    });
+
+    // 矢印ボタンの表示・非表示
+    document.getElementById("prevBtn").classList.toggle("hidden", current === 0);
+    document.getElementById("nextBtn").classList.toggle("hidden", current === questions.length - 1);
+
+    // 最後に来たときに表示する要素（finish）などがあればここで制御
+    const finish = document.getElementById("finish");
+    if (finish) {
+      finish.style.display = current === questions.length ? "block" : "none";
+    }
+  }
+
+  // 最初の状態を表示
+  showQuestion(current);
 </script>
+
 <!-- 左下「前へ」ボタン -->
 <button class="nav-btn left-btn hidden" id="prevBtn" onclick="prevQuestion()">←</button>
 
