@@ -1,0 +1,45 @@
+/* 背景と文字 */
+body {
+  background-color: #e6f7ff;  /* 薄い水色 */
+  color: #333;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 50px;
+  margin: 0;
+}
+
+/* タイトル */
+h1, h2 {
+  color: #006d99;  /* 少し濃い青 */
+}
+
+/* ボタン */
+button {
+  background-color: #cceeff;  /* 背景より少し濃い水色 */
+  color: #003344;
+  border: none;
+  padding: 12px 24px;
+  margin: 10px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ホバー（マウスを乗せたとき） */
+button:hover {
+  background-color: #b3e6ff;
+}
+
+/* スマホ対応：ボタンを縦に整列 */
+@media screen and (max-width: 600px) {
+  button {
+    display: block;
+    width: 80%;
+    margin: 12px auto;
+    font-size: 18px;
+  }
+
+  body {
+    padding: 20px;
+  }
+}
