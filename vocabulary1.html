@@ -11,6 +11,26 @@
       color: #333;
       text-align: center;
       padding: 30px;
+      margin: 0;
+    }
+
+    .home-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 24px;
+      text-decoration: none;
+      background-color: #006d99;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      transition: background-color 0.3s;
+    }
+
+    .home-btn:hover {
+      background-color: #005480;
     }
 
     .question {
@@ -52,13 +72,6 @@
       margin-top: 10px;
     }
 
-    #finish {
-      font-size: 18px;
-      color: green;
-      margin-top: 30px;
-      display: none;
-    }
-
     .nav-btn {
       position: fixed;
       bottom: 20px;
@@ -92,8 +105,9 @@
   </style>
 </head>
 <body>
+
 <a href="index.html" class="home-btn" title="ホームへ戻る">🏠</a>
-  
+
 <h2>語彙1 - 練習</h2>
 
 <div id="quiz-container">
@@ -144,8 +158,6 @@
   <span class="dot"></span>
 </div>
 
-<p id="finish">全問終了！お疲れさまでした 🎉</p>
-
 <!-- 左右ナビゲーションボタン -->
 <button class="nav-btn left-btn hidden" id="prevBtn" onclick="prevQuestion()">←</button>
 <button class="nav-btn right-btn" id="nextBtn" onclick="nextQuestion()">→</button>
@@ -158,6 +170,7 @@
     questions.forEach((q, i) => {
       q.classList.toggle("active", i === index);
     });
+
     updateNavigation();
   }
 
@@ -183,11 +196,6 @@
 
     document.getElementById("prevBtn").classList.toggle("hidden", current === 0);
     document.getElementById("nextBtn").classList.toggle("hidden", current === questions.length - 1);
-
-    const finish = document.getElementById("finish");
-    if (finish) {
-      finish.style.display = current === questions.length ? "block" : "none";
-    }
   }
 
   function checkAnswer(num, correct) {
@@ -202,7 +210,6 @@
     }
   }
 
-  // 初期表示
   showQuestion(current);
 </script>
 
