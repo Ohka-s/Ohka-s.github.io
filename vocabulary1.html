@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>語彙1（スライド式）</title>
-  <link rel="stylesheet" href="style.css">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -20,7 +19,9 @@
       background-color: #fff;
       border-radius: 10px;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-      margin: 10px;
+      margin: 10px auto;
+      max-width: 500px;
+      transition: transform 0.5s ease-in-out;
     }
 
     .question.active {
@@ -58,31 +59,36 @@
       display: none;
     }
 
-    /* スライド効果 */
-    .question {
-      transition: transform 0.5s ease-in-out;
-    }
-
-    /* 次の問題ボタン */
-    .next-btn {
+    .nav-btn {
       position: fixed;
       bottom: 20px;
-      right: 20px;
       padding: 10px 20px;
-      background-color: #006d99;
-      color: white;
       font-size: 18px;
       border: none;
       border-radius: 50%;
+      color: white;
+      background-color: #006d99;
       cursor: pointer;
       font-weight: bold;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
     }
 
-    .next-btn:hover {
+    .left-btn {
+      left: 20px;
+    }
+
+    .right-btn {
+      right: 20px;
+    }
+
+    .nav-btn:hover {
       background-color: #005480;
     }
 
+    .nav-btn.hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -93,7 +99,7 @@
   <!-- 問題1 -->
   <div class="question active">
     <img src="images/picture1.jpg" alt="습관" width="200" style="margin-bottom: 10px;">
-    <p>1.매일 아침에 일어나서 제일 먼저 무엇을 해요？</p>
+    <p>1. 매일 아침에 일어나서 제일 먼저 무엇을 해요？</p>
   </div>
 
   <!-- 問題2 -->
@@ -139,8 +145,9 @@
 
 <p id="finish">全問終了！お疲れさまでした 🎉</p>
 
-<!-- 次の問題ボタン -->
-<button class="next-btn" onclick="nextQuestion()">→</button>
+<!-- 左右ナビゲーションボタン -->
+<button class="nav-btn left-btn hidden" id="prevBtn" onclick="prevQuestion()">←</button>
+<button class="nav-btn right-btn" id="nextBtn" onclick="nextQuestion()">→</button>
 
 <script>
   let current = 0;
@@ -173,26 +180,30 @@
       dot.classList.toggle("active", index === current);
     });
 
-    // 矢印ボタンの表示・非表示
     document.getElementById("prevBtn").classList.toggle("hidden", current === 0);
     document.getElementById("nextBtn").classList.toggle("hidden", current === questions.length - 1);
 
-    // 最後に来たときに表示する要素（finish）などがあればここで制御
     const finish = document.getElementById("finish");
     if (finish) {
       finish.style.display = current === questions.length ? "block" : "none";
     }
   }
 
-  // 最初の状態を表示
+  function checkAnswer(num, correct) {
+    const input = document.getElementById(`answer${num - 1}`);
+    const result = document.getElementById(`result${num - 1}`);
+    if (input.value.trim() === correct) {
+      result.textContent = "正解！";
+      result.style.color = "green";
+    } else {
+      result.textContent = "不正解";
+      result.style.color = "red";
+    }
+  }
+
+  // 初期表示
   showQuestion(current);
 </script>
-
-<!-- 左下「前へ」ボタン -->
-<button class="nav-btn left-btn hidden" id="prevBtn" onclick="prevQuestion()">←</button>
-
-<!-- 右下「次へ」ボタン -->
-<button class="nav-btn right-btn" id="nextBtn" onclick="nextQuestion()">→</button>
 
 </body>
 </html>
