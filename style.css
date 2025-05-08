@@ -8,11 +8,18 @@ body {
   margin: 0;
 }
 
-/* タイトル・見出しの色 */
-h1, h2 {
-  color: #006d99;  /* 濃い青 */
+h1 {
+  color: #006d99;
   margin-top: 30px;
   margin-bottom: 10px;
+  font-size: 36px; /* ← 好きなサイズに調整 */
+}
+
+h2 {
+  color: #006d99;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 28px; /* ← 好きなサイズに調整 */
 }
 
 /* セクション区切り線 */
