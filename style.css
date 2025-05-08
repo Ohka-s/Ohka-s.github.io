@@ -34,25 +34,28 @@ hr {
 
 /* ボタン共通スタイル */
 button {
-  background-color: #cceeff;  /* 少し濃い水色 */
+  background-color: #cceeff;
   color: #003344;
   border: none;
-  width: 160px;     /* 幅統一 */
-  height: 48px;     /* 高さ統一 */
+  width: 160px;
+  height: 48px;
   font-size: 16px;
   cursor: pointer;
   margin: 10px;
-  border-radius: 0;  /* 四角形 */
+
+  border-radius: 20px; /* ← 四角形から少し丸みのある角へ */
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2); /* ← 影を追加 */
+
   display: inline-block;
   text-align: center;
   line-height: 1.2;
+  transition: all 0.3s ease; /* アニメーション効果 */
 }
 
-/* ボタンにマウスを乗せたときの色 */
 button:hover {
   background-color: #b3e6ff;
+  box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.3); /* ホバー時に影を強調 */
 }
-
 /* スマホ対応 */
 @media screen and (max-width: 600px) {
 
