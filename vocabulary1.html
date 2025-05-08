@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="page-title">語彙1 - 練習</title>
+  <title>語彙1（スライド式）</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -108,12 +108,12 @@
 
 <a href="index.html" class="home-btn" title="ホームへ戻る">🏠</a>
 
-<h2 id="page-title-text">語彙1 - 練習</h2>
+<h2>語彙1 - 練習</h2>
 
 <div id="quiz-container">
   <!-- 問題1 -->
   <div class="question active">
-    <img src="images/ChatGPT Image1.png" alt="習慣" width="200" style="margin-bottom: 10px;">
+    <img src="images/ChatGPT Image1.png" alt="습관" width="200" style="margin-bottom: 10px;">
     <p>1. 매일 아침에 일어나서 제일 먼저 무엇을 해요？</p>
   </div>
 
@@ -166,15 +166,6 @@
   let current = 0;
   const questions = document.querySelectorAll(".question");
 
-  // 動的にページのタイトルとテキストを変更する関数
-  function setPageTitle(title) {
-    document.getElementById('page-title').textContent = title;
-    document.getElementById('page-title-text').textContent = title;
-  }
-
-  // ここでページごとにタイトルを設定
-  setPageTitle("語彙1 - 新しい練習");
-
   function showQuestion(index) {
     questions.forEach((q, i) => {
       q.classList.toggle("active", i === index);
@@ -208,8 +199,8 @@
   }
 
   function checkAnswer(num, correct) {
-    const input = document.getElementById(`answer${num}`);
-    const result = document.getElementById(`result${num}`);
+    const input = document.getElementById(answer${num - 1});
+    const result = document.getElementById(result${num - 1});
     if (input.value.trim() === correct) {
       result.textContent = "正解！";
       result.style.color = "green";
