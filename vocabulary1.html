@@ -34,13 +34,13 @@
     }
 
     .result-overlay {
-  position: absolute;
-  top: -35px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 28px;     /* ◯✕を大きく */
-  font-weight: bold;   /* 太字に */
-}
+      position: absolute;
+      top: -35px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 28px;  /* ◯✕を大きく */
+      font-weight: bold;  /* 太字に */
+    }
 
     .question {
       display: none;
@@ -51,6 +51,7 @@
       margin: 10px auto;
       max-width: 500px;
       transition: transform 0.5s ease-in-out;
+      position: relative;
     }
 
     .question.active {
@@ -115,7 +116,7 @@
 </head>
 <body>
 
-<a href="index.html" class="home-btn" title="ホームへ戻る">🏠</a>
+<a href="index.html" class="home-btn" title="홈へ戻る">🏠</a>
 
 <h2 id="main-title">어휘-도입</h2>
 
@@ -143,21 +144,23 @@
     <p id="result2" class="result"></p>
   </div>
 
-  <!-- 問題4：選択肢形式に変更（結果表示をボタンの上に配置） -->
-<div class="question">
-  <p>저는 매일 점심을 먹은 후에 커피를 마시는 ( ) 이 있어요.</p>
-  <p id="result3" class="result"></p> <!-- ← これを先に置く -->
-  <button onclick="checkAnswerChoice(3, '일정')">일정</button>
-  <button onclick="checkAnswerChoice(3, '습관')">습관</button>
-  <button onclick="checkAnswerChoice(3, '행동')">행동</button>
-</div>
+  <!-- 問題4：選択肢形式に変更 -->
+  <div class="question">
+    <p>저는 매일 점심을 먹은 후에 커피를 마시는 ( ) 이 있어요.</p>
+    <div class="choice-block">
+      <button onclick="checkAnswerChoice(3, '일정')">일정</button>
+      <button onclick="checkAnswerChoice(3, '습관')">습관</button>
+      <button onclick="checkAnswerChoice(3, '행동')">행동</button>
+      <div class="result-overlay" id="result3"></div>
+    </div>
+  </div>
 
   <!-- 問題5 -->
   <div class="question">
     <p>A: 요즘 잠을 잘 못 자서 아침마다 피곤해.</p>
-    <p>B: 매일  같은 시간에 자고 일어나는(    )을 만들어 보면 어때?</p>
-    <input type="text" id="answer4">
-    <button onclick="checkAnswer(4, '습관')">答えを確認</button>
+    <p>B: 매일 같은 시간에 자고 일어나는(    )을 만들어 보면 어때?</p>
+    <input type="text" id="answer3">
+    <button onclick="checkAnswer(3, '습관')">答えを確認</button>
     <p id="result4" class="result"></p>
   </div>
 </div>
@@ -229,31 +232,31 @@
     }
   }
 
-  showQuestion(current);
-    function checkAnswerChoice(num, selected) {
-  const correct = ['いぬ', 'ほん', '습관'][num];
-  const buttons = document.querySelectorAll('.question')[num].querySelectorAll('.choice-block');
+  function checkAnswerChoice(num, selected) {
+    const correctAnswers = {
+      3: '습관',  // 問題4の正解
+      4: '습관'   // 問題5の正解
+    };
+    const result = document.getElementById(`result${num}`);
+    const buttons = document.querySelectorAll('.question')[num].querySelectorAll('button');
 
-  buttons.forEach((block) => {
-    const result = block.querySelector('.result-overlay');
-    const buttonText = block.querySelector('button').textContent;
-
-    if (buttonText === selected) {
-      if (buttonText === correct) {
-        result.textContent = "◯";
-        result.style.color = "green";
+    buttons.forEach((button) => {
+      const buttonText = button.textContent;
+      if (buttonText === selected) {
+        if (buttonText === correctAnswers[num]) {
+          result.textContent = "◯";
+          result.style.color = "green";
+        } else {
+          result.textContent = "✕";
+          result.style.color = "red";
+        }
       } else {
-        result.textContent = "✕";
-        result.style.color = "red";
+        result.textContent = ""; // 他の選択肢は表示をクリア
       }
-    } else {
-      result.textContent = ""; // 他の選択肢は表示をクリア
-    }
-  });
-}
+    });
+  }
 
-
-
+  showQuestion(current);
 </script>
 
 </body>
