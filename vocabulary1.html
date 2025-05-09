@@ -134,13 +134,14 @@
     <p id="result2" class="result"></p>
   </div>
 
-  <!-- 問題4 -->
-  <div class="question">
-    <p>4. 「car」の意味は？</p>
-    <input type="text" id="answer3">
-    <button onclick="checkAnswer(3, 'くるま')">答えを確認</button>
-    <p id="result3" class="result"></p>
-  </div>
+  <!-- 問題4：選択肢形式に変更（結果表示をボタンの上に配置） -->
+<div class="question">
+  <p>4. 「car」の意味は？</p>
+  <p id="result3" class="result"></p> <!-- ← これを先に置く -->
+  <button onclick="checkAnswerChoice(3, 'くるま')">くるま</button>
+  <button onclick="checkAnswerChoice(3, 'ほん')">ほん</button>
+  <button onclick="checkAnswerChoice(3, 'ねこ')">ねこ</button>
+</div>
 
   <!-- 問題5 -->
   <div class="question">
@@ -220,6 +221,16 @@
   }
 
   showQuestion(current);
+  function checkAnswerChoice(num, selected) {
+  const correct = ['いぬ', 'ほん', 'くるま'][num];
+  const result = document.getElementById(`result${num}`);
+  if (selected === correct) {
+    result.textContent = "◯";
+    result.style.color = "green";
+  } else {
+    result.textContent = "✕";
+    result.styl
+
 </script>
 
 </body>
