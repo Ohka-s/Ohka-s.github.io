@@ -221,15 +221,18 @@
   }
 
   showQuestion(current);
-  function checkAnswerChoice(num, selected) {
-  const correct = ['いぬ', 'ほん', 'くるま'][num];
-  const result = document.getElementById(`result${num}`);
-  if (selected === correct) {
-    result.textContent = "◯";
-    result.style.color = "green";
-  } else {
-    result.textContent = "✕";
-    result.styl
+    function checkAnswerChoice(num, selected) {
+    const correct = ['いぬ', 'ほん', 'くるま'][num];
+    const result = document.getElementById(`result${num}`);
+    if (selected === correct) {
+      result.textContent = "◯";
+      result.style.color = "green";
+    } else {
+      result.textContent = "✕";
+      result.style.color = "red";
+    }
+  }
+
 
 </script>
 
