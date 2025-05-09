@@ -222,16 +222,27 @@
 
   showQuestion(current);
     function checkAnswerChoice(num, selected) {
-    const correct = ['いぬ', 'ほん', 'くるま'][num];
-    const result = document.getElementById(`result${num}`);
-    if (selected === correct) {
-      result.textContent = "◯";
-      result.style.color = "green";
+  const correct = ['いぬ', 'ほん', '습관'][num];
+  const buttons = document.querySelectorAll('.question')[num].querySelectorAll('.choice-block');
+
+  buttons.forEach((block) => {
+    const result = block.querySelector('.result-overlay');
+    const buttonText = block.querySelector('button').textContent;
+
+    if (buttonText === selected) {
+      if (buttonText === correct) {
+        result.textContent = "◯";
+        result.style.color = "green";
+      } else {
+        result.textContent = "✕";
+        result.style.color = "red";
+      }
     } else {
-      result.textContent = "✕";
-      result.style.color = "red";
+      result.textContent = ""; // 他の選択肢は表示をクリア
     }
-  }
+  });
+}
+
 
 
 </script>
