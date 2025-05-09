@@ -32,12 +32,14 @@
     }
     .result-overlay {
       position: absolute;
-      top: -35px;
+      top: 10px; /* ここをマイナスからプラスへ */
       left: 50%;
       transform: translateX(-50%);
       font-size: 28px;
       font-weight: bold;
+      pointer-events: none; /* クリック操作を邪魔しないように追加してもよい */
     }
+
     .question {
       display: none;
       padding: 20px;
