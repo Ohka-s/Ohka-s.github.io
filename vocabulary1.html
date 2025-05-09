@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>2025-2 멀티미디어한국어교육자료개발</title>
   <style>
     body {
@@ -13,7 +13,6 @@
       padding: 30px;
       margin: 0;
     }
-
     .home-btn {
       position: fixed;
       top: 20px;
@@ -28,20 +27,17 @@
       z-index: 1000;
       transition: background-color 0.3s;
     }
-
     .home-btn:hover {
       background-color: #005480;
     }
-
     .result-overlay {
       position: absolute;
       top: -35px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 28px;  /* ◯✕を大きく */
-      font-weight: bold;  /* 太字に */
+      font-size: 28px;
+      font-weight: bold;
     }
-
     .question {
       display: none;
       padding: 20px;
@@ -53,17 +49,14 @@
       transition: transform 0.5s ease-in-out;
       position: relative;
     }
-
     .question.active {
       display: block;
     }
-
     .progress {
       display: flex;
       justify-content: center;
       margin-top: 40px;
     }
-
     .dot {
       height: 16px;
       width: 16px;
@@ -72,16 +65,13 @@
       border-radius: 50%;
       display: inline-block;
     }
-
     .dot.active {
       background-color: #006d99;
     }
-
     .result {
       font-weight: bold;
       margin-top: 10px;
     }
-
     .nav-btn {
       position: fixed;
       bottom: 40px;
@@ -96,19 +86,15 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       z-index: 1000;
     }
-
     .left-btn {
       left: 25px;
     }
-
     .right-btn {
       right: 25px;
     }
-
     .nav-btn:hover {
       background-color: #005480;
     }
-
     .nav-btn.hidden {
       display: none;
     }
@@ -131,27 +117,35 @@
   <!-- 問題2 -->
   <div class="question">
     <p>2. 「dog」の意味は？</p>
-    <input type="text" id="answer1">
-    <button onclick="checkAnswer(1, 'いぬ')">答えを確認</button>
-    <p id="result1" class="result"></p>
+    <input type="text" id="answer0">
+    <button onclick="checkAnswer(0, 'いぬ')">答えを確認</button>
+    <p id="result0" class="result"></p>
   </div>
 
   <!-- 問題3 -->
   <div class="question">
     <p>3. 「book」の意味は？</p>
-    <input type="text" id="answer2">
-    <button onclick="checkAnswer(2, 'ほん')">答えを確認</button>
-    <p id="result2" class="result"></p>
+    <input type="text" id="answer1">
+    <button onclick="checkAnswer(1, 'ほん')">答えを確認</button>
+    <p id="result1" class="result"></p>
   </div>
 
-  <!-- 問題4：選択肢形式に変更 -->
+  <!-- 問題4（選択肢形式） -->
   <div class="question">
     <p>저는 매일 점심을 먹은 후에 커피를 마시는 ( ) 이 있어요.</p>
     <div class="choice-block">
-      <button onclick="checkAnswerChoice(3, '일정')">일정</button>
-      <button onclick="checkAnswerChoice(3, '습관')">습관</button>
-      <button onclick="checkAnswerChoice(3, '행동')">행동</button>
-      <div class="result-overlay" id="result3"></div>
+      <div style="position: relative; display: inline-block; margin: 5px;">
+        <div class="result-overlay"></div>
+        <button onclick="checkAnswerChoice(this, '일정', '습관')">일정</button>
+      </div>
+      <div style="position: relative; display: inline-block; margin: 5px;">
+        <div class="result-overlay"></div>
+        <button onclick="checkAnswerChoice(this, '습관', '습관')">습관</button>
+      </div>
+      <div style="position: relative; display: inline-block; margin: 5px;">
+        <div class="result-overlay"></div>
+        <button onclick="checkAnswerChoice(this, '행동', '습관')">행동</button>
+      </div>
     </div>
   </div>
 
@@ -159,9 +153,9 @@
   <div class="question">
     <p>A: 요즘 잠을 잘 못 자서 아침마다 피곤해.</p>
     <p>B: 매일 같은 시간에 자고 일어나는(    )을 만들어 보면 어때?</p>
-    <input type="text" id="answer3">
-    <button onclick="checkAnswer(3, '습관')">答えを確認</button>
-    <p id="result4" class="result"></p>
+    <input type="text" id="answer2">
+    <button onclick="checkAnswer(2, '습관')">答えを確認</button>
+    <p id="result2" class="result"></p>
   </div>
 </div>
 
@@ -191,7 +185,6 @@
     questions.forEach((q, i) => {
       q.classList.toggle("active", i === index);
     });
-
     document.getElementById("main-title").textContent = titles[index];
     updateNavigation();
   }
@@ -215,14 +208,13 @@
     dots.forEach((dot, index) => {
       dot.classList.toggle("active", index === current);
     });
-
     document.getElementById("prevBtn").classList.toggle("hidden", current === 0);
     document.getElementById("nextBtn").classList.toggle("hidden", current === questions.length - 1);
   }
 
-  function checkAnswer(num, correct) {
-    const input = document.getElementById(`answer${num - 1}`);
-    const result = document.getElementById(`result${num - 1}`);
+  function checkAnswer(index, correct) {
+    const input = document.getElementById(`answer${index}`);
+    const result = document.getElementById(`result${index}`);
     if (input.value.trim() === correct) {
       result.textContent = "正解！";
       result.style.color = "green";
@@ -232,28 +224,23 @@
     }
   }
 
-  function checkAnswerChoice(num, selected) {
-    const correctAnswers = {
-      3: '습관',  // 問題4の正解
-      4: '습관'   // 問題5の正解
-    };
-    const result = document.getElementById(`result${num}`);
-    const buttons = document.querySelectorAll('.question')[num].querySelectorAll('button');
+  function checkAnswerChoice(clickedButton, selected, correct) {
+    const parent = clickedButton.parentElement.parentElement; // choice-block
+    const allOverlays = parent.querySelectorAll('.result-overlay');
 
-    buttons.forEach((button) => {
-      const buttonText = button.textContent;
-      if (buttonText === selected) {
-        if (buttonText === correctAnswers[num]) {
-          result.textContent = "◯";
-          result.style.color = "green";
-        } else {
-          result.textContent = "✕";
-          result.style.color = "red";
-        }
-      } else {
-        result.textContent = ""; // 他の選択肢は表示をクリア
-      }
+    // 全ての表示をリセット
+    allOverlays.forEach(overlay => {
+      overlay.textContent = "";
     });
+
+    const resultOverlay = clickedButton.previousElementSibling;
+    if (selected === correct) {
+      resultOverlay.textContent = "◯";
+      resultOverlay.style.color = "green";
+    } else {
+      resultOverlay.textContent = "✕";
+      resultOverlay.style.color = "red";
+    }
   }
 
   showQuestion(current);
