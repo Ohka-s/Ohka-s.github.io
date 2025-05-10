@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2025-2 멀티미디어한국어교육자료개발</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e6f7ff;
+      color: #333;
+      text-align: center;
+      padding: 30px;
+      margin: 0;
+    }
+    /* 変更したボタンのスタイル */
+  .choice-block button {
+    padding: 15px 30px; /* ボタンのサイズを大きく */
+    font-size: 18px;    /* フォントサイズを大きく */
+    background-color: #cce6ff; /* 薄い水色 */
+    border: 1px solid #99c2ff; /* 薄い水色の境界線 */
+    border-radius: 8px; /* 角を丸く */
+    color: #333; /* テキストの色 */
+    transition: background-color 0.3s; /* 背景色が変わるアニメーション */
+  }
+
+.choice-block button\:hover {
+background-color: #99c2ff; /\* ホバー時に少し濃い水色に変更 \*/
+}
+
+```
+.home-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  text-decoration: none;
+  background-color: #006d99;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  transition: background-color 0.3s;
+}
+.home-btn:hover {
+  background-color: #005480;
+}
+.result-overlay {
+  position: absolute;
+  top: -18px; /* ここをマイナスからプラスへ */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 65px;
+  font-weight: bold;
+  pointer-events: none; /* クリック操作を邪魔しないように追加してもよい */
+}
+
+.question {
+  display: none;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 10px auto;
+  max-width: 500px;
+  transition: transform 0.5s ease-in-out;
+  position: relative;
+}
+.question.active {
+  display: block;
+}
+.progress {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+.dot {
+  height: 16px;
+  width: 16px;
+  margin: 0 6px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot.active {
+  background-color: #006d99;
+}
+.result {
+  font-weight: bold;
+  margin-top: 10px;
+}
+.nav-btn {
+  position: fixed;
+  bottom: 40px;
+  padding: 16px 24px;
+  font-size: 30px;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  background-color: #006d99;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+.left-btn {
+  left: 25px;
+}
+.right-btn {
+  right: 25px;
+}
+.nav-btn:hover {
+  background-color: #005480;
+}
+.nav-btn.hidden {
+  display: none;
+}
+```
+
+  </style>
+</head>
+<body>
+
+<a href="index.html" class="home-btn" title="홈へ戻る">🏠</a>
+
+<h2 id="main-title">어휘-도입</h2>
+
+<div id="quiz-container">
+  <!-- 問題1 -->
+  <div class="question active">
+    <img src="images/Image1.png" alt="습관" width="200" style="margin-bottom: 10px;">
+    <p>1. 아침에 일어나면 제일 먼저 무엇을 해요？</p>
+    <p>2. 건강을 위해 매일 꼭 하는 일이 있어요？</p>
+  </div>
+
+  <!-- 問題2 -->
+
+  <div class="question">
+    <p>동영상 제시</p>
+    <input type="text" id="answer0">
+    <button onclick="checkAnswer(0, 'いぬ')">答えを確認</button>
+    <p id="result0" class="result"></p>
+  </div>
+
+  <!-- 問題3 -->
+
+  <div class="question">
+    <p>예문 제시</p>
+    <input type="text" id="answer1">
+    <button onclick="checkAnswer(1, 'ほん')">答えを確認</button>
+    <p id="result1" class="result"></p>
+  </div>
+
+  <!-- 問題4（選択肢形式） -->
+
+  <div class="question">
+    <img src="images/ChatGPT_Image-4.png" alt="어휘4" width="200" style="margin-bottom: 10px;">
+    <p>저는 매일 점심을 먹은 후에 커피를 마시는_______이 있어요.</p>
+    <div class="choice-block">
+      <div style="position: relative; display: inline-block; margin: 5px;">
+        <div class="result-overlay"></div>
+        <button onclick="checkAnswerChoice(this, '일정', '습관')">일정</button>
+      </div>
+      <div style="position: relative; display: inline-block; margin: 5px;">
+        <div class="result-overlay"></div>
+        <button onclick="checkAnswerChoice(this, '습관', '습관')">습관</button>
+      </div>
+      <div style="position: relative; display: inline-block; margin: 5px;">
+        <div class="result-overlay"></div>
+        <button onclick="checkAnswerChoice(this, '행동', '습관')">행동</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 問題5 -->
+
+  <div class="question">
+    <img src="images/ChatGPT Image-5.png" alt="어휘5" width="200" style="margin-bottom: 10px;">
+    <p>A: 요즘 잠을 잘 못 자서 아침마다 피곤해.</p>
+    <p>B: 매일 같은 시간에 자고 일어나는_______을 만들어 보면 어때?</p>
+    <input type="text" id="answer2">
+    <button onclick="checkAnswer(2, '습관')">答えを確認</button>
+    <p id="result2" class="result"></p>
+  </div>
+  
+<!-- 問題6 -->
+<div class="question">
+  <img src="images/Image6.png" alt="어휘6" width="200" style="margin-bottom: 10px;">
+  <p>매일 밤 자기 전에 일기를 쓰는 _______이 있어요.</p>
+  <input type="text" id="answer3">
+  <button onclick="checkAnswer(3, '습관')">答えを確認</button>
+  <p id="result3" class="result"></p>
+</div>
+  <!-- 問題7-->
+<div class="question">
+  <img src="images/Image6.png" alt="어휘6" width="200" style="margin-bottom: 10px;">
+  <p>매일 밤 자기 전에 일기를 쓰는 _______이 있어요.</p>
+  <input type="text" id="answer3">
+  <button onclick="checkAnswer(3, '습관')">答えを確認</button>
+  <p id="result3" class="result"></p>
+</div>
+  
+</div>
+
+<div class="progress">
+  <span class="dot active"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+
+<button class="nav-btn left-btn hidden" id="prevBtn" onclick="prevQuestion()">←</button> <button class="nav-btn right-btn" id="nextBtn" onclick="nextQuestion()">→</button>
+
+<script>
+  let current = 0;
+  const questions = document.querySelectorAll(".question");
+  const titles = [
+  "어휘-도입",
+  "어휘-제시",
+  "어휘-제시",
+  "어휘-연습",
+  "어휘-연습",
+  "어휘-연습",
+  "어휘-연습"
+];
+
+  function showQuestion(index) {
+    questions.forEach((q, i) => {
+      q.classList.toggle("active", i === index);
+    });
+    document.getElementById("main-title").textContent = titles[index];
+    updateNavigation();
+  }
+
+  function nextQuestion() {
+    if (current < questions.length - 1) {
+      current++;
+      showQuestion(current);
+    }
+  }
+
+  function prevQuestion() {
+    if (current > 0) {
+      current--;
+      showQuestion(current);
+    }
+  }
+
+  function updateNavigation() {
+    const dots = document.querySelectorAll(".dot");
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("active", index === current);
+    });
+    document.getElementById("prevBtn").classList.toggle("hidden", current === 0);
+    document.getElementById("nextBtn").classList.toggle("hidden", current === questions.length - 1);
+  }
+
+  function checkAnswer(index, correct) {
+    const input = document.getElementById(`answer${index}`);
+    const result = document.getElementById(`result${index}`);
+    if (input.value.trim() === correct) {
+      result.textContent = "正解！";
+      result.style.color = "green";
+    } else {
+      result.textContent = "不正解";
+      result.style.color = "red";
+    }
+  }
+
+  function checkAnswerChoice(clickedButton, selected, correct) {
+    const parent = clickedButton.parentElement.parentElement; // choice-block
+    const allOverlays = parent.querySelectorAll('.result-overlay');
+
+    // 全ての表示をリセット
+    allOverlays.forEach(overlay => {
+      overlay.textContent = "";
+    });
+
+    const resultOverlay = clickedButton.previousElementSibling;
+    if (selected === correct) {
+      resultOverlay.textContent = "◯";
+      resultOverlay.style.color = "green";
+    } else {
+      resultOverlay.textContent = "✕";
+      resultOverlay.style.color = "red";
+    }
+  }
+
+  showQuestion(current);
+</script>
+
+</body>
+</html> 
