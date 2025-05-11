@@ -27,7 +27,7 @@
   <div class="question">
     <p>동영상 제시</p>
     <input type="text" id="answer0">
-    <button class="check-answer-btn" onclick="checkAnswer(0, 'いぬ')">答えを確認</button>
+    <button class="check-answer-btn" onclick="checkAnswer(0, 'いぬ')">정답 확인</button>
     <p id="result0" class="result"></p>
   </div>
 
@@ -35,7 +35,7 @@
   <div class="question">
     <p>예문 제시</p>
     <input type="text" id="answer1">
-    <button class="check-answer-btn" onclick="checkAnswer(1, 'ほん')">答えを確認</button>
+    <button class="check-answer-btn" onclick="checkAnswer(1, 'ほん')">정답 확인</button>
     <p id="result1" class="result"></p>
   </div>
 
@@ -65,7 +65,7 @@
     <p>준호: 요즘 잠을 잘 못 자서 아침마다 피곤해.</p>
     <p>예진: 매일 같은 시간에 자고 일어나는_______을 만들어 보면 어때?</p>
     <input type="text" id="answer2">
-    <button class="check-answer-btn" onclick="checkAnswer(2, '습관')">答えを確認</button>
+    <button class="check-answer-btn" onclick="checkAnswer(2, '습관')">정답 확인</button>
     <p id="result2" class="result"></p>
   </div>
 </div>
@@ -137,10 +137,10 @@
     const input = document.getElementById(`answer${index}`);
     const result = document.getElementById(`result${index}`);
     if (input.value.trim() === correct) {
-      result.textContent = "正解！";
+      result.textContent = "◯";
       result.style.color = "green";
     } else {
-      result.textContent = "不正解";
+      result.textContent = "✕";
       result.style.color = "red";
     }
   }
