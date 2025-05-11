@@ -240,6 +240,22 @@ button:hover {
     font-size: 16px;
     padding: 10px 16px;
   }
+    .question > div[style*="display: flex"] {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  .question img {
+    width: 100% !important;
+    max-width: 250px;
+    height: auto;
+  }
+
+  .question div[style*="text-align: left"] {
+    text-align: center !important;
+    width: 100% !important;
+  }
 
   /* 入力欄や答えボタンも幅広く押しやすく */
   input[type="text"],
