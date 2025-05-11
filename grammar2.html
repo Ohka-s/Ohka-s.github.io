@@ -5,25 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>2025-2 멀티미디어한국어교육자료개발</title>
   <style>
-   /* 共通レイアウト調整 */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e6f7ff;
+      color: #333;
+      text-align: center;
+      padding: 30px;
+      margin: 0;
+    }
+    /* 変更したボタンのスタイル */
+  .choice-block button {
+    padding: 15px 30px; /* ボタンのサイズを大きく */
+    font-size: 18px;    /* フォントサイズを大きく */
+    background-color: #cce6ff; /* 薄い水色 */
+    border: 1px solid #99c2ff; /* 薄い水色の境界線 */
+    border-radius: 8px; /* 角を丸く */
+    color: #333; /* テキストの色 */
+    transition: background-color 0.3s; /* 背景色が変わるアニメーション */
+  }
 
-html, body {
-  overflow-x: hidden;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #e6f7ff;
-  color: #333;
-  text-align: center;
-  padding: 30px;
-  margin: 0;
-}
-
-.highlight-title {
+  .choice-block button:hover {
+    background-color: #99c2ff; /* ホバー時に少し濃い水色に変更 */
+  }
+    .highlight-title {
   background-color: #006d99;
   color: white;
   padding: 10px 20px;
@@ -34,139 +38,95 @@ body {
   font-size: 24px;
 }
 
-.home-btn {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  font-size: 24px;
-  text-decoration: none;
-  background-color: #006d99;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  z-index: 1000;
-  transition: background-color 0.3s;
-}
-.home-btn:hover {
-  background-color: #005480;
-}
+    
+    .home-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 24px;
+      text-decoration: none;
+      background-color: #006d99;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      transition: background-color 0.3s;
+    }
+    .home-btn:hover {
+      background-color: #005480;
+    }
+    .result-overlay {
+      position: absolute;
+      top: 10px; /* ここをマイナスからプラスへ */
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 50px;
+      font-weight: bold;
+      pointer-events: none; /* クリック操作を邪魔しないように追加してもよい */
+    }
 
-.question {
-  display: none;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  margin: 10px auto;
-  max-width: 600px;
-  transition: transform 0.5s ease-in-out;
-  position: relative;
-}
-.question.active {
-  display: block;
-}
-
-.choice-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-/* ✅ 修正ポイント：スクロール防止用スタイル */
-.image-text-block {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 100%;
-  padding: 0 20px;
-  margin: 0 auto;
-  text-align: left;
-}
-
-.block-image {
-  width: 150px;
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-.block-text {
-  flex: 1;
-}
-
-/* その他の既存設定 */
-.progress {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-}
-.dot {
-  height: 16px;
-  width: 16px;
-  margin: 0 6px;
-  background-color: #ccc;
-  border-radius: 50%;
-  display: inline-block;
-}
-.dot.active {
-  background-color: #006d99;
-}
-
-.result {
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.nav-btn {
-  position: fixed;
-  bottom: 40px;
-  padding: 16px 24px;
-  font-size: 30px;
-  border: none;
-  border-radius: 50%;
-  color: white;
-  background-color: #006d99;
-  cursor: pointer;
-  font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
-.left-btn {
-  left: 25px;
-}
-.right-btn {
-  right: 25px;
-}
-.nav-btn:hover {
-  background-color: #005480;
-}
-.nav-btn.hidden {
-  display: none;
-}
-
-/* ✅ レスポンシブ：より狭い画面向けの調整 */
-@media screen and (max-width: 700px) {
-  .image-text-block {
-    flex-direction: column;
-    text-align: center;
-  }
-  .block-image {
-    width: 100%;
-    max-width: 220px;
-    height: auto;
-  }
-  .block-text {
-    text-align: center;
-  }
-}
-</style>
+    .question {
+      display: none;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      margin: 10px auto;
+      max-width: 500px;
+      transition: transform 0.5s ease-in-out;
+      position: relative;
+    }
+    .question.active {
+      display: block;
+    }
+    .progress {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .dot {
+      height: 16px;
+      width: 16px;
+      margin: 0 6px;
+      background-color: #ccc;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .dot.active {
+      background-color: #006d99;
+    }
+    .result {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .nav-btn {
+      position: fixed;
+      bottom: 40px;
+      padding: 16px 24px;
+      font-size: 30px;
+      border: none;
+      border-radius: 50%;
+      color: white;
+      background-color: #006d99;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+    .left-btn {
+      left: 25px;
+    }
+    .right-btn {
+      right: 25px;
+    }
+    .nav-btn:hover {
+      background-color: #005480;
+    }
+    .nav-btn.hidden {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
@@ -211,36 +171,37 @@ body {
 <div class="question">
   <p class="highlight-title">(동사)＋-게 하다</p>
 
-  <div class="choice-list">
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 30px;">
+
     <!-- 1ブロック目 -->
-    <div class="image-text-block">
-      <img src="images/Image4_4.png" alt="놀게 하다" class="block-image">
-      <div class="block-text">
+    <div style="display: flex; align-items: center; gap: 20px; max-width: 500px;">
+      <img src="images/Image4_4.png" alt="놀게 하다" style="width: 150px; height: 150px; object-fit: contain;">
+      <div style="text-align: left; width: 350px;">
         <p>놀다 ＋ 게 하다 → 놀게 하다</p>
         <p>아버지가 아이들을 밖에서 놀게 했어요.</p>
       </div>
     </div>
 
     <!-- 2ブロック目 -->
-    <div class="image-text-block">
-      <img src="images/Image4_4music.png" alt="듣게 하다" class="block-image">
-      <div class="block-text">
+    <div style="display: flex; align-items: center; gap: 20px; max-width: 500px;">
+      <img src="images/Image4_4music.png" alt="듣게 하다" style="width: 150px; height: 150px; object-fit: contain;">
+      <div style="text-align: left; width: 350px;">
         <p>듣다 ＋ 게 하다 → 듣게 하다</p>
         <p>친구가 저에게 K-POP 노래를 듣게 했어요.</p>
       </div>
     </div>
 
     <!-- 3ブロック目 -->
-    <div class="image-text-block">
-      <img src="images/Image4_4bbq.png" alt="굽게 하다" class="block-image">
-      <div class="block-text">
+    <div style="display: flex; align-items: center; gap: 20px; max-width: 500px;">
+      <img src="images/Image4_4bbq.png" alt="굽게 하다" style="width: 150px; height: 150px; object-fit: contain;">
+      <div style="text-align: left; width: 350px;">
         <p>굽다 ＋ 게 하다 → 굽게 하다</p>
         <p>어머니가 고기를 굽게 했어요.</p>
       </div>
     </div>
+
   </div>
 </div>
-
 
 
   <!-- 問題5 -->
@@ -335,8 +296,8 @@ body {
   }
 
   function checkAnswer(index, correct) {
-    const input = document.getElementById(`answer${index}`);
-    const result = document.getElementById(`result${index}`);
+    const input = document.getElementById(answer${index});
+    const result = document.getElementById(result${index});
     if (input.value.trim() === correct) {
       result.textContent = "正解！";
       result.style.color = "green";
@@ -369,4 +330,4 @@ body {
 </script>
 
 </body>
-</html>
+</html> 
