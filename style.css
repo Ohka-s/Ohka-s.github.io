@@ -170,22 +170,23 @@ button:hover {
 .nav-btn {
   position: fixed;
   bottom: 20px;
-  width: 28px;              /* ← 横幅を直接指定 */
-  height: 28px;             /* ← 高さも揃えて真ん丸に */
-  font-size: 16px;          /* ← ← → が読めるサイズ */
+  width: 28px;
+  height: 28px;
   border: none;
-  border-radius: 50%;       /* ← 真ん丸に */
+  border-radius: 50%;
   color: white;
   background-color: #66b3cc;
   cursor: pointer;
   font-weight: bold;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   z-index: 1000;
-  display: flex;
-  align-items: center;
+  display: flex;               /* ← ここで中央配置 */
   justify-content: center;
-  padding: 0;               /* ← 中の余白ゼロで整える */
-  line-height: 1;
+  align-items: center;
+  padding: 0;
+}
+.nav-btn i {
+  font-size: 14px;
 }
 
 .left-btn {
