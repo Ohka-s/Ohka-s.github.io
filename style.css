@@ -167,7 +167,7 @@ button:hover {
   margin-top: 10px;
 }
 
-nav-btn {
+.nav-btn {
   position: fixed;
   bottom: 40px;
   padding: 10px 16px;
@@ -183,7 +183,7 @@ nav-btn {
 }
 
 .left-btn {
-  left: 10px;
+  left: 20px;
 }
 .right-btn {
   right: 20px;
