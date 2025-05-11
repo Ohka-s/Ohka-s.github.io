@@ -103,6 +103,7 @@ button:hover {
 
 .nav-btn.hidden {
   display: none;
+}
 }　
 .example-box {
   border: 1px solid #aadcec;  /* 薄い水色の線 */
