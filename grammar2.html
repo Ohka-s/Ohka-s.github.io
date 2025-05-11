@@ -296,8 +296,8 @@
   }
 
   function checkAnswer(index, correct) {
-    const input = document.getElementById(answer${index});
-    const result = document.getElementById(result${index});
+  const input = document.getElementById(`answer${index}`);
+  const result = document.getElementById(`result${index}`);
     if (input.value.trim() === correct) {
       result.textContent = "正解！";
       result.style.color = "green";
