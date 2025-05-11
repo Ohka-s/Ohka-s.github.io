@@ -71,6 +71,16 @@ button:hover {
   background-color: #b3e6ff;
   box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.3); /* ホバー時に影を強調 */
 }
+.example-box {
+  border: 1px solid #aadcec;  /* 薄い水色の線 */
+  background-color: #ffffff;  /* 白背景 */
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 400px;
+  text-align: left;
+}
+
 /* スマホ対応 */
 @media screen and (max-width: 600px) {
 
@@ -107,12 +117,4 @@ button:hover {
 }
 
 
-.example-box {
-  border: 1px solid #aadcec;  /* 薄い水色の線 */
-  background-color: #ffffff;  /* 白背景 */
-  padding: 15px 20px;
-  border-radius: 10px;
-  margin: 20px auto;
-  max-width: 400px;
-  text-align: left;
-}
+
