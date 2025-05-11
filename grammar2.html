@@ -156,6 +156,12 @@
       q.classList.toggle("active", i === index);
     });
     document.getElementById("main-title").textContent = titles[index];
+    const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  prevBtn.style.display = index === 0 ? "none" : "flex";
+  nextBtn.style.display = index === questions.length - 1 ? "none" : "flex";
+
     updateNavigation();
   }
 
