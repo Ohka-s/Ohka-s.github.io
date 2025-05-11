@@ -173,8 +173,8 @@ button:hover {
 .nav-btn {
   position: fixed;
   bottom: 30px;
-  width: 36px;        /* ← 幅を広げる */
-  height: 36px;       /* ← 高さも広げる */
+  width: 40px;        /* ← 幅を広げる */
+  height: 40px;       /* ← 高さも広げる */
   border: none;
   border-radius: 50%;
   color: white;
@@ -190,7 +190,7 @@ button:hover {
 }
 
 .nav-btn i {
-  font-size: 24px; /* ← アイコンも少し大きく */
+  font-size: 30px; /* ← アイコンも少し大きく */
 }
 
 .left-btn {
@@ -296,4 +296,15 @@ button:hover {
   background-color: #b3d9e6;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.08);
 }
+
+@media screen and (min-width: 601px) {
+  .left-btn {
+    left: 100px;
+  }
+
+  .right-btn {
+    right: 100px;
+  }
+}
+
 
