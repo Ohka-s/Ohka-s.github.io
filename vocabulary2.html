@@ -83,8 +83,12 @@
   <span class="dot"></span>
 </div>
 
-<button class="nav-btn left-btn hidden" id="prevBtn" onclick="prevQuestion()">←</button>
-<button class="nav-btn right-btn" id="nextBtn" onclick="nextQuestion()">→</button>
+<button class="nav-btn left-btn" onclick="prevQuestion()">
+  <i class="fas fa-chevron-left"></i>
+</button>
+<button class="nav-btn right-btn" onclick="nextQuestion()">
+  <i class="fas fa-chevron-right"></i>
+</button>
 
 <script>
   let current = 0;
