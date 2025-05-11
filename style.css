@@ -215,14 +215,14 @@ button:hover {
   text-align: left;
 }
 .check-answer-btn {
-  background-color: #006d99;
-  color: white;
-  font-size: 18px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 10px;
+  background-color: #d6ecf5; /* ← 明るい水色系に変更 */
+  color: #003344;
+  font-size: 14px; /* ← 小さめフォント */
+  padding: 6px 14px; /* ← コンパクトなパディング */
+  border: 1px solid #b3d9e6; /* 薄い境界線 */
+  border-radius: 8px;
   cursor: pointer;
-  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
   transition: background-color 0.3s;
   width: auto;
   height: auto;
@@ -231,5 +231,6 @@ button:hover {
 }
 
 .check-answer-btn:hover {
-  background-color: #005480;
+  background-color: #b3d9e6; /* ← ホバー時もほんの少し濃く */
 }
+
