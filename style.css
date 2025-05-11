@@ -186,14 +186,14 @@ button:hover {
   padding: 0;
 }
 .nav-btn i {
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .left-btn {
-  left: 15px;
+  left: 30px;
 }
 .right-btn {
-  right: 15px;
+  right: 30px;
 }
 
 .nav-btn:hover {
