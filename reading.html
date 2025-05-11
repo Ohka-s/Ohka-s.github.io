@@ -1,1 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2025-2 멀티미디어한국어교육자료개발</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
 
+<a href="index.html" class="home-btn" title="ホームへ戻る">
+  <i class="fas fa-book-open"></i>
+</a>
+
+<h2 id="main-title">어휘-도입</h2>
+
+<div id="quiz-container">
+  <!-- 問題1 -->
+  <div class="question active">
+    <p>질문 1</p>
+    <p>질문2</p>
+  </div>
+
+  <!-- 問題2 -->
+  <div class="question">
+    <p>그림</p>
+    <p>문장</p>
+  </div>
+
+  <!-- 問題3 -->
+  <div class="question">
+    <p>그림/p>
+    <p>문장/p>
+  </div>
+
+  <!-- 問題4（選択肢形式） -->
+  <div class="question">
+    <p>문장</p>
+    <p>문장</p>
+    <p>문장</p>
+    <p>문장</p>
+  </div>
+
+  <!-- 問題5 -->
+  <div class="question">
+    <p>연습</p>
+  </div>
+</div>
+
+<div class="progress">
+  <span class="dot active"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+
+<button class="nav-btn left-btn" id="prevBtn" onclick="prevQuestion()">
+  <i class="fas fa-chevron-left"></i>
+</button>
+<button class="nav-btn right-btn" id="nextBtn" onclick="nextQuestion()">
+  <i class="fas fa-chevron-right"></i>
+</button>
+
+<script>
+  let current = 0;
+  const questions = document.querySelectorAll(".question");
+  const titles = [
+    "읽기-도입",
+    "읽기-제시",
+    "읽기-제시",
+    "읽기-연습",
+    "읽기-연습"
+  ];
+
+  function showQuestion(index) {
+    questions.forEach((q, i) => {
+      q.classList.toggle("active", i === index);
+    });
+    document.getElementById("main-title").textContent = titles[index];
+    const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  prevBtn.style.display = index === 0 ? "none" : "flex";
+  nextBtn.style.display = index === questions.length - 1 ? "none" : "flex";
+
+    updateNavigation();
+  }
+
+  function nextQuestion() {
+    if (current < questions.length - 1) {
+      current++;
+      showQuestion(current);
+    }
+  }
+
+  function prevQuestion() {
+    if (current > 0) {
+      current--;
+      showQuestion(current);
+    }
+  }
+
+  function updateNavigation() {
+    const dots = document.querySelectorAll(".dot");
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("active", index === current);
+    });
+    document.getElementById("prevBtn").classList.toggle("hidden", current === 0);
+    document.getElementById("nextBtn").classList.toggle("hidden", current === questions.length - 1);
+  }
+
+  function checkAnswer(index, correct) {
+    const input = document.getElementById(`answer${index}`);
+    const result = document.getElementById(`result${index}`);
+    if (input.value.trim() === correct) {
+      result.textContent = "◯";
+      result.style.color = "green";
+    } else {
+      result.textContent = "✕";
+      result.style.color = "red";
+    }
+  }
+
+  function checkAnswerChoice(clickedButton, selected, correct) {
+    const parent = clickedButton.parentElement.parentElement; // choice-block
+    const allOverlays = parent.querySelectorAll('.result-overlay');
+
+    // 全ての表示をリセット
+    allOverlays.forEach(overlay => {
+      overlay.textContent = "";
+    });
+
+    const resultOverlay = clickedButton.previousElementSibling;
+    if (selected === correct) {
+      resultOverlay.textContent = "◯";
+      resultOverlay.style.color = "green";
+    } else {
+      resultOverlay.textContent = "✕";
+      resultOverlay.style.color = "red";
+    }
+  }
+
+  showQuestion(current);
+</script>
+
+</body>
+</html>
