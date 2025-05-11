@@ -76,6 +76,12 @@ button:hover {
   margin: 0;
   box-shadow: none;
 }
+.choice-block {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* 長くなったときに折り返す */
+  gap: 10px; /* ボタンの間に隙間を作る */
+}
 
 .choice-block button:hover {
   background-color: #99c2ff;
