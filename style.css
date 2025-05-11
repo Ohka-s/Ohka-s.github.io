@@ -214,6 +214,10 @@ button:hover {
     padding: 8px 12px;
     font-size: 16px;
   }
+  .choice-block button {
+    flex: 1 1 100%;
+    max-width: 90%;
+  }
 
   /* 画像：スマホでは横並び → 縦並びへ */
   .question div[style*="display: flex"] {
