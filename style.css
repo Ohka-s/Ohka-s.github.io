@@ -104,3 +104,13 @@ button:hover {
 .nav-btn.hidden {
   display: none;
 }　
+.example-box {
+  border: 1px solid #aadcec;  /* 薄い水色の線 */
+  background-color: #ffffff;  /* 白背景 */
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 400px;
+  text-align: left;
+}
+  
