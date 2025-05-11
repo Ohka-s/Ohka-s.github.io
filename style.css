@@ -63,11 +63,16 @@ button:hover {
   box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.3);
 }
 
+.choice-block {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 .choice-block button {
-  padding: 12px 18px;
+  padding: 10px 16px;
   font-size: 18px;
-  width: auto;
-  height: auto;
   background-color: #cce6ff;
   border: 1px solid #99c2ff;
   border-radius: 8px;
@@ -75,13 +80,11 @@ button:hover {
   transition: background-color 0.3s;
   margin: 0;
   box-shadow: none;
+  flex: 1 1 120px;  /* 👈 同じ幅に広がる */
+  max-width: 150px; /* 👈 最大幅も制限 */
+  text-align: center;
 }
-.choice-block {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap; /* 長くなったときに折り返す */
-  gap: 10px; /* ボタンの間に隙間を作る */
-}
+
 
 .choice-block button:hover {
   background-color: #99c2ff;
