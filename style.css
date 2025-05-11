@@ -205,12 +205,43 @@ button:hover {
 }
 
 @media screen and (max-width: 600px) {
+  /* ナビゲーションボタン（← →） */
   .nav-btn {
     bottom: 15px;
     padding: 8px 12px;
     font-size: 16px;
   }
+
+  /* 画像：スマホでは横並び → 縦並びへ */
+  .question div[style*="display: flex"] {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  /* 画像サイズ調整：幅いっぱい、ただし大きすぎない */
+  .question img {
+    width: 100% !important;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  /* 選択肢ボタンも少し大きめに・読みやすく */
+  .choice-block button {
+    font-size: 16px;
+    padding: 10px 16px;
+  }
+
+  /* 入力欄や答えボタンも幅広く押しやすく */
+  input[type="text"],
+  .check-answer-btn {
+    width: 90%;
+    max-width: 300px;
+    font-size: 16px;
+  }
 }
+
 
 .example-box {
   border: 1px solid #aadcec;
