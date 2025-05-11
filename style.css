@@ -70,6 +70,50 @@ button:hover {
   box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.3);
 }
 
+/* ナビゲーションボタン */
+.nav-btn {
+  position: fixed;
+  bottom: 40px;
+  padding: 16px 24px;
+  font-size: 30px;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  background-color: #006d99;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.left-btn {
+  left: 25px;
+}
+
+.right-btn {
+  right: 25px;
+}
+
+.nav-btn:hover {
+  background-color: #005480;
+}
+
+.nav-btn.hidden {
+  display: none;
+}
+
+/* ハイライトタイトル */
+.highlight-title {
+  background-color: #006d99;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
 /* ホームボタン */
 .home-btn {
   position: fixed;
@@ -90,17 +134,7 @@ button:hover {
   background-color: #005480;
 }
 
-.highlight-title {
-  background-color: #006d99;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-weight: bold;
-  display: inline-block;
-  margin-bottom: 10px;
-  font-size: 24px;
-}
-
+/* 問題・結果関連 */
 .result-overlay {
   position: absolute;
   top: 10px;
@@ -151,39 +185,8 @@ button:hover {
   margin-top: 10px;
 }
 
-/* ナビゲーションボタン */
-.nav-btn {
-  position: fixed;
-  bottom: 40px;
-  padding: 16px 24px;
-  font-size: 30px;
-  border: none;
-  border-radius: 50%;
-  color: white;
-  background-color: #006d99;
-  cursor: pointer;
-  font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-}
 
-.left-btn {
-  left: 25px;
-}
-
-.right-btn {
-  right: 25px;
-}
-
-.nav-btn:hover {
-  background-color: #005480;
-}
-
-.nav-btn.hidden {
-  display: none;
-}
-
-/* 共通（PC・タブレット）用 */
+/* 横並び（PC・タブレット） */
 .image-text-block {
   display: flex;
   align-items: center;
@@ -204,7 +207,7 @@ button:hover {
   flex: 1;
 }
 
-/* スマホ対応 */
+/* スマホ（600px以下）では縦並びにする */
 @media screen and (max-width: 600px) {
   .image-text-block {
     flex-direction: column;
