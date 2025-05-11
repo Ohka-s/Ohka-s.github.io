@@ -169,16 +169,16 @@ button:hover {
 
 .nav-btn {
   position: fixed;
-  bottom: 40px;
-  padding: 10px 16px;
-  font-size: 20px;
+  bottom: 20px;
+  padding: 8px 10px;         /* ← 横幅を抑える */
+  font-size: 16px;
   border: none;
-  border-radius: 50%;
+  border-radius: 50px;       /* 丸っぽくて自然な曲線 */
   color: white;
-  background-color: #006d99;
+  background-color: #66b3cc;
   cursor: pointer;
   font-weight: bold;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
 
