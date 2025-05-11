@@ -170,7 +170,7 @@ button:hover {
 .nav-btn {
   position: fixed;
   bottom: 20px;
-  padding: 8px 10px;         /* ← 横幅を抑える */
+  padding: 8px 9px;         /* ← 横幅を抑える */
   font-size: 16px;
   border: none;
   border-radius: 50px;       /* 丸っぽくて自然な曲線 */
@@ -190,7 +190,7 @@ button:hover {
 }
 
 .nav-btn:hover {
-  background-color: #005480;
+  background-color: #79c6d8;
 }
 
 .nav-btn.hidden {
