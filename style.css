@@ -66,24 +66,23 @@ button:hover {
 .choice-block {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-wrap: nowrap;  /* 横並びを強調 */
+  gap: 20px;
 }
 
 .choice-block button {
-  padding: 10px 16px;
+  width: 150px;           /* 横幅を固定：常に揃う */
   font-size: 18px;
+  padding: 10px 16px;
   background-color: #cce6ff;
   border: 1px solid #99c2ff;
   border-radius: 8px;
   color: #333;
   transition: background-color 0.3s;
-  margin: 0;
   box-shadow: none;
-  flex: 1 1 120px;  /* 👈 同じ幅に広がる */
-  max-width: 150px; /* 👈 最大幅も制限 */
   text-align: center;
 }
+
 
 
 .choice-block button:hover {
@@ -215,10 +214,18 @@ button:hover {
     padding: 8px 12px;
     font-size: 16px;
   }
-  .choice-block button {
-    flex: 1 1 100%;
-    max-width: 90%;
+   .choice-block {
+    flex-direction: column;
+    align-items: center;
   }
+
+  .choice-block button {
+    width: 90%;
+    max-width: 300px;
+    font-size: 16px;
+    padding: 10px 16px;
+  }
+
 
   /* 画像：スマホでは横並び → 縦並びへ */
   .question div[style*="display: flex"] {
