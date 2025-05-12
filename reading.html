@@ -120,10 +120,10 @@
     });
     document.getElementById("main-title").textContent = titles[index];
     const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
+    const nextBtn = document.getElementById("nextBtn");
 
-  prevBtn.style.display = index === 0 ? "none" : "flex";
-  nextBtn.style.display = index === questions.length - 1 ? "none" : "flex";
+    prevBtn.style.display = index === 0 ? "none" : "flex";
+    nextBtn.style.display = index === questions.length - 1 ? "none" : "flex";
 
     updateNavigation();
   }
@@ -155,7 +155,7 @@
     const input = document.getElementById(`answer${index}`);
     const result = document.getElementById(`result${index}`);
     if (input.value.trim() === correct) {
-      result.textContent = "◯";
+      result.textContent = "○";
       result.style.color = "green";
     } else {
       result.textContent = "✕";
@@ -164,17 +164,14 @@
   }
 
   function checkAnswerChoice(clickedButton, selected, correct) {
-    const parent = clickedButton.parentElement.parentElement; // choice-block
+    const parent = clickedButton.parentElement.parentElement;
     const allOverlays = parent.querySelectorAll('.result-overlay');
-
-    // 全ての表示をリセット
     allOverlays.forEach(overlay => {
       overlay.textContent = "";
     });
-
     const resultOverlay = clickedButton.previousElementSibling;
     if (selected === correct) {
-      resultOverlay.textContent = "◯";
+      resultOverlay.textContent = "○";
       resultOverlay.style.color = "green";
     } else {
       resultOverlay.textContent = "✕";
@@ -184,17 +181,17 @@
 
   showQuestion(current);
 </script>
-  <!-- モーダル：語句「과식」をクリックしたときの説明 -->
+
+<!-- 모단에 추가된 과식 설명 모달 -->
 <div id="modal" class="modal">
   <div class="modal-content">
     <span class="close-btn" onclick="closeModal()">×</span>
     <h3>과식</h3>
-    <p>과식은 '너무 많이 먹는 것'을 의미합니다. 위에 부담을 주고, 건강에 좋지 않습니다.</p>
+    <p>과식은 '너무 많이 먹는 것'을 의미합니다. 위에 불담을 주고, 건강에 좋지 않습니다.</p>
     <img src="images/overeat.jpg" alt="과식을 나타내는 이미지" style="max-width:100%; border-radius: 8px; margin-top: 10px;">
   </div>
 </div>
 
-  <!-- モーダル操作用のJavaScript-->
 <script>
   function openModal() {
     document.getElementById("modal").style.display = "block";
@@ -204,13 +201,12 @@
     document.getElementById("modal").style.display = "none";
   }
 
-  // 背景クリックで閉じる
-  window.onclick = function(event) {
+  window.addEventListener("click", function(event) {
     const modal = document.getElementById("modal");
     if (event.target === modal) {
       modal.style.display = "none";
     }
-  }
+  });
 </script>
 
 </body>
