@@ -185,12 +185,33 @@
   showQuestion(current);
 </script>
   <!-- モーダル：語句「과식」をクリックしたときの説明 -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal()">×</span>
-      <h3>과식</h3>
-      <p>'너무 많이 먹는 것'.</p>
-    </div>
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">×</span>
+    <h3>과식</h3>
+    <p>과식은 '너무 많이 먹는 것'을 의미합니다. 위에 부담을 주고, 건강에 좋지 않습니다.</p>
+    <img src="images/overeat.jpg" alt="과식을 나타내는 이미지" style="max-width:100%; border-radius: 8px; margin-top: 10px;">
   </div>
+</div>
+
+  <!-- モーダル操作用のJavaScript-->
+<script>
+  function openModal() {
+    document.getElementById("modal").style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("modal").style.display = "none";
+  }
+
+  // 背景クリックで閉じる
+  window.onclick = function(event) {
+    const modal = document.getElementById("modal");
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
 </body>
 </html>
