@@ -306,5 +306,12 @@ button:hover {
     right: 100px;
   }
 }
+.edu-text {
+  max-width: 600px;
+  margin: 0 auto 30px;
+  font-size: 18px;
+  line-height: 1.8;
+  text-align: left;  /* 左揃え（中央にしたい場合は center） */
+}
 
 
