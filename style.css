@@ -313,3 +313,15 @@ button:hover {
   line-height: 1.8;
   text-align: left;  /* 左揃え（中央にしたい場合は center） */
 }
+.reading-text {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.8;
+  text-align: left;
+}
+
+.reading-text p {
+  margin-bottom: 1.2em;
+}
+
