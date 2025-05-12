@@ -365,3 +365,25 @@ button:hover {
 /* --- モーダル用スタイルここまで --- */
 
 
+/* ○×問題用：横並びレイアウト */
+.choice-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.choice-line p {
+  margin: 0;
+  flex-grow: 1;
+}
+.choice-line .choice-block {
+  flex-shrink: 0;
+}
+.choice-line .choice-block button {
+  width: 40px;
+  height: 30px;
+  font-size: 16px;
+  margin-left: 4px;
+}
+
+
