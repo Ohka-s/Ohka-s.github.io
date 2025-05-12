@@ -25,7 +25,9 @@
   <!-- 問題2 -->
 <div class="question">
   <div class="reading-text">
-    <p>예전에는 늦게까지 공부하거나 친구들과 놀다가 늦은 시간에 밥을 먹고 과식을 자주 했어요.  그렇게 먹고 바로 자면 속이 불편하고, 아침에 일어나면 피로를 많이 느꼈어요.</p>
+    <p>예전에는 늦게까지 공부하거나 친구들과 놀다가 늦은 시간에 밥을 먹고 
+      <span class="modal-trigger" onclick="openModal()">과식</span>
+      을 자주 했어요.  그렇게 먹고 바로 자면 속이 불편하고, 아침에 일어나면 피로를 많이 느꼈어요.</p>
     <p>그래서 식사 습관을 바꾸기로 했어요.  지금은 일정한 시간에 천천히 먹고, 너무 많이 먹지 않으려고 노력하고 있어요.  그 결과 아침에 일어날 때 몸이 가볍고, 하루 종일 기분도 좋아졌어요.  작은 변화지만 건강에 정말 도움이 된다는 것을 느끼고 있어요.</p>
   </div>
 </div>
@@ -182,6 +184,13 @@
 
   showQuestion(current);
 </script>
-
+  <!-- モーダル：語句「과식」をクリックしたときの説明 -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">×</span>
+      <h3>과식</h3>
+      <p>'너무 많이 먹는 것'.</p>
+    </div>
+  </div>
 </body>
 </html>
