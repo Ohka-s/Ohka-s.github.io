@@ -40,12 +40,48 @@
   </div>
 
   <!-- 問題4（選択肢形式） -->
-  <div class="question">
-    <p>문장</p>
-    <p>문장</p>
-    <p>문장</p>
-    <p>문장</p>
+<div class="question">
+  <p>문장</p>
+  
+  <!-- ○×問題1 -->
+  <p>우진 씨는은 항상 아침을 많이 먹고 과식을 했다.</p>
+  <div class="choice-block">
+    <div style="position: relative;">
+      <div class="result-overlay"></div>
+      <button onclick="checkAnswerChoice(this, 'O', 'X')">◯</button>
+    </div>
+    <div style="position: relative;">
+      <div class="result-overlay"></div>
+      <button onclick="checkAnswerChoice(this, 'X', 'X')">✕</button>
+    </div>
   </div>
+
+  <!-- ○×問題2 -->
+  <p>문제2.</p>
+  <div class="choice-block">
+    <div style="position: relative;">
+      <div class="result-overlay"></div>
+      <button onclick="checkAnswerChoice(this, 'O', 'O')">◯</button>
+    </div>
+    <div style="position: relative;">
+      <div class="result-overlay"></div>
+      <button onclick="checkAnswerChoice(this, 'X', 'O')">✕</button>
+    </div>
+  </div>
+  <!-- ○×問題3 -->
+   <p>지금은 아침에 피곤함을 자주 느낀다.</p>
+  <div class="choice-block">
+    <div style="position: relative;">
+      <div class="result-overlay"></div>
+      <button onclick="checkAnswerChoice(this, 'O', 'X')">◯</button>
+    </div>
+    <div style="position: relative;">
+      <div class="result-overlay"></div>
+      <button onclick="checkAnswerChoice(this, 'X', 'X')">✕</button>
+    </div>
+  </div>
+</div>
+
 
   <!-- 問題5 -->
   <div class="question">
@@ -75,7 +111,7 @@
     "읽기 전",
     "읽기",
     "읽기",
-    "읽기",
+    "읽기 후",
     "읽기 후"
   ];
 
