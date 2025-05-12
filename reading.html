@@ -173,12 +173,15 @@
     });
     const resultOverlay = clickedButton.previousElementSibling;
     if (selected === correct) {
-      resultOverlay.textContent = "○";
-      resultOverlay.style.color = "green";
-    } else {
-      resultOverlay.textContent = "✕";
-      resultOverlay.style.color = "red";
-    }
+  resultOverlay.textContent = "◯";
+  resultOverlay.style.color = "green";
+  resultOverlay.classList.add("small"); // 小さめクラス適用
+} else {
+  resultOverlay.textContent = "✕";
+  resultOverlay.style.color = "red";
+  resultOverlay.classList.add("small"); // こっちにも必要なら
+}
+
   }
 
   showQuestion(current);
