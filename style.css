@@ -129,6 +129,9 @@ button:hover {
   font-weight: bold;
   pointer-events: none;
 }
+.result-overlay.small {
+  font-size: 30px;
+}
 
 .question {
   display: none;
@@ -380,10 +383,12 @@ button:hover {
   flex-shrink: 0;
 }
 .choice-line .choice-block button {
-  width: 40px;
-  height: 30px;
-  font-size: 16px;
-  margin-left: 4px;
+  width: 48px;         /* 少し大きめに */
+  height: 36px;
+  font-size: 20px;
+  line-height: 1;      /* これがないと縦位置がズレる場合がある */
+  text-align: center;
+  padding: 0;
 }
 
 
