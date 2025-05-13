@@ -45,10 +45,12 @@
 <div class="question">
   <p>연습 문제 1</p>
   <button class="toggle-text-btn" onclick="toggleText('reading4')">[본문 보기]</button>
+  <div id="reading4" class="hidden-text">
   <div class="reading-text">
     <p>한국에서는 치킨과 맥주를 함께 먹는 ‘치맥’ 문화가 유명해요. 저도 금요일 밤마다 친구들과 치맥을 즐겼어요. 하지만 너무 맛있어서 과식하게 되고, 다음 날에는 피로를 느끼는 일이 많았어요.</p>
     <p>그래서 식사 습관을 바꿔 보기로 했어요. 너무 늦게 먹거나 많이 먹지 않으려고 노력했어요. 그 결과 아침에 일어날 때 몸이 가볍고, 하루 종일 기분도 좋아졌어요. 작은 변화지만 건강에 정말 도움이 된다는 것을 느끼고 있어요.</p>
    </div>
+  </div>
   <div class="choice-line">
     <p>치맥은 치킨과 맥주를 같이 먹는 것을 말해요.</p>
     <div class="choice-block">
@@ -318,8 +320,20 @@ function toggleText(button, targetId) {
     });
   });
    function openHint(id) {
-    document.getElementById(id).style.display = "block";
+  document.getElementById(id).style.display = "block";
+
+  // ヒントに対応する本文も自動展開（例：hint1 → reading4）
+  if (id === "hint1") {
+    const textBlock = document.getElementById("reading4");
+    if (textBlock && !textBlock.classList.contains("show")) {
+      textBlock.classList.add("show");
+
+      // ボタンのラベルも [본문 닫기] に
+      const toggleBtn = document.querySelector("button[onclick=\"toggleText('reading4')\"]");
+      if (toggleBtn) toggleBtn.textContent = "[본문 닫기]";
+    }
   }
+}
 
   function closeHint(id) {
     document.getElementById(id).style.display = "none";
