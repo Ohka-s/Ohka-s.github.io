@@ -230,11 +230,25 @@
     }
   }
 
-  function toggleText(button, targetId) {
-    const content = document.getElementById(targetId);
-    content.classList.toggle('show');
-    button.textContent = content.classList.contains('show') ? '[본문 닫기]' : '[본문 보기]';
+ function toggleText(button, targetId) {
+  const wrapper = document.getElementById(targetId);
+  const normal = wrapper.querySelector(`#${targetId}-default`);
+  const highlighted = wrapper.querySelector(`#${targetId}-highlighted`);
+
+  // すでに表示中ならすべて閉じる（highlighted優先）
+  if (highlighted && highlighted.style.display === "block") {
+    highlighted.style.display = "none";
+    if (normal) normal.style.display = "block";
+    wrapper.classList.remove('show');
+    button.textContent = "[본문 보기]";
+    return;
   }
+
+  // 通常のトグル（normal表示のみ切り替える）
+  wrapper.classList.toggle('show');
+  button.textContent = wrapper.classList.contains('show') ? "[본문 닫기]" : "[본문 보기]";
+}
+
 
   function openHint(id) {
     // ヒント領域を表示
