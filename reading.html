@@ -47,15 +47,20 @@
   <div class="choice-line">
     <p>치맥은 치킨과 맥주를 같이 먹는 것을 말해요.</p>
     <div class="choice-block">
-      <div style="position: relative; display: inline-block;">
-        <div class="result-overlay small"></div>
-        <button onclick="checkAnswerChoice(this, 'O', 'O')">◯</button>
-      </div>
-      <div style="position: relative; display: inline-block;">
-        <div class="result-overlay small"></div>
-        <button onclick="checkAnswerChoice(this, 'X', 'O')">✕</button>
-      </div>
-    </div>
+  <div style="position: relative; display: inline-block;">
+    <div class="result-overlay small"></div>
+    <button data-choice="O" onclick="selectChoice(this)">◯</button>
+  </div>
+  <div style="position: relative; display: inline-block;">
+    <div class="result-overlay small"></div>
+    <button data-choice="X" onclick="selectChoice(this)">✕</button>
+  </div>
+</div>
+
+<!-- ここを追加 -->
+<button onclick="checkAnswerChoice(this.parentElement, 'O', 'hint1')">정답 확인</button>
+<a href="javascript:void(0)" class="hint-link" onclick="openHint('hint1')" style="display:none; margin-left:10px; color:blue; text-decoration:underline;">힌트</a>
+
   </div>
 </div>
 
@@ -205,6 +210,14 @@
 
   showQuestion(current);
 </script>
+  <!-- ✅ 힌트 모달 -->
+<div id="hint1" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeHint('hint1')">×</span>
+    <h3>힌트</h3>
+    <p>'치맥'은 치킨과 맥주를 함께 먹는 한국의 문화입니다.</p>
+  </div>
+</div>
 
 <!-- 과식 모달 -->
 <div id="modal-overeating" class="modal">
