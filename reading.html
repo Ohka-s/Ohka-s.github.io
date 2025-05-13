@@ -189,24 +189,45 @@
     }
   }
 
-  function checkAnswerChoice(clickedButton, selected, correct) {
-    const parent = clickedButton.parentElement.parentElement;
-    const allOverlays = parent.querySelectorAll('.result-overlay');
-    allOverlays.forEach(overlay => {
-      overlay.textContent = "";
-    });
-    const resultOverlay = clickedButton.previousElementSibling;
-    if (selected === correct) {
-  resultOverlay.textContent = "◯";
-  resultOverlay.style.color = "green";
-  resultOverlay.classList.add("small"); // 小さめクラス適用
-} else {
-  resultOverlay.textContent = "✕";
-  resultOverlay.style.color = "red";
-  resultOverlay.classList.add("small"); // こっちにも必要なら
+  function selectChoice(button) {
+  const siblings = button.parentElement.parentElement.querySelectorAll('button[data-choice]');
+  siblings.forEach(btn => btn.classList.remove('selected'));
+  button.classList.add('selected');
 }
 
+function checkAnswerChoice(container, correct, hintId) {
+  const buttons = container.querySelectorAll('button[data-choice]');
+  const overlays = container.querySelectorAll('.result-overlay');
+  const hintLink = container.querySelector('.hint-link');
+
+  overlays.forEach(o => {
+    o.textContent = "";
+    o.style.color = "";
+  });
+  if (hintLink) hintLink.style.display = "none";
+
+  let selected = null;
+  buttons.forEach(btn => {
+    if (btn.classList.contains('selected')) {
+      selected = btn.getAttribute('data-choice');
+    }
+  });
+
+  if (!selected) return;
+
+  const selectedIndex = selected === "O" ? 0 : 1;
+  const resultOverlay = overlays[selectedIndex];
+
+  if (selected === correct) {
+    resultOverlay.textContent = "◯";
+    resultOverlay.style.color = "green";
+  } else {
+    resultOverlay.textContent = "✕";
+    resultOverlay.style.color = "red";
+    if (hintLink) hintLink.style.display = "inline";
   }
+}
+
 
   showQuestion(current);
 </script>
