@@ -436,3 +436,16 @@ button:hover {
   margin-bottom: 20px;
 }
 
+.word-box {
+  background-color: #e6f4f9; /* ←ここを好きな色に変更 */
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+
