@@ -89,6 +89,12 @@ button:hover {
 .choice-block button:hover {
   background-color: #99c2ff;
 }
+.choice-block button.selected {
+  background-color: #99ccff;  /* 押されたときの色 */
+  color: #fff;
+  font-weight: bold;
+  border: 2px solid #3399ff;
+}
 
 .highlight-title {
   background-color: #006d99;
