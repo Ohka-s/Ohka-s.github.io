@@ -223,9 +223,9 @@
       }
     } else {
       if (result) {
-        result.textContent = "✕";
-        result.style.color = "red";
-      }
+  result.innerHTML = '✕　<a href="javascript:void(0)" onclick="openHint(\'' + hintId + '\')" style="color: blue; text-decoration: underline;">힌트</a>를 확인해 주세요';
+  result.style.color = "red";
+}
       if (hintLink) hintLink.style.display = "inline";
     }
   }
