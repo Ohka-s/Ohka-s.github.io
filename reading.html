@@ -71,7 +71,8 @@
   </div>
     </div>
   </div>
-  <button class="check-answer-btn" onclick="checkAnswerChoice(this.parentElement, 'O', 'hint1')">정답 확인</button>
+  <button class="check-answer-btn" onclick="checkAnswerChoice(this.parentElement, 'O', 'hint1', 'result4')">정답 확인</button>
+<p id="result4" class="check-result"></p>
 <a href="javascript:void(0)" class="hint-link" onclick="openHint('hint1')" style="display:none; margin-left:10px; color:blue; text-decoration:underline;">힌트</a>
 </div>
 
@@ -91,7 +92,8 @@
       </div>
     </div>
   </div>
-  <button class="check-answer-btn" onclick="checkAnswerChoice(this.parentElement, 'X', 'hint2')">정답 확인</button>
+  <button class="check-answer-btn" onclick="checkAnswerChoice(this.parentElement, 'X', 'hint2', 'result5')">정답 확인</button>
+<p id="result5" class="check-result"></p>
     <a href="javascript:void(0)" class="hint-link" onclick="openHint('hint2')" style="display:none; margin-left:10px; color:blue; text-decoration:underline;">힌트</a>
 </div>
 
@@ -111,7 +113,8 @@
       </div>
     </div>
   </div>
-      <button class="check-answer-btn" onclick="checkAnswerChoice(this.parentElement, 'X', 'hint3')">정답 확인</button>
+     <button class="check-answer-btn" onclick="checkAnswerChoice(this.parentElement, 'X', 'hint3', 'result6')">정답 확인</button>
+<p id="result6" class="check-result"></p>
     <a href="javascript:void(0)" class="hint-link" onclick="openHint('hint3')" style="display:none; margin-left:10px; color:blue; text-decoration:underline;">힌트</a>
 </div>
   
@@ -208,16 +211,17 @@
   button.classList.add('selected');
 }
 
-function checkAnswerChoice(container, correct, hintId) {
+// 新バージョンの checkAnswerChoice
+function checkAnswerChoice(container, correct, hintId, resultId) {
   const buttons = container.querySelectorAll('button[data-choice]');
-  const overlays = container.querySelectorAll('.result-overlay');
   const hintLink = container.querySelector('.hint-link');
+  const result = document.getElementById(resultId);
 
-  overlays.forEach(o => {
-    o.textContent = "";
-    o.style.color = "";
-  });
   if (hintLink) hintLink.style.display = "none";
+  if (result) {
+    result.textContent = "";
+    result.style.color = "";
+  }
 
   let selected = null;
   buttons.forEach(btn => {
@@ -228,15 +232,16 @@ function checkAnswerChoice(container, correct, hintId) {
 
   if (!selected) return;
 
-  const selectedIndex = selected === "O" ? 0 : 1;
-  const resultOverlay = overlays[selectedIndex];
-
   if (selected === correct) {
-    resultOverlay.textContent = "◯";
-    resultOverlay.style.color = "green";
+    if (result) {
+      result.textContent = "◯";
+      result.style.color = "green";
+    }
   } else {
-    resultOverlay.textContent = "✕";
-    resultOverlay.style.color = "red";
+    if (result) {
+      result.textContent = "✕";
+      result.style.color = "red";
+    }
     if (hintLink) hintLink.style.display = "inline";
   }
 }
