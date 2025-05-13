@@ -72,13 +72,17 @@
     <div class="choice-block">
       <div style="position: relative; display: inline-block;">
         <div class="result-overlay small"></div>
-        <button onclick="checkAnswerChoice(this, 'O', 'X')">◯</button>
+        <button data-choice="O" onclick="selectChoice(this)">◯</button>
       </div>
       <div style="position: relative; display: inline-block;">
         <div class="result-overlay small"></div>
-        <button onclick="checkAnswerChoice(this, 'X', 'X')">✕</button>
+        <button data-choice="X" onclick="selectChoice(this)">✕</button>
       </div>
     </div>
+    <button class="check-answer-btn" onclick="checkAnswerChoice(this.parentElement, 'X', 'hint2')">정답 확인</button>
+    <a href="javascript:void(0)" class="hint-link" onclick="openHint('hint2')" style="display:none; margin-left:10px; color:blue; text-decoration:underline;">힌트</a>
+  </div>
+</div>
   </div>
 </div>
 
@@ -90,13 +94,17 @@
     <div class="choice-block">
       <div style="position: relative; display: inline-block;">
         <div class="result-overlay small"></div>
-        <button onclick="checkAnswerChoice(this, 'O', 'X')">◯</button>
+        <button data-choice="O" onclick="selectChoice(this)">◯</button>
       </div>
       <div style="position: relative; display: inline-block;">
         <div class="result-overlay small"></div>
-        <button onclick="checkAnswerChoice(this, 'X', 'X')">✕</button>
+        <button data-choice="X" onclick="selectChoice(this)">✕</button>
       </div>
     </div>
+    <button class="check-answer-btn" onclick="checkAnswerChoice(this.parentElement, 'X', 'hint3')">정답 확인</button>
+    <a href="javascript:void(0)" class="hint-link" onclick="openHint('hint3')" style="display:none; margin-left:10px; color:blue; text-decoration:underline;">힌트</a>
+  </div>
+</div>
   </div>
 </div>
 
