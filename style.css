@@ -407,13 +407,15 @@ button:hover {
 }
 
 .toggle-text-btn {
-  margin-top: 10px;
   background-color: #f0f8ff;
   border: 1px solid #66b3cc;
   border-radius: 6px;
-  padding: 4px 10px;
-  font-size: 14px;
+  padding: 4px 10px !important;
+  font-size: 14px !important;
   cursor: pointer;
+  width: auto !important;
+  height: auto !important;
+  margin: 10px 0 !important;  /* これで上下10px、左右0 */
 }
 
 .highlight {
