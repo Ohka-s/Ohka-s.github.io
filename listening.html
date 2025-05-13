@@ -79,19 +79,6 @@
 <!-- 問題5 -->
 <div class="question">
  <p>연습 문제 2</p>
-  <button class="toggle-text-btn" onclick="toggleText(this, 'reading5')">[본문 보기]</button>
-  <div id="reading5" class="hidden-text">
-    <!-- 通常表示 -->
-    <div id="reading5-default" class="reading-text">
-    <p>한국에서는 치킨과 맥주를 함께 먹는 ‘치맥’ 문화가 유명해요. 저도 금요일 밤마다 친구들과 치맥을 즐겼어요. 하지만 너무 맛있어서 과식하게 되고, 다음 날에는 피로를 느끼는 일이 많았어요.</p>
-  <p>그래서 식사 습관을 바꿔 보기로 했어요. 너무 늦게 먹거나 많이 먹지 않으려고 노력했어요. 그 결과 아침에 일어날 때 몸이 가볍고, 하루 종일 기분도 좋아졌어요. 작은 변화지만 건강에 정말 도움이 된다는 것을 느끼고 있어요.</p>
-</div>
-    <!-- ヒント用表示 -->
-    <div id="reading5-highlighted" class="reading-text" style="display: none;">
-    <p>한국에서는 치킨과 맥주를 함께 먹는 ‘치맥’ 문화가 유명해요. 저도 금요일 밤마다 친구들과 치맥을 즐겼어요. 하지만 너무 맛있어서 과식하게 되고, 다음 날에는 피로를 느끼는 일이 많았어요.</p>
-  <p>그래서 식사 습관을 바꿔 보기로 했어요. 너무 늦게 먹거나 많이 먹지 않으려고 노력했어요. 그 결과 아침에 일어날 때 몸이 가볍고, 하루 종일 기분도 좋아졌어요. 작은 변화지만 건강에 정말 도움이 된다는 것을 느끼고 있어요.</p>
-</div>
-
   <div class="choice-line">
     <p>화자는 치맥을 먹고 건강이 더 좋아졌다고 느꼈어요.</p>
     <div class="choice-block">
@@ -113,18 +100,6 @@
 <!-- 問題6 -->
 <div class="question">
   <p>연습 문제 3</p>
-  <button class="toggle-text-btn" onclick="toggleText(this, 'reading6')">[본문 보기]</button>
-  <div id="reading6" class="hidden-text">
-    <!-- 通常 -->
-    <div id="reading6-default" class="reading-text">
-      <p>한국에서는 치킨과 맥주를 함께 먹는 ‘치맥’ 문화가 유명해요. 저도 금요일 밤마다 친구들과 치맥을 즐겼어요. 하지만 너무 맛있어서 과식하게 되고, 다음 날에는 피로를 느끼는 일이 많았어요.</p>
-  <p>그래서 식사 습관을 바꿔 보기로 했어요. 너무 늦게 먹거나 많이 먹지 않으려고 노력했어요. 그 결과 아침에 일어날 때 몸이 가볍고, 하루 종일 기분도 좋아졌어요. 작은 변화지만 건강에 정말 도움이 된다는 것을 느끼고 있어요.</p>
-</div>
-    <!-- 힌트用 -->
-    <div id="reading6-highlighted" class="reading-text" style="display: none;">
-      <p>한국에서는 치킨과 맥주를 함께 먹는 ‘치맥’ 문화가 유명해요. 저도 금요일 밤마다 친구들과 치맥을 즐겼어요. 하지만 너무 맛있어서 과식하게 되고, 다음 날에는 피로를 느끼는 일이 많았어요.</p>
-  <p>그래서 식사 습관을 바꿔 보기로 했어요. 너무 늦게 먹거나 많이 먹지 않으려고 노력했어요. 그 결과 아침에 일어날 때 몸이 가볍고, 하루 종일 기분도 좋아졌어요. 작은 변화지만 건강에 정말 도움이 된다는 것을 느끼고 있어요.</p>
-</div>
   <div class="choice-line">
     <p>화자는 식사 시간을 더 늦게 하기로 했어요.</p>
     <div class="choice-block">
@@ -266,53 +241,30 @@
     button.textContent = content.classList.contains('show') ? '[본문 닫기]' : '[본문 보기]';
   }
 
-  // openHint にヒントIDごとの処理を追加
-function openHint(id) {
-  document.getElementById(id).style.display = "block";
+  function openHint(id) {
+    // ヒント領域を表示
+    document.getElementById(id).style.display = "block";
 
-  if (id === "hint1") {
-    // 문제4
-    const wrapper = document.getElementById("reading4");
-    const normal = document.getElementById("reading4-default");
-    const highlight = document.getElementById("reading4-highlighted");
-    if (wrapper) wrapper.classList.add("show");
-    if (normal && highlight) {
-      normal.style.display = "none";
-      highlight.style.display = "block";
+    // hint1 のときだけ本文強制展開＋マーカー表示
+    if (id === "hint1") {
+      const readingWrapper = document.getElementById("reading4");
+      const normal = document.getElementById("reading4-default");
+      const highlight = document.getElementById("reading4-highlighted");
+
+      if (readingWrapper) {
+        readingWrapper.classList.add("show");
+      }
+      if (normal && highlight) {
+        normal.style.display = "none";
+        highlight.style.display = "block";
+      }
+
+      const toggleBtn = document.querySelector(".toggle-text-btn[onclick*='reading4']");
+      if (toggleBtn) {
+        toggleBtn.textContent = "[본문 닫기]";
+      }
     }
-    const toggleBtn = document.querySelector(".toggle-text-btn[onclick*='reading4']");
-    if (toggleBtn) toggleBtn.textContent = "[본문 닫기]";
   }
-
-  if (id === "hint2") {
-    // 문제5
-    const wrapper = document.getElementById("reading5");
-    const normal = document.getElementById("reading5-default");
-    const highlight = document.getElementById("reading5-highlighted");
-    if (wrapper) wrapper.classList.add("show");
-    if (normal && highlight) {
-      normal.style.display = "none";
-      highlight.style.display = "block";
-    }
-    const toggleBtn = document.querySelector(".toggle-text-btn[onclick*='reading5']");
-    if (toggleBtn) toggleBtn.textContent = "[본문 닫기]";
-  }
-
-  if (id === "hint3") {
-    // 문제6
-    const wrapper = document.getElementById("reading6");
-    const normal = document.getElementById("reading6-default");
-    const highlight = document.getElementById("reading6-highlighted");
-    if (wrapper) wrapper.classList.add("show");
-    if (normal && highlight) {
-      normal.style.display = "none";
-      highlight.style.display = "block";
-    }
-    const toggleBtn = document.querySelector(".toggle-text-btn[onclick*='reading6']");
-    if (toggleBtn) toggleBtn.textContent = "[본문 닫기]";
-  }
-}
-
 
   function openModal(type) {
     document.getElementById(`modal-${type}`).style.display = "block";
