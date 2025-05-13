@@ -26,7 +26,7 @@
 <div class="question">
   <div class="reading-text">
     <p> 한국에서는 치킨과 맥주를 함께 먹는 ‘치맥’ 문화가 유명해요. 저도 금요일 밤마다 친구들과 치맥을 즐겼어요. 하지만 너무 맛있어서 
-      <span class="modal-trigger" onclick="openModal()">과식</span>
+     <span class="modal-trigger" onclick="openModal('overeating')">과식</span>
       하게 되고, 다음 날에는 <span class="modal-trigger" onclick="openModal('fatigue')">피로</span>를 느끼는 일이 많았어요.</p>
     <p> 그래서 식사 습관을 바꿔 보기로 했어요. 너무 늦게 먹거나 많이 먹지 않으려고 노력했어요. 그 결과 아침에 일어날 때 몸이 가볍고, 하루 종일 기분도 좋아졌어요. 작은 변화지만 건강에 정말 도움이 된다는 것을 느끼고 있어요.</p>
   </div>
@@ -191,9 +191,9 @@
 </script>
 
 <!-- 모단에 추가된 과식 설명 모달 -->
-<div id="modal" class="modal">
+<div id="modal-overeating" class="modal">
   <div class="modal-content">
-    <span class="close-btn" onclick="closeModal()">×</span>
+   <span class="close-btn" onclick="closeModal('overeating')">×</span>
     <h3>과식</h3>
     <p>과식은 '너무 많이 먹는 것'을 의미합니다. 위에 불담을 주고, 건강에 좋지 않습니다.</p>
     <img src="images/overeat.jpg" alt="과식을 나타내는 이미지" style="max-width:100%; border-radius: 8px; margin-top: 10px;">
