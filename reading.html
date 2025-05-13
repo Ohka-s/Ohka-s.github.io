@@ -260,12 +260,14 @@ function openHint(id) {
   document.getElementById(id).style.display = "block";
 
   if (id === "hint1") {
-    const content = document.getElementById("reading4");
+    const readingWrapper = document.getElementById("reading4");
     const normal = document.getElementById("reading4-default");
     const highlight = document.getElementById("reading4-highlighted");
 
-    // 本文を開く
-    content?.classList.add("show");
+    // 本文表示コンテナを展開
+    if (readingWrapper) {
+      readingWrapper.classList.add("show");
+    }
 
     // 通常バージョン非表示、ハイライト表示
     if (normal && highlight) {
@@ -273,13 +275,14 @@ function openHint(id) {
       highlight.style.display = "block";
     }
 
-    // ボタン表示を [본문 닫기] に
-    const toggleBtn = document.querySelector("button[onclick=\"toggleText(this, 'reading4')\"]");
+    // ボタンのラベルを [본문 닫기] に変える
+    const toggleBtn = document.querySelector("button[onclick*=\"toggleText\"][onclick*='reading4']");
     if (toggleBtn) {
       toggleBtn.textContent = "[본문 닫기]";
     }
   }
 }
+
   
   showQuestion(current);
 </script>
