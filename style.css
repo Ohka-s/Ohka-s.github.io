@@ -415,7 +415,8 @@ button:hover {
   cursor: pointer;
   width: auto !important;
   height: auto !important;
-  margin: 10px 0 !important;  /* これで上下10px、左右0 */
+  margin: 10px 0 !important;
+  box-shadow: none;
 }
 
 .highlight {
