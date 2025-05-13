@@ -74,7 +74,6 @@
   <button class="check-answer-btn" onclick="checkAnswerChoice(this.parentElement, 'O', 'hint1', 'result4')">정답 확인</button>
 <p id="result4" class="check-result"></p>
   <p id="hint1" style="display:none;"></p> 
-<a href="javascript:void(0)" class="hint-link" onclick="openHint('hint1')" style="display:none; margin-left:10px; color:blue; text-decoration:underline;">힌트</a>
 </div>
 
 <!-- 問題5 -->
@@ -220,10 +219,8 @@
 
   function checkAnswerChoice(container, correct, hintId, resultId) {
     const buttons = container.querySelectorAll('button[data-choice]');
-    const hintLink = container.querySelector('.hint-link');
     const result = document.getElementById(resultId);
 
-    if (hintLink) hintLink.style.display = "none";
     if (result) {
       result.textContent = "";
       result.style.color = "";
