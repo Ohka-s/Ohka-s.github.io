@@ -427,4 +427,12 @@ button:hover {
   padding: 2px 4px;
   border-radius: 3px;
 }
+.reading-box {
+  border: 1px solid #ccc;  /* 薄いグレーの線 */
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #f9f9f9;  /* ほんのり背景色 */
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
 
