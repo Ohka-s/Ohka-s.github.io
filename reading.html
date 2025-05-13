@@ -322,18 +322,19 @@ function toggleText(button, targetId) {
    function openHint(id) {
   document.getElementById(id).style.display = "block";
 
-  // ヒントに対応する本文も自動展開（例：hint1 → reading4）
+  // ヒント1のとき、本文も開く（id="reading4"）
   if (id === "hint1") {
-    const textBlock = document.getElementById("reading4");
-    if (textBlock && !textBlock.classList.contains("show")) {
-      textBlock.classList.add("show");
+    const content = document.getElementById("reading4");
+    content?.classList.add("show");
 
-      // ボタンのラベルも [본문 닫기] に
-      const toggleBtn = document.querySelector("button[onclick=\"toggleText('reading4')\"]");
-      if (toggleBtn) toggleBtn.textContent = "[본문 닫기]";
+    // ボタンのラベルを [본문 닫기] に変える
+    const toggleBtn = document.querySelector("button[onclick=\"toggleText('reading4')\"]");
+    if (toggleBtn) {
+      toggleBtn.textContent = "[본문 닫기]";
     }
   }
 }
+
 
   function closeHint(id) {
     document.getElementById(id).style.display = "none";
