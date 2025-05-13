@@ -1,1 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2025-2 멀티미디어한국어교육자료개발</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
 
+<a href="index.html" class="home-btn" title="ホームへ戻る">
+  <i class="fas fa-book-open"></i>
+</a>
+
+<h2 id="main-title">어휘-도입</h2>
+
+<div id="quiz-container">
+  <!-- 問題1 -->
+  <div class="question active">
+    <p>질문 1</p>
+    <p>질문2</p>
+  </div>
+
+  <!-- 問題2 -->
+<div class="question">
+  <div class="reading-text">
+    <p> 한국에서는 치킨과 맥주를 함께 먹는 ‘치맥’ 문화가 유명해요. 저도 금요일 밤마다 친구들과 치맥을 즐겼어요. 하지만 너무 맛있어서 
+     <span class="modal-trigger" onclick="openModal('overeating')">과식</span>
+      하게 되고, 다음 날에는 <span class="modal-trigger" onclick="openModal('fatigue')">피로</span>를 느끼는 일이 많았어요.</p>
+    <p> 그래서 식사 습관을 바꿔 보기로 했어요. 너무 늦게 먹거나 많이 먹지 않으려고 노력했어요. 그 결과 아침에 일어날 때 몸이 가볍고, 하루 종일 기분도 좋아졌어요. 작은 변화지만 건강에 정말 도움이 된다는 것을 느끼고 있어요.</p>
+  </div>
+</div>
+
+  <!-- 問題3 -->
+  <div class="question">
+    <p>듣고 따라 읽거 봅시다.</p>
+    <div class="reading-text">
+    <p> 한국에서는 치킨과 맥주를 함께 먹는 ‘치맥’ 문화가 유명해요. 저도 금요일 밤마다 친구들과 치맥을 즐겼어요. 하지만 너무 맛있어서 과식하게 되고, 다음 날에는 피로를 느끼는 일이 많았어요. </p>
+    <p> 그래서 식사 습관을 바꿔 보기로 했어요. 너무 늦게 먹거나 많이 먹지 않으려고 노력했어요. 그 결과 아침에 일어날 때 몸이 가볍고, 하루 종일 기분도 좋아졌어요. 작은 변화지만 건강에 정말 도움이 된다는 것을 느끼고 있어요.</p>
+      </div>
+  </div>
+
+  <!-- 問題4 -->
+<div class="question">
+  <p>연습 문제 1</p>
+  <button class="toggle-text-btn" onclick="toggleText(this, 'reading4')">[본문 보기]</button>
+  <div id="reading4" class="hidden-text">
+  <!-- ⭐ 通常表示用（マーカーなし） -->
+<div id="reading4-default" class="reading-text">
+  <p>한국에서는 치킨과 맥주를 함께 먹는 ‘치맥’ 문화가 유명해요. 저도 금요일 밤마다 친구들과 치맥을 즐겼어요. 하지만 너무 맛있어서 과식하게 되고, 다음 날에는 피로를 느끼는 일이 많았어요.</p>
+  <p>그래서 식사 습관을 바꿔 보기로 했어요. 너무 늦게 먹거나 많이 먹지 않으려고 노력했어요. 그 결과 아침에 일어날 때 몸이 가볍고, 하루 종일 기분도 좋아졌어요. 작은 변화지만 건강에 정말 도움이 된다는 것을 느끼고 있어요.</p>
+</div>
+
+<!-- ⭐ ヒント表示用（マーカーあり） -->
+<div id="reading4-highlighted" class="reading-text" style="display: none;">
+  <p>한국에서는 <span class="highlight">치킨과 맥주를 함께 먹는 ‘치맥’ 문화</span>가 유명해요. 저도 금요일 밤마다 친구들과 치맥을 즐겼어요. 하지만 너무 맛있어서 과식하게 되고, 다음 날에는 피로를 느끼는 일이 많았어요.</p>
+  <p>그래서 식사 습관을 바꿔 보기로 했어요. 너무 늦게 먹거나 많이 먹지 않으려고 노력했어요. 그 결과 아침에 일어날 때 몸이 가볍고, 하루 종일 기분도 좋아졌어요. 작은 변화지만 건강에 정말 도움이 된다는 것을 느끼고 있어요.</p>
+</div>
+</div>
+  <div class="choice-line">
+    <p>치맥은 치킨과 맥주를 같이 먹는 것을 말해요.</p>
+    <div class="choice-block">
+  <div style="position: relative; display: inline-block;">
+    <div class="result-overlay small"></div>
+    <button data-choice="O" onclick="selectChoice(this)">◯</button>
+  </div>
+  <div style="position: relative; display: inline-block;">
+    <div class="result-overlay small"></div>
+    <button data-choice="X" onclick="selectChoice(this)">✕</button>
+  </div>
+    </div>
+  </div>
+  <button class="check-answer-btn" onclick="checkAnswerChoice(this.parentElement, 'O', 'hint1', 'result4')">정답 확인</button>
+<p id="result4" class="check-result"></p>
+<a href="javascript:void(0)" class="hint-link" onclick="openHint('hint1')" style="display:none; margin-left:10px; color:blue; text-decoration:underline;">힌트</a>
+</div>
+
+<!-- 問題5 -->
+<div class="question">
+ <p>연습 문제 2</p>
+  <button class="toggle-text-btn" onclick="toggleText(this, 'reading5')">[본문 보기]</button>
+  <div id="reading5" class="hidden-text">
+    <!-- 通常表示 -->
+    <div id="reading5-default" class="reading-text">
+    <p>한국에서는 치킨과 맥주를 함께 먹는 ‘치맥’ 문화가 유명해요. 저도 금요일 밤마다 친구들과 치맥을 즐겼어요. 하지만 너무 맛있어서 과식하게 되고, 다음 날에는 피로를 느끼는 일이 많았어요.</p>
+  <p>그래서 식사 습관을 바꿔 보기로 했어요. 너무 늦게 먹거나 많이 먹지 않으려고 노력했어요. 그 결과 아침에 일어날 때 몸이 가볍고, 하루 종일 기분도 좋아졌어요. 작은 변화지만 건강에 정말 도움이 된다는 것을 느끼고 있어요.</p>
+</div>
+    <!-- ヒント用表示 -->
+    <div id="reading5-highlighted" class="reading-text" style="display: none;">
+    <p>한국에서는 치킨과 맥주를 함께 먹는 ‘치맥’ 문화가 유명해요. 저도 금요일 밤마다 친구들과 치맥을 즐겼어요. 하지만 너무 맛있어서 과식하게 되고, 다음 날에는 피로를 느끼는 일이 많았어요.</p>
+  <p>그래서 식사 습관을 바꿔 보기로 했어요. 너무 늦게 먹거나 많이 먹지 않으려고 노력했어요. 그 결과 아침에 일어날 때 몸이 가볍고, 하루 종일 기분도 좋아졌어요. 작은 변화지만 건강에 정말 도움이 된다는 것을 느끼고 있어요.</p>
+</div>
+
+  <div class="choice-line">
+    <p>화자는 치맥을 먹고 건강이 더 좋아졌다고 느꼈어요.</p>
+    <div class="choice-block">
+      <div style="position: relative; display: inline-block;">
+        <div class="result-overlay small"></div>
+        <button data-choice="O" onclick="selectChoice(this)">◯</button>
+      </div>
+      <div style="position: relative; display: inline-block;">
+        <div class="result-overlay small"></div>
+        <button data-choice="X" onclick="selectChoice(this)">✕</button>
+      </div>
+    </div>
+  </div>
+  <button class="check-answer-btn" onclick="checkAnswerChoice(this.parentElement, 'X', 'hint2', 'result5')">정답 확인</button>
+<p id="result5" class="check-result"></p>
+    <a href="javascript:void(0)" class="hint-link" onclick="openHint('hint2')" style="display:none; margin-left:10px; color:blue; text-decoration:underline;">힌트</a>
+</div>
+
+<!-- 問題6 -->
+<div class="question">
+  <p>연습 문제 3</p>
+  <button class="toggle-text-btn" onclick="toggleText(this, 'reading6')">[본문 보기]</button>
+  <div id="reading6" class="hidden-text">
+    <!-- 通常 -->
+    <div id="reading6-default" class="reading-text">
+      <p>한국에서는 치킨과 맥주를 함께 먹는 ‘치맥’ 문화가 유명해요. 저도 금요일 밤마다 친구들과 치맥을 즐겼어요. 하지만 너무 맛있어서 과식하게 되고, 다음 날에는 피로를 느끼는 일이 많았어요.</p>
+  <p>그래서 식사 습관을 바꿔 보기로 했어요. 너무 늦게 먹거나 많이 먹지 않으려고 노력했어요. 그 결과 아침에 일어날 때 몸이 가볍고, 하루 종일 기분도 좋아졌어요. 작은 변화지만 건강에 정말 도움이 된다는 것을 느끼고 있어요.</p>
+</div>
+    <!-- 힌트用 -->
+    <div id="reading6-highlighted" class="reading-text" style="display: none;">
+      <p>한국에서는 치킨과 맥주를 함께 먹는 ‘치맥’ 문화가 유명해요. 저도 금요일 밤마다 친구들과 치맥을 즐겼어요. 하지만 너무 맛있어서 과식하게 되고, 다음 날에는 피로를 느끼는 일이 많았어요.</p>
+  <p>그래서 식사 습관을 바꿔 보기로 했어요. 너무 늦게 먹거나 많이 먹지 않으려고 노력했어요. 그 결과 아침에 일어날 때 몸이 가볍고, 하루 종일 기분도 좋아졌어요. 작은 변화지만 건강에 정말 도움이 된다는 것을 느끼고 있어요.</p>
+</div>
+  <div class="choice-line">
+    <p>화자는 식사 시간을 더 늦게 하기로 했어요.</p>
+    <div class="choice-block">
+      <div style="position: relative; display: inline-block;">
+        <div class="result-overlay small"></div>
+        <button data-choice="O" onclick="selectChoice(this)">◯</button>
+      </div>
+      <div style="position: relative; display: inline-block;">
+        <div class="result-overlay small"></div>
+        <button data-choice="X" onclick="selectChoice(this)">✕</button>
+      </div>
+    </div>
+  </div>
+     <button class="check-answer-btn" onclick="checkAnswerChoice(this.parentElement, 'X', 'hint3', 'result6')">정답 확인</button>
+<p id="result6" class="check-result"></p>
+    <a href="javascript:void(0)" class="hint-link" onclick="openHint('hint3')" style="display:none; margin-left:10px; color:blue; text-decoration:underline;">힌트</a>
+</div>
+  
+  <!-- 問題7 -->
+<div class="question">
+  <p>연습</p>
+</div>
+
+</div>
+
+<div class="progress">
+  <span class="dot active"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+
+
+<button class="nav-btn left-btn" id="prevBtn" onclick="prevQuestion()">
+  <i class="fas fa-chevron-left"></i>
+</button>
+<button class="nav-btn right-btn" id="nextBtn" onclick="nextQuestion()">
+  <i class="fas fa-chevron-right"></i>
+</button>
+
+<script>
+  let current = 0;
+  const questions = document.querySelectorAll(".question");
+  const titles = [
+    "읽기 전", "읽기", "읽기", "읽기 후", "읽기 후", "읽기 후", "연습"
+  ];
+
+  function showQuestion(index) {
+    questions.forEach((q, i) => {
+      q.classList.toggle("active", i === index);
+    });
+    document.getElementById("main-title").textContent = titles[index];
+    document.getElementById("prevBtn").style.display = index === 0 ? "none" : "flex";
+    document.getElementById("nextBtn").style.display = index === questions.length - 1 ? "none" : "flex";
+    updateNavigation();
+  }
+
+  function nextQuestion() {
+    if (current < questions.length - 1) {
+      current++;
+      showQuestion(current);
+    }
+  }
+
+  function prevQuestion() {
+    if (current > 0) {
+      current--;
+      showQuestion(current);
+    }
+  }
+
+  function updateNavigation() {
+    const dots = document.querySelectorAll(".dot");
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("active", index === current);
+    });
+    document.getElementById("prevBtn").classList.toggle("hidden", current === 0);
+    document.getElementById("nextBtn").classList.toggle("hidden", current === questions.length - 1);
+  }
+
+  function checkAnswer(index, correct) {
+    const input = document.getElementById(`answer${index}`);
+    const result = document.getElementById(`result${index}`);
+    if (input.value.trim() === correct) {
+      result.textContent = "○";
+      result.style.color = "green";
+    } else {
+      result.textContent = "✕";
+      result.style.color = "red";
+    }
+  }
+
+  function selectChoice(button) {
+    const siblings = button.parentElement.parentElement.querySelectorAll('button[data-choice]');
+    siblings.forEach(btn => btn.classList.remove('selected'));
+    button.classList.add('selected');
+  }
+
+  function checkAnswerChoice(container, correct, hintId, resultId) {
+    const buttons = container.querySelectorAll('button[data-choice]');
+    const hintLink = container.querySelector('.hint-link');
+    const result = document.getElementById(resultId);
+
+    if (hintLink) hintLink.style.display = "none";
+    if (result) {
+      result.textContent = "";
+      result.style.color = "";
+    }
+
+    let selected = null;
+    buttons.forEach(btn => {
+      if (btn.classList.contains('selected')) {
+        selected = btn.getAttribute('data-choice');
+      }
+    });
+
+    if (!selected) return;
+
+    if (selected === correct) {
+      if (result) {
+        result.textContent = "◯";
+        result.style.color = "green";
+      }
+    } else {
+      if (result) {
+        result.textContent = "✕";
+        result.style.color = "red";
+      }
+      if (hintLink) hintLink.style.display = "inline";
+    }
+  }
+
+  function toggleText(button, targetId) {
+    const content = document.getElementById(targetId);
+    content.classList.toggle('show');
+    button.textContent = content.classList.contains('show') ? '[본문 닫기]' : '[본문 보기]';
+  }
+
+  // openHint にヒントIDごとの処理を追加
+function openHint(id) {
+  document.getElementById(id).style.display = "block";
+
+  if (id === "hint1") {
+    // 문제4
+    const wrapper = document.getElementById("reading4");
+    const normal = document.getElementById("reading4-default");
+    const highlight = document.getElementById("reading4-highlighted");
+    if (wrapper) wrapper.classList.add("show");
+    if (normal && highlight) {
+      normal.style.display = "none";
+      highlight.style.display = "block";
+    }
+    const toggleBtn = document.querySelector(".toggle-text-btn[onclick*='reading4']");
+    if (toggleBtn) toggleBtn.textContent = "[본문 닫기]";
+  }
+
+  if (id === "hint2") {
+    // 문제5
+    const wrapper = document.getElementById("reading5");
+    const normal = document.getElementById("reading5-default");
+    const highlight = document.getElementById("reading5-highlighted");
+    if (wrapper) wrapper.classList.add("show");
+    if (normal && highlight) {
+      normal.style.display = "none";
+      highlight.style.display = "block";
+    }
+    const toggleBtn = document.querySelector(".toggle-text-btn[onclick*='reading5']");
+    if (toggleBtn) toggleBtn.textContent = "[본문 닫기]";
+  }
+
+  if (id === "hint3") {
+    // 문제6
+    const wrapper = document.getElementById("reading6");
+    const normal = document.getElementById("reading6-default");
+    const highlight = document.getElementById("reading6-highlighted");
+    if (wrapper) wrapper.classList.add("show");
+    if (normal && highlight) {
+      normal.style.display = "none";
+      highlight.style.display = "block";
+    }
+    const toggleBtn = document.querySelector(".toggle-text-btn[onclick*='reading6']");
+    if (toggleBtn) toggleBtn.textContent = "[본문 닫기]";
+  }
+}
+
+
+  function openModal(type) {
+    document.getElementById(`modal-${type}`).style.display = "block";
+  }
+
+  function closeModal(type) {
+    document.getElementById(`modal-${type}`).style.display = "none";
+  }
+
+  window.addEventListener("click", function(event) {
+    const modals = document.querySelectorAll(".modal");
+    modals.forEach(modal => {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  });
+
+  // 初期表示
+  showQuestion(current);
+</script>
+
+<!-- 과식 모달 -->
+<div id="modal-overeating" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('overeating')">×</span>
+    <h3>과식</h3>
+    <p>과식은 '너무 많이 먹는 것'을 의미합니다. 위에 부담을 주고, 건강에 좋지 않습니다.</p>
+    <img src="images/overeat.jpg" alt="과식을 나타내는 이미지" style="max-width:100%; border-radius: 8px; margin-top: 10px;">
+  </div>
+</div>
+
+  <!-- 피로 모달 -->
+<div id="modal-fatigue" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('fatigue')">×</span>
+    <h3>피로</h3>
+    <p>피로는 '몸이 피곤하고 기운이 없는 상태'를 의미합니다. 충분한 휴식이 필요합니다.</p>
+    <img src="images/fatigue.jpg" alt="피로를 나타내는 이미지" style="max-width:100%; border-radius: 8px; margin-top: 10px;">
+  </div>
+</div>
+</body>
+</html>
