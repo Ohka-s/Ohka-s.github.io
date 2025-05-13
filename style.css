@@ -418,6 +418,9 @@ button:hover {
   margin: 10px 0 !important;
   box-shadow: none;
 }
+.toggle-text-btn:hover {
+  box-shadow: none;
+}
 
 .highlight {
   background-color: yellow;
