@@ -410,4 +410,9 @@ button:hover {
   cursor: pointer;
 }
 
+.highlight {
+  background-color: yellow;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
 
