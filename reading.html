@@ -147,26 +147,16 @@
   let current = 0;
   const questions = document.querySelectorAll(".question");
   const titles = [
-  "읽기 전", // 문제1
-  "읽기",     // 문제2
-  "읽기",     // 문제3
-  "읽기 후",  // 문제4
-  "읽기 후",  // 문제5
-  "읽기 후",  // 문제6
-  "연습"      // 문제7
-];
+    "읽기 전", "읽기", "읽기", "읽기 후", "읽기 후", "읽기 후", "연습"
+  ];
 
   function showQuestion(index) {
     questions.forEach((q, i) => {
       q.classList.toggle("active", i === index);
     });
     document.getElementById("main-title").textContent = titles[index];
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-
-    prevBtn.style.display = index === 0 ? "none" : "flex";
-    nextBtn.style.display = index === questions.length - 1 ? "none" : "flex";
-
+    document.getElementById("prevBtn").style.display = index === 0 ? "none" : "flex";
+    document.getElementById("nextBtn").style.display = index === questions.length - 1 ? "none" : "flex";
     updateNavigation();
   }
 
@@ -206,87 +196,96 @@
   }
 
   function selectChoice(button) {
-  const siblings = button.parentElement.parentElement.querySelectorAll('button[data-choice]');
-  siblings.forEach(btn => btn.classList.remove('selected'));
-  button.classList.add('selected');
-}
-
-// 新バージョンの checkAnswerChoice
-function checkAnswerChoice(container, correct, hintId, resultId) {
-  const buttons = container.querySelectorAll('button[data-choice]');
-  const hintLink = container.querySelector('.hint-link');
-  const result = document.getElementById(resultId);
-
-  if (hintLink) hintLink.style.display = "none";
-  if (result) {
-    result.textContent = "";
-    result.style.color = "";
+    const siblings = button.parentElement.parentElement.querySelectorAll('button[data-choice]');
+    siblings.forEach(btn => btn.classList.remove('selected'));
+    button.classList.add('selected');
   }
 
-  let selected = null;
-  buttons.forEach(btn => {
-    if (btn.classList.contains('selected')) {
-      selected = btn.getAttribute('data-choice');
+  function checkAnswerChoice(container, correct, hintId, resultId) {
+    const buttons = container.querySelectorAll('button[data-choice]');
+    const hintLink = container.querySelector('.hint-link');
+    const result = document.getElementById(resultId);
+
+    if (hintLink) hintLink.style.display = "none";
+    if (result) {
+      result.textContent = "";
+      result.style.color = "";
     }
+
+    let selected = null;
+    buttons.forEach(btn => {
+      if (btn.classList.contains('selected')) {
+        selected = btn.getAttribute('data-choice');
+      }
+    });
+
+    if (!selected) return;
+
+    if (selected === correct) {
+      if (result) {
+        result.textContent = "◯";
+        result.style.color = "green";
+      }
+    } else {
+      if (result) {
+        result.textContent = "✕";
+        result.style.color = "red";
+      }
+      if (hintLink) hintLink.style.display = "inline";
+    }
+  }
+
+  function toggleText(button, targetId) {
+    const content = document.getElementById(targetId);
+    content.classList.toggle('show');
+    button.textContent = content.classList.contains('show') ? '[본문 닫기]' : '[본문 보기]';
+  }
+
+  function openHint(id) {
+    // ヒント領域を表示
+    document.getElementById(id).style.display = "block";
+
+    // hint1 のときだけ本文強制展開＋マーカー表示
+    if (id === "hint1") {
+      const readingWrapper = document.getElementById("reading4");
+      const normal = document.getElementById("reading4-default");
+      const highlight = document.getElementById("reading4-highlighted");
+
+      if (readingWrapper) {
+        readingWrapper.classList.add("show");
+      }
+      if (normal && highlight) {
+        normal.style.display = "none";
+        highlight.style.display = "block";
+      }
+
+      const toggleBtn = document.querySelector("button[onclick*=\"toggleText\"][onclick*='reading4']");
+      if (toggleBtn) {
+        toggleBtn.textContent = "[본문 닫기]";
+      }
+    }
+  }
+
+  function openModal(type) {
+    document.getElementById(`modal-${type}`).style.display = "block";
+  }
+
+  function closeModal(type) {
+    document.getElementById(`modal-${type}`).style.display = "none";
+  }
+
+  window.addEventListener("click", function(event) {
+    const modals = document.querySelectorAll(".modal");
+    modals.forEach(modal => {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
   });
 
-  if (!selected) return;
-
-  if (selected === correct) {
-    if (result) {
-      result.textContent = "◯";
-      result.style.color = "green";
-    }
-  } else {
-    if (result) {
-      result.textContent = "✕";
-      result.style.color = "red";
-    }
-    if (hintLink) hintLink.style.display = "inline";
-  }
-}
-
-function toggleText(button, targetId) {
-  const content = document.getElementById(targetId);
-  content.classList.toggle('show');
-
-  if (content.classList.contains('show')) {
-    button.textContent = '[본문 닫기]';
-  } else {
-    button.textContent = '[본문 보기]';
-  }
-}
-function openHint(id) {
-  document.getElementById(id).style.display = "block";
-
-  if (id === "hint1") {
-    const readingWrapper = document.getElementById("reading4");
-    const normal = document.getElementById("reading4-default");
-    const highlight = document.getElementById("reading4-highlighted");
-
-    // 本文表示コンテナを展開
-    if (readingWrapper) {
-      readingWrapper.classList.add("show");
-    }
-
-    // 通常バージョン非表示、ハイライト表示
-    if (normal && highlight) {
-      normal.style.display = "none";
-      highlight.style.display = "block";
-    }
-
-    // ボタンのラベルを [본문 닫기] に変える
-    const toggleBtn = document.querySelector("button[onclick*=\"toggleText\"][onclick*='reading4']");
-    if (toggleBtn) {
-      toggleBtn.textContent = "[본문 닫기]";
-    }
-  }
-}
-
-  
+  // 初期表示
   showQuestion(current);
 </script>
-  
 
 <!-- 과식 모달 -->
 <div id="modal-overeating" class="modal">
@@ -307,42 +306,5 @@ function openHint(id) {
     <img src="images/fatigue.jpg" alt="피로를 나타내는 이미지" style="max-width:100%; border-radius: 8px; margin-top: 10px;">
   </div>
 </div>
-
-<script>
-  function openModal(type) {
-    document.getElementById(`modal-${type}`).style.display = "block";
-  }
-
-  function closeModal(type) {
-    document.getElementById(`modal-${type}`).style.display = "none";
-  }
-
-  window.addEventListener("click", function(event) {
-    const modals = document.querySelectorAll(".modal");
-    modals.forEach(modal => {
-      if (event.target === modal) {
-        modal.style.display = "none";
-      }
-    });
-  });
-   function openHint(id) {
-  document.getElementById(id).style.display = "block";
-
-  // ヒント1のとき、本文も開く（id="reading4"）
-  if (id === "hint1") {
-    const content = document.getElementById("reading4");
-    content?.classList.add("show");
-
-    // ボタンのラベルを [본문 닫기] に変える
-    const toggleBtn = document.querySelector("button[onclick=\"toggleText('reading4')\"]");
-    if (toggleBtn) {
-      toggleBtn.textContent = "[본문 닫기]";
-    }
-  }
-}
-
-</script>
-
-
 </body>
 </html>
