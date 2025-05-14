@@ -191,6 +191,14 @@
     progress.style.display = index === questions.length - 1 ? "none" : "flex";
   }
 
+  // ✅ 最後のページではタイトルも非表示
+  const mainTitle = document.getElementById("main-title");
+  if (index === questions.length - 1) {
+    mainTitle.style.display = "none";
+  } else {
+    mainTitle.style.display = "block";
+  }
+
   updateNavigation();
 }
 
