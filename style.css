@@ -369,8 +369,11 @@ button:hover {
 .modal-trigger {
   color: #006d99;
   text-decoration: underline;
+  text-decoration-color: #004466;
+  text-decoration-thickness: 2px;
   cursor: pointer;
 }
+
 /* --- モーダル用スタイルここまで --- */
 
 
