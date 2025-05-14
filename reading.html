@@ -139,6 +139,12 @@
 <p id="result6" class="check-result"></p>
   <p id="hint3" style="display:none;"></p>
 </div>
+  
+<div class="question">
+  <p style="font-size: 20px; font-weight: bold;">🎉 모든 문제를 완료했습니다!</p>
+  <p>수고하셨습니다. 아래 버튼을 눌러 처음부터 다시 시작하거나, 다른 학습으로 이동해 보세요.</p>
+  <button onclick="location.reload()">처음부터 다시</button>
+</div>
 
 </div>
 
@@ -167,14 +173,27 @@
   ];
 
   function showQuestion(index) {
-    questions.forEach((q, i) => {
-      q.classList.toggle("active", i === index);
-    });
-    document.getElementById("main-title").textContent = titles[index];
-    document.getElementById("prevBtn").style.display = index === 0 ? "none" : "flex";
-    document.getElementById("nextBtn").style.display = index === questions.length - 1 ? "none" : "flex";
-    updateNavigation();
+  questions.forEach((q, i) => {
+    q.classList.toggle("active", i === index);
+  });
+
+  document.getElementById("main-title").textContent = titles[index];
+
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const progress = document.querySelector(".progress");
+
+  prevBtn.style.display = index === 0 ? "none" : "flex";
+  nextBtn.style.display = index === questions.length - 1 ? "none" : "flex";
+
+  // ✅ 最後のページではドットを非表示
+  if (progress) {
+    progress.style.display = index === questions.length - 1 ? "none" : "flex";
   }
+
+  updateNavigation();
+}
+
 
   function nextQuestion() {
     if (current < questions.length - 1) {
