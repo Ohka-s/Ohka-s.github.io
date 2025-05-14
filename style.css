@@ -454,8 +454,8 @@ button:hover {
 /* style.css に追加 */
 .restart-btn {
   margin-top: 20px;
-  padding: 6px 12px;
-  font-size: 14px;
+  padding: 8px 14px;
+  font-size: 16px;
   background-color: #006d99;
   color: white;
   border: none;
