@@ -21,19 +21,15 @@
     <p>건강을 위해 노력하고 있는 것이 있어요?</p>
     <p>고치고 싶은 습관이 있어요?</p>
   </div>
-
-  <!-- 問題2 -->
-<div class="question">
-  <p>들어 봅시다.</p>
-  <div class="reading-text reading-box">
-    <p> 한국에서는 치킨과 맥주를 함께 먹는 ‘치맥’ 문화가 유명해요. 저도 금요일 밤마다 친구들과 치맥을 즐겼어요. 하지만 너무 맛있어서 
-     <span class="modal-trigger" onclick="openModal('overeating')">과식</span>하게 되고, 다음 날에는 <span class="modal-trigger" onclick="openModal('fatigue')">피로</span>를 느끼는 일이 많았어요.</p>
-    <p> 그래서 식사 습관을 바꿔 보기로 했어요. 너무 늦게 먹거나 많이 먹지 않으려고 노력했어요. 그 결과 아침에 일어날 때 몸이 가볍고, 하루 종일 기분도 좋아졌어요. 작은 변화지만 건강에 정말 도움이 된다는 것을 느끼고 있어요.</p>
+  
+ <!-- 問題2 -->
+  <div class="question active">
+    <p>들어 봅시다.</p>
+  <img src="images/Image6_2.png" alt=듣기2"" width="200">
   </div>
-</div>
 
-  <!-- 問題3 -->
-  <div class="question">
+   <!-- 問題3 -->
+ <div class="question">
     <div class="reading-text reading-box">
   <p>아래는 수면 습관에 대한 대화입니다.</p>
 
@@ -67,6 +63,40 @@
   </div>
 
   <!-- 問題4 -->
+  <div class="question">
+    <div class="reading-text reading-box">
+  <p>아래는 수면 습관에 대한 대화입니다.</p>
+
+  <table class="dialogue-table">
+    <tr>
+      <td class="name">민지</td>
+      <td>지훈 씨, 요즘 피곤해 보여요. 밤에 잠은 잘 자요?</td>
+    </tr>
+    <tr>
+      <td class="name">지훈</td>
+      <td>네, 자긴 자는데 계속 피곤해요. 자기 전에 핸드폰을 보는 습관 때문인 것 같아요.</td>
+    </tr>
+    <tr>
+      <td class="name">민지</td>
+      <td>저도 예전에는 그랬는데, 요즘은 핸드폰을 보는 대신에 책을 조금 읽어요.</td>
+    </tr>
+    <tr>
+      <td class="name">지훈</td>
+      <td>오, 좋은 방법이네요. 근데 저는 책에 집중하게 돼서 잠이 잘 안 와요.</td>
+    </tr>
+    <tr>
+      <td class="name">민지</td>
+      <td>그럴 땐 조용한 음악을 듣는 것도 효과가 있어요. 자는 시간도 일정하게 유지하면 좋아요.</td>
+    </tr>
+    <tr>
+      <td class="name">지훈</td>
+      <td>좋은 조언 감사합니다. 오늘부터 그렇게 해 볼게요.</td>
+    </tr>
+  </table>
+</div>
+  </div>
+
+<!-- 問題5 -->
 <div class="question">
   <p>연습 문제 1</p>
   <button class="toggle-text-btn" onclick="toggleText(this, 'reading4')">[본문 보기]</button>
@@ -149,7 +179,7 @@
   <p id="hint1" style="display:none;"></p> 
 </div>
 
-<!-- 問題5 -->
+<!-- 問題6 -->
 <div class="question">
  <p>연습 문제 2</p>
   <button class="toggle-text-btn" onclick="toggleText(this, 'reading5')">[본문 보기]</button>
@@ -231,7 +261,7 @@
 <p id="hint2" style="display:none;"></p>
 </div>
 
-<!-- 問題6 -->
+<!-- 問題7 -->
 <div class="question">
   <p>연습 문제 3</p>
     <button class="toggle-text-btn" onclick="toggleText(this, 'reading6')">[본문 보기]</button>
@@ -328,6 +358,7 @@
   <span class="dot"></span>
   <span class="dot"></span>
   <span class="dot"></span>
+  <span class="dot"></span>
 </div>
 
 
@@ -342,7 +373,7 @@
   let current = 0;
   const questions = document.querySelectorAll(".question");
   const titles = [
-    "듣기 전", "듣기", "듣기", "듣기 후", "듣기 후", "듣기 후"
+    "듣기 전", "듣기", "듣기", "듣기", "듣기 후", "듣기 후", "듣기 후"
   ];
 
   function showQuestion(index) {
@@ -551,13 +582,13 @@
   showQuestion(current);
 </script>
 
-<!-- 과식 모달 -->
+<!-- 집중 모달 -->
 <div id="modal-overeating" class="modal">
   <div class="modal-content">
     <span class="close-btn" onclick="closeModal('overeating')">×</span>
-    <h3>과식</h3>
-    <img src="images/Image5_2.png" alt="과식을 나타내는 이미지" style="max-width:100%; border-radius: 8px; margin-top: 10px;">
-    <p>과식은 '너무 많이 먹는 것'을 의미합니다.</p>
+    <h3>집중</h3>
+    <img src="images/Image5_2.png" alt="집중을 나타내는 이미지" style="max-width:100%; border-radius: 8px; margin-top: 10px;">
+    <p>집중은 </p>
   </div>
 </div>
 
