@@ -24,7 +24,7 @@
 
   <!-- 問題2 -->
 <div class="question">
-  <p>읽어 봅시다.</p>
+  <p>들어 봅시다.</p>
   <div class="reading-text reading-box">
     <p> 한국에서는 치킨과 맥주를 함께 먹는 ‘치맥’ 문화가 유명해요. 저도 금요일 밤마다 친구들과 치맥을 즐겼어요. 하지만 너무 맛있어서 
      <span class="modal-trigger" onclick="openModal('overeating')">과식</span>하게 되고, 다음 날에는 <span class="modal-trigger" onclick="openModal('fatigue')">피로</span>를 느끼는 일이 많았어요.</p>
@@ -139,6 +139,12 @@
 <p id="result6" class="check-result"></p>
   <p id="hint3" style="display:none;"></p>
 </div>
+  
+<div class="question">
+  <p style="font-size: 20px; font-weight: bold;">🎉학습을 완료했습니다!</p>
+  <p>아래 버튼을 눌러 처음부터 다시 시작하거나, 다른 학습으로 이동해 보세요.</p>
+  <button class="restart-btn" onclick="location.reload()">처음부터 다시</button>
+</div>
 
 </div>
 
@@ -167,14 +173,35 @@
   ];
 
   function showQuestion(index) {
-    questions.forEach((q, i) => {
-      q.classList.toggle("active", i === index);
-    });
-    document.getElementById("main-title").textContent = titles[index];
-    document.getElementById("prevBtn").style.display = index === 0 ? "none" : "flex";
-    document.getElementById("nextBtn").style.display = index === questions.length - 1 ? "none" : "flex";
-    updateNavigation();
+  questions.forEach((q, i) => {
+    q.classList.toggle("active", i === index);
+  });
+
+  document.getElementById("main-title").textContent = titles[index];
+
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const progress = document.querySelector(".progress");
+
+  prevBtn.style.display = index === 0 ? "none" : "flex";
+  nextBtn.style.display = index === questions.length - 1 ? "none" : "flex";
+
+  // ✅ 最後のページではドットを非表示
+  if (progress) {
+    progress.style.display = index === questions.length - 1 ? "none" : "flex";
   }
+
+  // ✅ 最後のページではタイトルも非表示
+  const mainTitle = document.getElementById("main-title");
+  if (index === questions.length - 1) {
+    mainTitle.style.display = "none";
+  } else {
+    mainTitle.style.display = "block";
+  }
+
+  updateNavigation();
+}
+
 
   function nextQuestion() {
     if (current < questions.length - 1) {
