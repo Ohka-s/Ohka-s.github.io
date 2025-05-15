@@ -289,6 +289,18 @@ button:hover {
     margin-top: 10px;
     display: inline-block;
   }
+  .modal-content {
+    width: 90%;
+    font-size: 14px;
+    padding: 16px;
+    margin: 20% auto;
+  }
+
+  .close-btn {
+    font-size: 20px;
+    top: 8px;
+    right: 10px;
+  }
 }
 
 
