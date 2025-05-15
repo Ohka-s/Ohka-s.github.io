@@ -504,3 +504,22 @@ button:hover {
   font-size: 18px;
 }
 
+.dialogue-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+.dialogue-table td {
+  vertical-align: top;
+  padding: 4px 8px;
+}
+
+.dialogue-table .name {
+  font-weight: bold;
+  width: 60px;
+  white-space: nowrap;
+  color: #004c66;
+}
+
