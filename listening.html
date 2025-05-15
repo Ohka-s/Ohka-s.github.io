@@ -559,13 +559,13 @@
   }
 }
 
-  function openModal(type) {
-    document.getElementById(`modal-${type}`).style.display = "block";
-  }
+ function openModal(id) {
+  document.getElementById(id).style.display = "block";
+}
 
-  function closeModal(type) {
-    document.getElementById(`modal-${type}`).style.display = "none";
-  }
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+}
 
   window.addEventListener("click", function(event) {
     const modals = document.querySelectorAll(".modal");
