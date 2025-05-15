@@ -478,3 +478,29 @@ button:hover {
   opacity: 0.7;
   z-index: 500;
 }
+
+.example-btn {
+  background-color: #f3f3f3;  /* 控えめな色 */
+  border: none;
+  padding: 10px 15px;
+  margin: 8px 0;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;  /* アイコンとテキストの間隔 */
+}
+
+.example-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.speaker-icon {
+  color: #555;         /* アイコン色も控えめに */
+  font-size: 18px;
+}
+
