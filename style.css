@@ -273,6 +273,22 @@ button:hover {
     max-width: 300px;
     font-size: 16px;
   }
+  .dialogue-table {
+    font-size: 16px;         /* 少し小さめに */
+  }
+
+  .dialogue-table td {
+    display: block;          /* セルを縦並びに */
+    width: 100%;
+    padding: 6px 4px;
+  }
+
+  .dialogue-table .name {
+    font-weight: bold;
+    color: #004c66;
+    margin-top: 10px;
+    display: inline-block;
+  }
 }
 
 
