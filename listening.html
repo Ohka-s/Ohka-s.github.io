@@ -48,11 +48,11 @@
     </tr>
     <tr>
       <td class="name">지훈</td>
-      <td>오, 좋은 방법이네요. 근데 저는 책에 집중하게 돼서 잠이 잘 안 와요.</td>
+      <td>오, 좋은 방법이네요. 근데 저는 책에 <span class="highlight" onclick="openModal('modal1')">집중</span>하게 돼서 잠이 잘 안 와요.</td>
     </tr>
     <tr>
       <td class="name">민지</td>
-      <td>그럴 땐 조용한 음악을 듣는 것도 효과가 있어요. 자는 시간도 일정하게 유지하면 좋아요.</td>
+      <td>그럴 땐 조용한 음악을 듣는 것도 <span class="highlight" onclick="openModal('modal2')">효과</span>가 있어요. 자는 시간도 일정하게 <span class="highlight" onclick="openModal('modal3')">유지</span>하면 좋아요.</td>
     </tr>
     <tr>
       <td class="name">지훈</td>
@@ -582,23 +582,27 @@
   showQuestion(current);
 </script>
 
-<!-- 집중 모달 -->
-<div id="modal-overeating" class="modal">
+<!-- 집중 -->
+<div id="modal1" class="modal">
   <div class="modal-content">
-    <span class="close-btn" onclick="closeModal('overeating')">×</span>
-    <h3>집중</h3>
-    <img src="images/Image5_2.png" alt="집중을 나타내는 이미지" style="max-width:100%; border-radius: 8px; margin-top: 10px;">
-    <p>집중은 </p>
+    <span class="close" onclick="closeModal('modal1')">&times;</span>
+    <p><strong>집중</strong>: 한 가지 일에 정신을 모으는 것 (例: 공부에 집중하다)</p>
   </div>
 </div>
 
-  <!-- 피로 모달 -->
-<div id="modal-fatigue" class="modal">
+<!-- 효과 -->
+<div id="modal2" class="modal">
   <div class="modal-content">
-    <span class="close-btn" onclick="closeModal('fatigue')">×</span>
-    <h3>피로</h3>
-    <img src="images/Image5_3.png" alt="피로를 나타내는 이미지" style="max-width:100%; border-radius: 8px; margin-top: 10px;">
-    <p>피로는 '몸이 피곤하고 기운이 없는 상태'를 의미합니다.</p>
+    <span class="close" onclick="closeModal('modal2')">&times;</span>
+    <p><strong>효과</strong>: 어떤 일을 했을 때 생기는 좋은 결과 (例: 운동의 효과)</p>
+  </div>
+</div>
+
+<!-- 유지 -->
+<div id="modal3" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal3')">&times;</span>
+    <p><strong>유지</strong>: 어떤 상태를 계속 이어 나가는 것 (例: 건강을 유지하다)</p>
   </div>
 </div>
 </body>
