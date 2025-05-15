@@ -466,5 +466,7 @@ button:hover {
   line-height: 1.4;
 }
 
-
+.question-instruction {
+  color: #004c66;        /* 濃い青緑系（落ち着いた印象） */
+}
 
