@@ -89,10 +89,24 @@
 <!-- 問題5 -->
 <div class="question">
   <p class="question-instruction">문장을 듣고 따라 읽어 봅시다.</p>
-  <p>언니는 항상 저를 일찍 일어나게 해요.</p>
-  <p>맛있는 냄세가 저에게 빵을 사게 했어요.</p>
-  <p>선생님이 학생들에게 그 소설을 읽게 하셨어요.</p>
-  <p>아버지가 동생에게 게임을 못 하게 하셨어요.</p>
+<button class="example-btn" onclick="playGrammarAudio(1)">
+  <i class="fas fa-volume-up speaker-icon"></i>
+  언니는 항상 저를 일찍 일어나게 해요.
+</button>
+
+<button class="example-btn" onclick="playGrammarAudio(2)">
+  <i class="fas fa-volume-up speaker-icon"></i>
+  맛있는 냄새가 저에게 빵을 사게 했어요.
+</button>
+  <button class="example-btn" onclick="playGrammarAudio(3)">
+  <i class="fas fa-volume-up speaker-icon"></i>
+  선생님이 학생들에게 그 소설을 읽게 하셨어요.
+</button>
+
+<button class="example-btn" onclick="playGrammarAudio(4)">
+  <i class="fas fa-volume-up speaker-icon"></i>
+ 아버지가 동생에게 게임을 못 하게 하셨어요
+</button>
 </div>  
   
   <!-- 問題6 -->
@@ -150,6 +164,8 @@
 <button class="nav-btn right-btn" id="nextBtn" onclick="nextQuestion()">
   <i class="fas fa-chevron-right"></i>
 </button>
+  <audio id="grammar-audio1" src="audio/grammar2_1.mp3"></audio>
+  <audio id="grammar-audio2" src="audio/grammar2_2.mp3"></audio>
 
 <script>
   let current = 0;
@@ -248,7 +264,15 @@
       resultOverlay.style.color = "red";
     }
   }
+    function playGrammarAudio(index) {
+      const audio = document.getElementById("grammar-audio" + index);
+      if (audio) {
+        audio.currentTime = 0;
+        audio.play();
+      }
+    }
 
+  
   showQuestion(current);
 </script>
 
