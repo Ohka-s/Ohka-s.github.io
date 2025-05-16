@@ -546,8 +546,9 @@ button:hover {
 
 .dialogue-table .name {
   font-weight: bold;
-  width: 60px;
+  width: 58px;
   white-space: nowrap;
   color: #004c66;
+  padding-right: 4px;
 }
 
