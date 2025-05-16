@@ -461,7 +461,7 @@ button:hover {
 .reading-box {
   border: 1px solid #ccc;  /* 薄いグレーの線 */
   border-radius: 8px;
-  padding: 16px;
+  padding: 8px 12px;
   background-color: #f9f9f9;  /* ほんのり背景色 */
   margin-top: 10px;
   margin-bottom: 20px;
@@ -535,13 +535,13 @@ button:hover {
 .dialogue-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 15px;
+  margin-top: 14px;
   font-size: 18px;
 }
 
 .dialogue-table td {
   vertical-align: top;
-  padding: 4px 8px;
+  padding: 4px 7px;
 }
 
 .dialogue-table .name {
