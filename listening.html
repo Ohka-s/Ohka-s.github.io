@@ -439,8 +439,14 @@
     currentListeningAudio.currentTime = 0;
     currentListeningAudio = null;
   }
-  isListeningPaused = false;
-  enableListeningPlayButton(); // 再生ボタンを戻す（必要なら）
+    if (currentKaraokeAudio) {
+  currentKaraokeAudio.pause();
+  currentKaraokeAudio.currentTime = 0;
+  currentKaraokeAudio = null;
+}
+    isListeningPaused = false;
+  isKaraokePaused = false;
+  enableListeningPlayButton();
 
   questions.forEach((q, i) => {
     q.classList.toggle("active", i === index);
@@ -454,6 +460,7 @@
 
   prevBtn.style.display = index === 0 ? "none" : "flex";
   nextBtn.style.display = index === questions.length - 1 ? "none" : "flex";
+  progress.style.display = index === questions.length - 1 ? "none" : "flex";
 
   // ✅ 最後のページではドットを非表示
   if (progress) {
