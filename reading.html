@@ -25,12 +25,12 @@
 
   <!-- 問題2 -->
 <div class="question">
-  <p>읽어 봅시다.</p>
-  <p>
-  <button onclick="playReadingSequence()">
-    <i class="fas fa-volume-up"></i> 본문 듣기
-  </button>
-</p>
+  <div class="reading-header">
+    <button class="play-btn" onclick="playReadingSequence()" title="본문 듣기">
+      <i class="fas fa-volume-up"></i>
+    </button>
+    <span class="reading-title">읽어 봅시다.</span>
+  </div>
 
 <!-- 一文ずつの音声 -->
 <audio id="reading1" src="audio/reading1.mp3"></audio>
