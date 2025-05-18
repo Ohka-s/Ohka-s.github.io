@@ -342,12 +342,6 @@ button:hover {
   .right-btn {
     right: 100px;
   }
- img:not(.modal-content img) {
-    width: 300px;
-    height: auto;
-    max-height: 200px; /* ← 縦長すぎる画像を抑える */
-    object-fit: contain;
-  }
 }
 
 .edu-text {
