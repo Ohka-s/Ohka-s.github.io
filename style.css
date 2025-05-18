@@ -551,4 +551,42 @@ button:hover {
   color: #004c66;
   padding-right: 1px;
 }
+.reading-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 0;  /* ← 左端に寄せる */
+}
+
+.reading-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #004466;
+}
+
+/* 홈 버튼と同じテイストで、再生用に少し小さめ */
+.play-btn {
+  font-size: 16px;
+  background-color: #006d99;
+  color: white;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.play-btn i {
+  font-size: 18px;
+}
+
+.play-btn:hover {
+  background-color: #005480;
+}
 
