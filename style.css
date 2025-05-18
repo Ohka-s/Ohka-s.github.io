@@ -350,7 +350,7 @@ button:hover {
     right: 100px;
   }
   .img-large {
-    width: 280px;
+    width: 280px;! important;
     max-height: 250px; 
   }
 }
