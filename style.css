@@ -342,7 +342,12 @@ button:hover {
   .right-btn {
     right: 100px;
   }
+  img:not(.modal-content img) {
+    width: 300px !important; /* ← お好みのサイズに調整 */
+    height: auto !important;
+  }
 }
+
 .edu-text {
   max-width: 600px;
   margin: 0 auto 30px;
