@@ -580,3 +580,11 @@ button:hover {
   font-size: 20px;
   color: #333; /* 必要なら #006d99 に */
 }
+
+.karaoke-active {
+  background-color: #fff3b0; /* 控えめなクリーム色 */
+  border-radius: 4px;
+  padding: 2px 4px;
+  transition: background-color 0.3s ease;
+}
+
