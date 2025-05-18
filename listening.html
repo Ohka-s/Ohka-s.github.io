@@ -705,16 +705,13 @@ let currentKaraokeAudio = null;
   isListeningPaused = false;
 
   if (currentListeningAudio) {
-  currentListeningAudio.pause();
-  currentListeningAudio.currentTime = 0;
-  currentListeningAudio = null;
-}
-isListeningPaused = false;
-listeningIndex = 0;
-playNextListening(); 
+    currentListeningAudio.pause();
+    currentListeningAudio.currentTime = 0;
+    currentListeningAudio = null;
+  }
 
   disableListeningPlayButton(problemNum);
-  playNextListening();
+  playNextListening(); // ← これだけでOK
 }
 
 
