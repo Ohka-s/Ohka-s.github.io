@@ -26,10 +26,10 @@
 <!-- 問題2 -->
 <div class="question">
   <div class="reading-header">
-    <button class="play-btn play-control" id="listeningPlayBtn" onclick="playListeningSequence()" title="듣기 시작">
+    <button class="play-btn play-control" id="listeningPlayBtn2" onclick="playListeningSequence(2)" title="듣기 시작">
   <i class="fas fa-volume-up"></i>
 </button>
-    <button class="play-btn" id="listeningPauseResumeBtn" onclick="toggleListeningPauseResume()" title="일시정지 / 다시 듣기">
+    <button class="play-btn" id="listeningPauseResumeBtn2" onclick="toggleListeningPauseResume(2)" title="일시정지 / 다시 듣기">
       <i class="fas fa-pause"></i>
     </button>
     <span class="reading-title">다음은 생활 습관에 대한 대화입니다. 대화를 들어 봅시다.</span>
@@ -55,10 +55,10 @@
   <!-- 問題3 -->
 <div class="question">
   <div class="reading-header">
-    <button class="play-btn play-control" id="listeningPlayBtn" onclick="playListeningSequence()" title="듣기 시작">
+    <button class="play-btn play-control" id="listeningPlayBtn3" onclick="playListeningSequence(3)" title="듣기 시작">
   <i class="fas fa-volume-up"></i>
 </button>
-    <button class="play-btn" id="listeningPauseResumeBtn" onclick="toggleListeningPauseResume()" title="일시정지 / 다시 듣기">
+    <button class="play-btn" id="listeningPauseResumeBtn3" onclick="toggleListeningPauseResume(3)" title="일시정지 / 다시 듣기">
       <i class="fas fa-pause"></i>
     </button>
     <span class="reading-title">다시 들어 봅시다.</span>
@@ -697,6 +697,19 @@ function playListeningSequence() {
   playNextListening();
 }
 
+  function playListeningSequence(problemNum) {
+  listeningIndex = 0;
+  isListeningPaused = false;
+
+  if (currentListeningAudio) {
+    currentListeningAudio.pause();
+    currentListeningAudio.currentTime = 0;
+  }
+
+  disableListeningPlayButton(problemNum);
+  playNextListening();
+}
+
 
 function playNextListening() {
   if (listeningIndex >= listeningAudios.length) {
@@ -733,6 +746,24 @@ function toggleListeningPauseResume() {
     isListeningPaused = true;
   }
 }
+function toggleListeningPauseResume(problemNum) {
+  const icon = document.querySelector(`#listeningPauseResumeBtn${problemNum} i`);
+  if (!currentListeningAudio) return;
+
+  if (isListeningPaused) {
+    currentListeningAudio.play();
+    icon.classList.remove("fa-play");
+    icon.classList.add("fa-pause");
+    isListeningPaused = false;
+  } else {
+    currentListeningAudio.pause();
+    icon.classList.remove("fa-pause");
+    icon.classList.add("fa-play");
+    isListeningPaused = true;
+  }
+}
+
+  
 
 function disableListeningPlayButton() {
   const btn = document.getElementById("listeningPlayBtn");
@@ -743,6 +774,16 @@ function enableListeningPlayButton() {
   const btn = document.getElementById("listeningPlayBtn");
   if (btn) btn.disabled = false;
 }
+  function disableListeningPlayButton(problemNum) {
+  const btn = document.getElementById(`listeningPlayBtn${problemNum}`);
+  if (btn) btn.disabled = true;
+}
+
+function enableListeningPlayButton(problemNum) {
+  const btn = document.getElementById(`listeningPlayBtn${problemNum}`);
+  if (btn) btn.disabled = false;
+}
+
 
  function playListeningKaraoke() {
   // すでに再生中の音声をリセット
