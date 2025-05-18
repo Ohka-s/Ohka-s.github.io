@@ -306,8 +306,8 @@
 
  function toggleText(button, targetId) {
   const wrapper = document.getElementById(targetId);
-  const normal = wrapper.querySelector(`#${targetId}-default`);
-  const highlighted = wrapper.querySelector(`#${targetId}-highlighted`);
+  const normal = document.getElementById(`${targetId}-default`);
+  const highlighted = document.getElementById(`${targetId}-highlighted`);
 
   // すでに表示中ならすべて閉じる（highlighted優先）
   if (highlighted && highlighted.style.display === "block") {
