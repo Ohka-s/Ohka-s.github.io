@@ -446,6 +446,8 @@
       listeningAudios.forEach(audio => {
     audio.pause();
     audio.currentTime = 0;
+    karaokeIndex = 0;
+listeningIndex = 0;
   });
   if (currentListeningAudio) {
     currentListeningAudio.pause();
@@ -705,6 +707,7 @@ let currentKaraokeAudio = null;
   if (currentListeningAudio) {
     currentListeningAudio.pause();
     currentListeningAudio.currentTime = 0;
+    currentListeningAudio = null;
   }
 
   disableListeningPlayButton(problemNum);
