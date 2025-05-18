@@ -25,9 +25,51 @@
   
  <!-- 問題2 -->
   <div class="question active">
+    
     <p>다음은 생활 습관에 대한 대화입니다.</p>
     <p>대화를 들어 봅시다.</p>
   <img src="images/Image6_2.png" alt=듣기2"" width="200">
+  </div>
+
+<!-- 問題2 -->
+<div class="question">
+  <div class="reading-header">
+    <button class="play-btn" id="listeningPlayBtn" onclick="playListeningSequence()" title="듣기 시작">
+      <i class="fas fa-volume-up"></i>
+    </button>
+    <button class="play-btn" id="listeningPauseResumeBtn" onclick="toggleListeningPauseResume()" title="일시정지 / 다시 듣기">
+      <i class="fas fa-pause"></i>
+    </button>
+    <span class="reading-title">다음은 생활 습관에 대한 대화입니다. 대화를 들어 봅시다.</span>
+  </div>
+
+  <!-- 音声ファイル11個 -->
+  <audio id="listening_line_1" src="audio/listening_line_1.mp3"></audio>
+  <audio id="listening_line_2" src="audio/listening_line_2.mp3"></audio>
+  <audio id="listening_line_3" src="audio/listening_line_3.mp3"></audio>
+  <audio id="listening_line_4" src="audio/listening_line_4.mp3"></audio>
+  <audio id="listening_line_5" src="audio/listening_line_5.mp3"></audio>
+  <audio id="listening_line_6" src="audio/listening_line_6.mp3"></audio>
+  <audio id="listening_line_7" src="audio/listening_line_7.mp3"></audio>
+  <audio id="listening_line_8" src="audio/listening_line_8.mp3"></audio>
+  <audio id="listening_line_9" src="audio/listening_line_9.mp3"></audio>
+  <audio id="listening_line_10" src="audio/listening_line_10.mp3"></audio>
+  <audio id="listening_line_11" src="audio/listening_line_11.mp3"></audio>
+
+  <img src="images/Image6_2.png" alt="듣기2" width="200" style="margin-top: 10px;">
+</div>
+  
+
+  <!-- 問題2 -->
+<div class="question">
+  <div class="reading-header">
+    <button class="play-btn" id="listeningPlayBtn" onclick="playListeningSequence()" title="듣기 시작">
+      <i class="fas fa-volume-up"></i>
+    </button>
+    <button class="play-btn" id="listeningPauseResumeBtn" onclick="toggleListeningPauseResume()" title="일시정지 / 다시 듣기">
+      <i class="fas fa-pause"></i>
+    </button>
+    <span class="reading-title">대화를 들어 봅시다.</span>
   </div>
 
    <!-- 問題3 -->
@@ -578,6 +620,80 @@ function closeModal(id) {
     });
   });
 
+const listeningAudios = [
+  document.getElementById("listening_line_1"),
+  document.getElementById("listening_line_2"),
+  document.getElementById("listening_line_3"),
+  document.getElementById("listening_line_4"),
+  document.getElementById("listening_line_5"),
+  document.getElementById("listening_line_6"),
+  document.getElementById("listening_line_7"),
+  document.getElementById("listening_line_8"),
+  document.getElementById("listening_line_9"),
+  document.getElementById("listening_line_10"),
+  document.getElementById("listening_line_11")
+];
+
+let listeningIndex = 0;
+let isListeningPaused = false;
+let currentListeningAudio = null;
+
+function playListeningSequence() {
+  listeningIndex = 0;
+  isListeningPaused = false;
+  disableListeningPlayButton();
+  playNextListening();
+}
+
+function playNextListening() {
+  if (listeningIndex >= listeningAudios.length) {
+    enableListeningPlayButton();
+    return;
+  }
+
+  currentListeningAudio = listeningAudios[listeningIndex];
+  currentListeningAudio.currentTime = 0;
+  currentListeningAudio.play();
+
+  currentListeningAudio.onended = () => {
+    if (!isListeningPaused) {
+      listeningIndex++;
+      setTimeout(() => {
+        playNextListening();
+      }, 500); // 0.5초 기다림
+    }
+  };
+}
+
+function toggleListeningPauseResume() {
+  if (!currentListeningAudio) return;
+
+  const icon = document.querySelector("#listeningPauseResumeBtn i");
+
+  if (isListeningPaused) {
+    currentListeningAudio.play();
+    icon.classList.remove("fa-play");
+    icon.classList.add("fa-pause");
+    isListeningPaused = false;
+  } else {
+    currentListeningAudio.pause();
+    icon.classList.remove("fa-pause");
+    icon.classList.add("fa-play");
+    isListeningPaused = true;
+  }
+}
+
+function disableListeningPlayButton() {
+  const btn = document.getElementById("listeningPlayBtn");
+  if (btn) btn.disabled = true;
+}
+
+function enableListeningPlayButton() {
+  const btn = document.getElementById("listeningPlayBtn");
+  if (btn) btn.disabled = false;
+}
+
+  
   // 初期表示
   showQuestion(current);
 </script>
