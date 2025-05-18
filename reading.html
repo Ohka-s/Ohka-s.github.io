@@ -43,17 +43,29 @@
 
   <div class="reading-text reading-box">
     <p> 한국에서는 치킨과 맥주를 함께 먹는 ‘치맥’ 문화가 유명해요. 저도 금요일 밤마다 친구들과 치맥을 즐겼어요. 하지만 너무 맛있어서 
-     <span class="modal-trigger" onclick="openModal('overeating')">과식</span>하게 되고, 다음 날에는 <span class="modal-trigger" onclick="openModal('fatigue')">피로</span>를 느끼는 일이 많았어요.</p>
+     <span class="modal-trigger" onclick="openModal('overeating')">과식</span>을 하게 되고, 다음 날에는 <span class="modal-trigger" onclick="openModal('fatigue')">피로</span>를 느끼는 일이 많았어요.</p>
     <p> 그래서 식사 습관을 바꿔 보기로 했어요. 너무 늦게 먹거나 많이 먹지 않으려고 노력했어요. 그 결과 아침에 일어날 때 몸이 가볍고, 하루 종일 기분도 좋아졌어요. 작은 <span class="modal-trigger" onclick="openModal('change')">변화</span>지만 건강에 정말 도움이 된다는 것을 느끼고 있어요.</p>
   </div>
 </div>
 
   <!-- 問題3 -->
   <div class="question">
-    <p>듣고 따라 읽어 봅시다.</p>
-    <div class="reading-text reading-box">
-    <p> 한국에서는 치킨과 맥주를 함께 먹는 ‘치맥’ 문화가 유명해요. 저도 금요일 밤마다 친구들과 치맥을 즐겼어요. 하지만 너무 맛있어서 과식하게 되고, 다음 날에는 피로를 느끼는 일이 많았어요. </p>
-    <p> 그래서 식사 습관을 바꿔 보기로 했어요. 너무 늦게 먹거나 많이 먹지 않으려고 노력했어요. 그 결과 아침에 일어날 때 몸이 가볍고, 하루 종일 기분도 좋아졌어요. 작은 변화지만 건강에 정말 도움이 된다는 것을 느끼고 있어요.</p>
+  <div class="reading-header">
+    <button class="play-btn" onclick="playRepeatSequence()" title="듣고 따라 읽기">
+      <i class="fas fa-volume-up"></i>
+    </button>
+    <span class="reading-title">듣고 따라 읽어 봅시다.</span>
+  </div>
+    <div class="reading-text reading-box karaoke-box">
+    <p>
+      <span id="karaoke1">한국에서는 치킨과 맥주를 함께 먹는 ‘치맥’ 문화가 유명해요. </span>
+      <span id="karaoke2">저도 금요일 밤마다 친구들과 치맥을 즐겼어요. </span>
+      <span id="karaoke3">하지만 너무 맛있어서 과식을 하게 되고, 다음 날에는 피로를 느끼는 일이 많았어요. </span></p>
+    <p>
+      <span id="karaoke4">그래서 식사 습관을 바꿔 보기로 했어요. </span>
+      <span id="karaoke5">너무 늦게 먹거나 많이 먹지 않으려고 노력했어요. </span>
+      <span id="karaoke6">그 결과 아침에 일어날 때 몸이 가볍고, 하루 종일 기분도 좋아졌어요. </span>
+      <span id="karaoke7">작은 변화지만 건강에 정말 도움이 된다는 것을 느끼고 있어요.</span></p>
       </div>
   </div>
 
@@ -419,10 +431,108 @@
       // 0.5秒後に次の音声
       setTimeout(() => {
         playNextReading();
-      }, 500);
+      }, 300);
+    };
+  }
+  
+  const repeatAudios = [
+    document.getElementById("reading1"),
+    document.getElementById("reading2"),
+    document.getElementById("reading3"),
+    document.getElementById("reading4"),
+    document.getElementById("reading5"),
+    document.getElementById("reading6"),
+    document.getElementById("reading7")
+  ];
+
+  let repeatIndex = 0;
+
+  function playRepeatSequence() {
+    repeatIndex = 0;
+    clearAllHighlights();
+    playNextRepeat();
+  }
+
+  function playNextRepeat() {
+    if (repeatIndex >= repeatAudios.length) return;
+
+    clearAllHighlights();
+
+    const audio = repeatAudios[repeatIndex];
+    const textSpan = document.getElementById(`karaoke${repeatIndex + 1}`);
+    if (textSpan) {
+      textSpan.classList.add("karaoke-active");
+    }
+
+    audio.currentTime = 0;
+    audio.play();
+
+    audio.onended = () => {
+      repeatIndex++;
+      setTimeout(() => {
+        playNextRepeat();
+      }, 6000); // 読む時間
     };
   }
 
+  function clearAllHighlights() {
+    for (let i = 1; i <= 7; i++) {
+      const span = document.getElementById(`karaoke${i}`);
+      if (span) {
+        span.classList.remove("karaoke-active");
+      }
+    }
+  }
+
+<script>
+  const repeatAudios = [
+    document.getElementById("reading1"),
+    document.getElementById("reading2"),
+    document.getElementById("reading3"),
+    document.getElementById("reading4"),
+    document.getElementById("reading5"),
+    document.getElementById("reading6"),
+    document.getElementById("reading7")
+  ];
+
+  let repeatIndex = 0;
+
+  function playRepeatSequence() {
+    repeatIndex = 0;
+    clearAllHighlights();
+    playNextRepeat();
+  }
+
+  function playNextRepeat() {
+    if (repeatIndex >= repeatAudios.length) return;
+
+    clearAllHighlights();
+
+    const audio = repeatAudios[repeatIndex];
+    const textSpan = document.getElementById(`karaoke${repeatIndex + 1}`);
+    if (textSpan) {
+      textSpan.classList.add("karaoke-active");
+    }
+
+    audio.currentTime = 0;
+    audio.play();
+
+    audio.onended = () => {
+      repeatIndex++;
+      setTimeout(() => {
+        playNextRepeat();
+      }, 2000); // 読む時間
+    };
+  }
+
+  function clearAllHighlights() {
+    for (let i = 1; i <= 7; i++) {
+      const span = document.getElementById(`karaoke${i}`);
+      if (span) {
+        span.classList.remove("karaoke-active");
+      }
+    }
+  }
 
   
   // 初期表示
