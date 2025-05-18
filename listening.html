@@ -684,18 +684,6 @@ let isKaraokePaused = false;
 let currentKaraokeAudio = null;
 
 
-function playListeningSequence() {
-  listeningIndex = 0;
-  isListeningPaused = false;
-
-  if (currentListeningAudio) {
-    currentListeningAudio.pause();
-    currentListeningAudio.currentTime = 0;
-  }
-
-  disableAllPlayButtons();
-  playNextListening();
-}
 
   function playListeningSequence(problemNum) {
   listeningIndex = 0;
@@ -729,23 +717,7 @@ function playNextListening() {
   };
 }
 
-function toggleListeningPauseResume() {
-  const icon = document.querySelector("#listeningPauseResumeBtn i");
 
-  if (!currentListeningAudio) return;
-
-  if (isListeningPaused) {
-    currentListeningAudio.play();
-    icon.classList.remove("fa-play");
-    icon.classList.add("fa-pause");
-    isListeningPaused = false;
-  } else {
-    currentListeningAudio.pause();
-    icon.classList.remove("fa-pause");
-    icon.classList.add("fa-play");
-    isListeningPaused = true;
-  }
-}
 function toggleListeningPauseResume(problemNum) {
   const icon = document.querySelector(`#listeningPauseResumeBtn${problemNum} i`);
   if (!currentListeningAudio) return;
@@ -765,15 +737,6 @@ function toggleListeningPauseResume(problemNum) {
 
   
 
-function disableListeningPlayButton() {
-  const btn = document.getElementById("listeningPlayBtn");
-  if (btn) btn.disabled = true;
-}
-
-function enableListeningPlayButton() {
-  const btn = document.getElementById("listeningPlayBtn");
-  if (btn) btn.disabled = false;
-}
   function disableListeningPlayButton(problemNum) {
   const btn = document.getElementById(`listeningPlayBtn${problemNum}`);
   if (btn) btn.disabled = true;
