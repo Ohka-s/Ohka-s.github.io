@@ -671,12 +671,24 @@ let listeningIndex = 0;
 let isListeningPaused = false;
 let currentListeningAudio = null;
 
+let karaokeIndex = 0;
+let isKaraokePaused = false;
+let currentKaraokeAudio = null;
+
+
 function playListeningSequence() {
   listeningIndex = 0;
   isListeningPaused = false;
-   disableAllPlayButtons();
+
+  if (currentListeningAudio) {
+    currentListeningAudio.pause();
+    currentListeningAudio.currentTime = 0;
+  }
+
+  disableAllPlayButtons();
   playNextListening();
 }
+
 
 function playNextListening() {
   if (listeningIndex >= listeningAudios.length) {
@@ -691,17 +703,15 @@ function playNextListening() {
   currentListeningAudio.onended = () => {
     if (!isListeningPaused) {
       listeningIndex++;
-      setTimeout(() => {
-        playNextListening();
-      }, 500); // 0.5초 기다림
+      setTimeout(() => playNextListening(), 500);
     }
   };
 }
 
 function toggleListeningPauseResume() {
-  if (!currentListeningAudio) return;
-
   const icon = document.querySelector("#listeningPauseResumeBtn i");
+
+  if (!currentListeningAudio) return;
 
   if (isListeningPaused) {
     currentListeningAudio.play();
@@ -727,7 +737,13 @@ function enableListeningPlayButton() {
 }
 
   function playListeningKaraoke() {
-  let karaokeIndex = 0;
+  karaokeIndex = 0;
+  isKaraokePaused = false;
+
+  if (currentKaraokeAudio) {
+    currentKaraokeAudio.pause();
+    currentKaraokeAudio.currentTime = 0;
+  }
 
   const karaokeSpans = [];
   for (let i = 1; i <= 11; i++) {
@@ -750,24 +766,39 @@ function enableListeningPlayButton() {
 
     const span = karaokeSpans[karaokeIndex];
     const audio = listeningAudios[karaokeIndex];
-
+    currentKaraokeAudio = audio;
+    
     if (span) span.classList.add("karaoke-active");
-    if (audio) {
+      if (audio) {
       audio.currentTime = 0;
       audio.play();
       audio.onended = () => {
-        karaokeIndex++;
-        setTimeout(() => {
-          playNextKaraokeLine();
-        }, 500); // 
+        if (!isKaraokePaused) {
+          karaokeIndex++;
+          setTimeout(() => playNextKaraokeLine(), 500);
+        }
       };
     }
-    
-  playNextKaraokeLine();
   }
 
   disableListeningPlayButton();
   playNextKaraokeLine();
+}
+  function toggleKaraokePauseResume() {
+  const icon = document.querySelector("button[onclick='toggleKaraokePauseResume()'] i");
+  if (!currentKaraokeAudio) return;
+
+  if (isKaraokePaused) {
+    currentKaraokeAudio.play();
+    icon.classList.remove("fa-play");
+    icon.classList.add("fa-pause");
+    isKaraokePaused = false;
+  } else {
+    currentKaraokeAudio.pause();
+    icon.classList.remove("fa-pause");
+    icon.classList.add("fa-play");
+    isKaraokePaused = true;
+  }
 }
 
   
