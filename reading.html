@@ -25,10 +25,13 @@
 
   <!-- 問題2 -->
 <div class="question">
-  <div class="reading-header">
-    <button class="play-btn" onclick="playReadingSequence()" title="본문 듣기">
-      <i class="fas fa-volume-up"></i>
-    </button>
+ <div class="reading-header">
+  <button class="play-btn" id="readingPlayBtn" onclick="playReadingSequence()" title="본문 듣기">
+    <i class="fas fa-volume-up"></i>
+  </button>
+  <button class="play-btn" onclick="stopAllAudio()" title="정지">
+    <i class="fas fa-stop"></i>
+  </button>
     <span class="reading-title">읽어 봅시다.</span>
   </div>
 
@@ -423,26 +426,29 @@ function toggleText(button, targetId) {
 
   let currentIndex = 0;
 
-  function playReadingSequence() {
-    currentIndex = 0;
-    playNextReading();
+ function playReadingSequence() {
+  currentIndex = 0;
+  disablePlayButton();
+  playNextReading();
+}
+
+ function playNextReading() {
+  if (currentIndex >= readingAudios.length) {
+    enablePlayButton();
+    return;
   }
 
-  function playNextReading() {
-    if (currentIndex >= readingAudios.length) return;
+  const audio = readingAudios[currentIndex];
+  audio.currentTime = 0;
+  audio.play();
 
-    const audio = readingAudios[currentIndex];
-    audio.currentTime = 0;
-    audio.play();
-
-    audio.onended = () => {
-      currentIndex++;
-      // 0.5秒後に次の音声
-      setTimeout(() => {
-        playNextReading();
-      }, 300);
-    };
-  }
+  audio.onended = () => {
+    currentIndex++;
+    setTimeout(() => {
+      playNextReading();
+    }, 300);
+  };
+}
   
   const repeatAudios = [
     document.getElementById("reading1"),
@@ -492,7 +498,26 @@ function toggleText(button, targetId) {
       }
     }
   }
-
+function stopAllAudio() {
+  readingAudios.forEach(audio => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+  repeatAudios.forEach(audio => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+  clearAllHighlights(); // カラオケのマーカーも消す
+  enablePlayButton();
+}
+function disablePlayButton() {
+  const btn = document.getElementById("readingPlayBtn");
+  if (btn) btn.disabled = true;
+}
+function enablePlayButton() {
+  const btn = document.getElementById("readingPlayBtn");
+  if (btn) btn.disabled = false;
+}
   
   // 初期表示
   showQuestion(current);
