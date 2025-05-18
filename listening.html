@@ -26,9 +26,9 @@
 <!-- 問題2 -->
 <div class="question">
   <div class="reading-header">
-    <button class="play-btn" id="listeningPlayBtn" onclick="playListeningSequence()" title="듣기 시작">
-      <i class="fas fa-volume-up"></i>
-    </button>
+    <button class="play-btn play-control" id="listeningPlayBtn" onclick="playListeningSequence()" title="듣기 시작">
+  <i class="fas fa-volume-up"></i>
+</button>
     <button class="play-btn" id="listeningPauseResumeBtn" onclick="toggleListeningPauseResume()" title="일시정지 / 다시 듣기">
       <i class="fas fa-pause"></i>
     </button>
@@ -54,9 +54,9 @@
 <!-- 問題3 -->
 <div class="question">
   <div class="reading-header">
-    <button class="play-btn" id="listeningPlayBtn" onclick="playListeningSequence()" title="듣기 시작">
-      <i class="fas fa-volume-up"></i>
-    </button>
+    <button class="play-btn play-control" id="listeningPlayBtn" onclick="playListeningSequence()" title="듣기 시작">
+  <i class="fas fa-volume-up"></i>
+</button>
     <button class="play-btn" id="listeningPauseResumeBtn" onclick="toggleListeningPauseResume()" title="일시정지 / 다시 듣기">
       <i class="fas fa-pause"></i>
     </button>
@@ -95,9 +95,9 @@
    <!-- 問題4 -->
 <div class="question">
   <div class="reading-header">
-    <button class="play-btn" onclick="playListeningKaraoke()" title="듣고 따라 읽기">
-      <i class="fas fa-volume-up"></i>
-    </button>
+    <button class="play-btn play-control" onclick="playListeningKaraoke()" title="듣고 따라 읽기">
+  <i class="fas fa-volume-up"></i>
+</button>
     <span class="reading-title">다시 들어 봅시다.</span>
   </div>  
     <div class="reading-text reading-box karaoke-box">
@@ -426,6 +426,18 @@
   ];
 
   function showQuestion(index) {
+      listeningAudios.forEach(audio => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+  if (currentListeningAudio) {
+    currentListeningAudio.pause();
+    currentListeningAudio.currentTime = 0;
+    currentListeningAudio = null;
+  }
+  isListeningPaused = false;
+  enableListeningPlayButton(); // 再生ボタンを戻す（必要なら）
+
   questions.forEach((q, i) => {
     q.classList.toggle("active", i === index);
   });
@@ -641,6 +653,17 @@ const listeningAudios = [
   document.getElementById("listening_line_11")
 ];
 
+  function disableAllPlayButtons() {
+  const buttons = document.querySelectorAll(".play-control");
+  buttons.forEach(btn => btn.disabled = true);
+}
+
+function enableAllPlayButtons() {
+  const buttons = document.querySelectorAll(".play-control");
+  buttons.forEach(btn => btn.disabled = false);
+}
+
+  
 let listeningIndex = 0;
 let isListeningPaused = false;
 let currentListeningAudio = null;
@@ -648,13 +671,13 @@ let currentListeningAudio = null;
 function playListeningSequence() {
   listeningIndex = 0;
   isListeningPaused = false;
-  disableListeningPlayButton();
+   disableAllPlayButtons();
   playNextListening();
 }
 
 function playNextListening() {
   if (listeningIndex >= listeningAudios.length) {
-    enableListeningPlayButton();
+    enableAllPlayButton();
     return;
   }
 
@@ -716,7 +739,7 @@ function enableListeningPlayButton() {
 
   function playNextKaraokeLine() {
     if (karaokeIndex >= listeningAudios.length) {
-      enableListeningPlayButton();
+      enableAllPlayButton();
       return;
     }
 
@@ -733,9 +756,12 @@ function enableListeningPlayButton() {
         karaokeIndex++;
         setTimeout(() => {
           playNextKaraokeLine();
-        }, 500); // 0.5秒間隔
+        }, 500); // 
       };
     }
+    
+  disableAllPlayButtons(); // ✅ 再生開始時に無効化
+  playNextKaraokeLine();
   }
 
   disableListeningPlayButton();
