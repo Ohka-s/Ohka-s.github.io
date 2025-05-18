@@ -762,7 +762,9 @@ function enableListeningPlayButton(problemNum) {
     currentKaraokeAudio.currentTime = 0;
     currentKaraokeAudio = null;
   }
-
+document.querySelectorAll(".karaoke-active").forEach(span => {
+  span.classList.remove("karaoke-active");
+});
   karaokeIndex = 0;
   isKaraokePaused = false;
 
