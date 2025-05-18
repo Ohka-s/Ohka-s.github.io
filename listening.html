@@ -705,10 +705,13 @@ let currentKaraokeAudio = null;
   isListeningPaused = false;
 
   if (currentListeningAudio) {
-    currentListeningAudio.pause();
-    currentListeningAudio.currentTime = 0;
-    currentListeningAudio = null;
-  }
+  currentListeningAudio.pause();
+  currentListeningAudio.currentTime = 0;
+  currentListeningAudio = null;
+}
+isListeningPaused = false;
+listeningIndex = 0;
+playNextListening(); 
 
   disableListeningPlayButton(problemNum);
   playNextListening();
@@ -743,11 +746,13 @@ function toggleListeningPauseResume(problemNum) {
     icon.classList.remove("fa-play");
     icon.classList.add("fa-pause");
     isListeningPaused = false;
+    disableListeningPlayButton(problemNum); // 再生中は再生ボタンを無効に
   } else {
     currentListeningAudio.pause();
     icon.classList.remove("fa-pause");
     icon.classList.add("fa-play");
     isListeningPaused = true;
+    enableListeningPlayButton(problemNum); // 一時停止中のみ再生ボタンを有効に
   }
 }
 
