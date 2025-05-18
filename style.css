@@ -566,27 +566,17 @@ button:hover {
   color: #004466;
 }
 
-/* 홈 버튼と同じテイストで、再生用に少し小さめ */
 .play-btn {
-  font-size: 16px;
-  background-color: #006d99;
-  color: white;
-  padding: 6px 10px;
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  all: unset; /* ← ボタンのデフォルトスタイル全部リセット */
   cursor: pointer;
+  font-size: 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s;
+  padding: 0;
+  margin: 0;
 }
 
 .play-btn i {
-  font-size: 18px;
+  font-size: 20px;
+  color: #333; /* 必要なら #006d99 に */
 }
-
-.play-btn:hover {
-  background-color: #005480;
-}
-
