@@ -561,9 +561,9 @@ button:hover {
 }
 
 .reading-title {
-  font-size: 20px;
-  font-weight: bold;
-  color: #004466;
+  font-size: 18px;
+  font-weight: 400;      /* 通常の太さ（boldより軽い） */
+  color: #555555;        /* グレーがかった落ち着いた色に */
 }
 
 .play-btn {
