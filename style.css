@@ -301,6 +301,13 @@ button:hover {
     top: 8px;
     right: 10px;
   }
+  img {
+    width: 90% !important;
+    height: auto !important;
+    max-width: 300px;
+    display: block;
+    margin: 0 auto 10px;
+  }
 }
 
 
