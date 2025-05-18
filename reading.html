@@ -54,11 +54,15 @@
   <!-- 問題3 -->
   <div class="question">
   <div class="reading-header">
-    <button class="play-btn" onclick="playRepeatSequence()" title="듣고 따라 읽기">
-      <i class="fas fa-volume-up"></i>
-    </button>
-    <span class="reading-title">듣고 따라 읽어 봅시다.</span>
-  </div>
+  <button class="play-btn" onclick="playRepeatSequence()" title="듣고 따라 읽기">
+    <i class="fas fa-volume-up"></i>
+  </button>
+  <button class="play-btn" id="repeatPauseResumeBtn" onclick="toggleRepeatPauseResume()" title="일시정지 / 다시 듣기">
+    <i class="fas fa-pause"></i>
+  </button>
+  <span class="reading-title">듣고 따라서 읽어 봅시다.</span>
+</div>
+
     <div class="reading-text reading-box karaoke-box">
     <p>
       <span id="karaoke1">한국에서는 치킨과 맥주를 함께 먹는 ‘치맥’ 문화가 유명해요. </span>
@@ -473,6 +477,24 @@ function togglePauseResume() {
     isPaused = true;
   }
 }
+  function toggleRepeatPauseResume() {
+  if (!currentRepeatAudio) return;
+
+  const icon = document.querySelector("#repeatPauseResumeBtn i");
+
+  if (isRepeatPaused) {
+    currentRepeatAudio.play();
+    icon.classList.remove("fa-play");
+    icon.classList.add("fa-pause");
+    isRepeatPaused = false;
+  } else {
+    currentRepeatAudio.pause();
+    icon.classList.remove("fa-pause");
+    icon.classList.add("fa-play");
+    isRepeatPaused = true;
+  }
+}
+
 
   const repeatAudios = [
     document.getElementById("reading_line_1"),
@@ -485,6 +507,9 @@ function togglePauseResume() {
   ];
 
   let repeatIndex = 0;
+  let isRepeatPaused = false;
+let currentRepeatAudio = null;
+
 
   function playRepeatSequence() {
     repeatIndex = 0;
@@ -502,17 +527,19 @@ function togglePauseResume() {
     if (textSpan) {
       textSpan.classList.add("karaoke-active");
     }
-
+currentRepeatAudio = audio; // 🔶追加
     audio.currentTime = 0;
     audio.play();
 
     audio.onended = () => {
-      repeatIndex++;
-      setTimeout(() => {
-        playNextRepeat();
-      }, 6000); // 読む時間
-    };
+  if (!isRepeatPaused) {
+    repeatIndex++;
+    setTimeout(() => {
+      playNextRepeat();
+    }, 500); // 0.5秒間の間（必要に応じて調整可）
   }
+};
+
 
   function clearAllHighlights() {
     for (let i = 1; i <= 7; i++) {
