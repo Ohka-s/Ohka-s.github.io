@@ -691,6 +691,48 @@ function enableListeningPlayButton() {
   if (btn) btn.disabled = false;
 }
 
+  function playListeningKaraoke() {
+  let karaokeIndex = 0;
+
+  const karaokeSpans = [];
+  for (let i = 1; i <= 11; i++) {
+    karaokeSpans.push(document.getElementById(`karaoke${i}`));
+  }
+
+  function clearAllKaraokeHighlights() {
+    karaokeSpans.forEach(span => {
+      if (span) span.classList.remove("karaoke-active");
+    });
+  }
+
+  function playNextKaraokeLine() {
+    if (karaokeIndex >= listeningAudios.length) {
+      enableListeningPlayButton();
+      return;
+    }
+
+    clearAllKaraokeHighlights();
+
+    const span = karaokeSpans[karaokeIndex];
+    const audio = listeningAudios[karaokeIndex];
+
+    if (span) span.classList.add("karaoke-active");
+    if (audio) {
+      audio.currentTime = 0;
+      audio.play();
+      audio.onended = () => {
+        karaokeIndex++;
+        setTimeout(() => {
+          playNextKaraokeLine();
+        }, 500); // 0.5秒間隔
+      };
+    }
+  }
+
+  disableListeningPlayButton();
+  playNextKaraokeLine();
+}
+
   
   // 初期表示
   showQuestion(current);
