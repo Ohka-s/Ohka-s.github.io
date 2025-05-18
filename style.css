@@ -342,9 +342,11 @@ button:hover {
   .right-btn {
     right: 100px;
   }
-  img:not(.modal-content img) {
-    width: 300px !important; /* ← お好みのサイズに調整 */
-    height: auto !important;
+ img:not(.modal-content img) {
+    width: 300px;
+    height: auto;
+    max-height: 200px; /* ← 縦長すぎる画像を抑える */
+    object-fit: contain;
   }
 }
 
@@ -591,5 +593,31 @@ button:hover {
   border-radius: 4px;
   padding: 2px 4px;
   transition: background-color 0.3s ease;
+}
+.flex-image-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap; /* 折り返しを許可 */
+  margin-bottom: 10px;
+  max-width: 100%;
+}
+
+.flex-image-row img {
+  max-width: 45%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* スマホ対応：縦並びに */
+@media screen and (max-width: 600px) {
+  .flex-image-row {
+    flex-direction: column;
+  }
+
+  .flex-image-row img {
+    max-width: 90%;
+  }
 }
 
