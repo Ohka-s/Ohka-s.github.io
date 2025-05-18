@@ -610,7 +610,7 @@ button:hover {
   object-fit: contain;
 }
 
-/* スマホ対応：縦並びに */
+
 @media screen and (max-width: 600px) {
   .flex-image-row {
     flex-direction: column;
