@@ -29,9 +29,9 @@
   <button class="play-btn" id="readingPlayBtn" onclick="playReadingSequence()" title="본문 듣기">
     <i class="fas fa-volume-up"></i>
   </button>
-  <button class="play-btn" onclick="stopAllAudio()" title="정지">
-    <i class="fas fa-stop"></i>
-  </button>
+  <button class="play-btn" id="pauseResumeBtn" onclick="togglePauseResume()" title="일시정지 / 다시 듣기">
+  <i class="fas fa-pause"></i>
+</button>
     <span class="reading-title">읽어 봅시다.</span>
   </div>
 
@@ -424,32 +424,56 @@ function toggleText(button, targetId) {
     document.getElementById("reading_line_7")
   ];
 
-  let currentIndex = 0;
+ let currentIndex = 0;
+let isPaused = false;
+let currentAudio = null;
 
- function playReadingSequence() {
+function playReadingSequence() {
   currentIndex = 0;
+  isPaused = false;
   disablePlayButton();
   playNextReading();
 }
 
- function playNextReading() {
+function playNextReading() {
   if (currentIndex >= readingAudios.length) {
     enablePlayButton();
     return;
   }
 
-  const audio = readingAudios[currentIndex];
-  audio.currentTime = 0;
-  audio.play();
+  currentAudio = readingAudios[currentIndex];
+  currentAudio.currentTime = 0;
+  currentAudio.play();
 
-  audio.onended = () => {
-    currentIndex++;
-    setTimeout(() => {
-      playNextReading();
-    }, 300);
+  currentAudio.onended = () => {
+    if (!isPaused) {
+      currentIndex++;
+      setTimeout(() => {
+        playNextReading();
+      }, 300);
+    }
   };
 }
-  
+
+// 一時停止／再開トグル
+function togglePauseResume() {
+  if (!currentAudio) return;
+
+  const icon = document.querySelector("#pauseResumeBtn i");
+
+  if (isPaused) {
+    currentAudio.play();
+    icon.classList.remove("fa-play");
+    icon.classList.add("fa-pause");
+    isPaused = false;
+  } else {
+    currentAudio.pause();
+    icon.classList.remove("fa-pause");
+    icon.classList.add("fa-play");
+    isPaused = true;
+  }
+}
+
   const repeatAudios = [
     document.getElementById("reading_line_1"),
     document.getElementById("reading_line_2"),
