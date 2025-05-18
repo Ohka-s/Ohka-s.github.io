@@ -484,56 +484,6 @@
     }
   }
 
-<script>
-  const repeatAudios = [
-    document.getElementById("reading1"),
-    document.getElementById("reading2"),
-    document.getElementById("reading3"),
-    document.getElementById("reading4"),
-    document.getElementById("reading5"),
-    document.getElementById("reading6"),
-    document.getElementById("reading7")
-  ];
-
-  let repeatIndex = 0;
-
-  function playRepeatSequence() {
-    repeatIndex = 0;
-    clearAllHighlights();
-    playNextRepeat();
-  }
-
-  function playNextRepeat() {
-    if (repeatIndex >= repeatAudios.length) return;
-
-    clearAllHighlights();
-
-    const audio = repeatAudios[repeatIndex];
-    const textSpan = document.getElementById(`karaoke${repeatIndex + 1}`);
-    if (textSpan) {
-      textSpan.classList.add("karaoke-active");
-    }
-
-    audio.currentTime = 0;
-    audio.play();
-
-    audio.onended = () => {
-      repeatIndex++;
-      setTimeout(() => {
-        playNextRepeat();
-      }, 2000); // 読む時間
-    };
-  }
-
-  function clearAllHighlights() {
-    for (let i = 1; i <= 7; i++) {
-      const span = document.getElementById(`karaoke${i}`);
-      if (span) {
-        span.classList.remove("karaoke-active");
-      }
-    }
-  }
-
   
   // 初期表示
   showQuestion(current);
