@@ -738,14 +738,23 @@ function enableListeningPlayButton() {
   if (btn) btn.disabled = false;
 }
 
-  function playListeningKaraoke() {
-  karaokeIndex = 0;
-  isKaraokePaused = false;
+ function playListeningKaraoke() {
+  // すでに再生中の音声をリセット
+  if (currentListeningAudio) {
+    currentListeningAudio.pause();
+    currentListeningAudio.currentTime = 0;
+    currentListeningAudio = null;
+  }
 
+  // カラオケ用の音声もリセット
   if (currentKaraokeAudio) {
     currentKaraokeAudio.pause();
     currentKaraokeAudio.currentTime = 0;
+    currentKaraokeAudio = null;
   }
+
+  karaokeIndex = 0;
+  isKaraokePaused = false;
 
   const karaokeSpans = [];
   for (let i = 1; i <= 11; i++) {
@@ -769,9 +778,10 @@ function enableListeningPlayButton() {
     const span = karaokeSpans[karaokeIndex];
     const audio = listeningAudios[karaokeIndex];
     currentKaraokeAudio = audio;
-    
+
     if (span) span.classList.add("karaoke-active");
-      if (audio) {
+
+    if (audio) {
       audio.currentTime = 0;
       audio.play();
       audio.onended = () => {
@@ -786,6 +796,7 @@ function enableListeningPlayButton() {
   disableListeningPlayButton();
   playNextKaraokeLine();
 }
+
   function toggleKaraokePauseResume() {
   const icon = document.querySelector("button[onclick='toggleKaraokePauseResume()'] i");
   if (!currentKaraokeAudio) return;
