@@ -52,7 +52,48 @@
 </div>
   
 
-<!-- 問題3 -->
+  <!-- 問題3 -->
+<div class="question">
+  <div class="reading-header">
+    <button class="play-btn play-control" id="listeningPlayBtn" onclick="playListeningSequence()" title="듣기 시작">
+  <i class="fas fa-volume-up"></i>
+</button>
+    <button class="play-btn" id="listeningPauseResumeBtn" onclick="toggleListeningPauseResume()" title="일시정지 / 다시 듣기">
+      <i class="fas fa-pause"></i>
+    </button>
+    <span class="reading-title">다시 들어 봅시다.</span>
+    </div>
+    <div class="reading-text reading-box">
+  <table class="dialogue-table">
+    <tr>
+      <td class="name">유키</td>
+      <td>준호 씨, 요즘 피곤해 보여요. 밤에 잠은 잘 자요?</td>
+    </tr>
+    <tr>
+      <td class="name">준호</td>
+      <td>네, 매일 자는데도 계속 피곤해요. 자기 전에 휴대폰을 보는 습관 때문인 것 같아요.</td>
+    </tr>
+    <tr>
+      <td class="name">유키</td>
+      <td>저도 예전에는 그랬는데, 요즘은 휴대폰을 보는 대신에 책을 조금 읽어요.</td>
+    </tr>
+    <tr>
+      <td class="name">준호</td>
+      <td>오, 좋은 방법이네요. 근데 저는 책에  <span class="modal-trigger" onclick="openModal('modal1')">집중</span>하게 돼서 잠이 잘 안 와요.</td>
+    </tr>
+    <tr>
+      <td class="name">유키</td>
+      <td>그럴 때는 조용한 음악을 듣는 것도 <span class="modal-trigger" onclick="openModal('modal2')">효과</span>가 있어요. 항상 같은 시간에 자면 더 좋아요.</td>
+    </tr>
+    <tr>
+      <td class="name">준호</td>
+      <td>좋은 <span class="modal-trigger" onclick="openModal('modal3')">조언</span> 감사합니다. 오늘부터 그렇게 해 볼게요.</td>
+    </tr>
+  </table>
+</div>
+  </div>
+
+  <!-- 問題4 -->
 <div class="question">
   <div class="reading-header">
     <button class="play-btn play-control" onclick="playListeningKaraoke()" title="듣고 따라 읽기">
@@ -87,67 +128,25 @@
       <td class="name">준호</td>
       <td>
       <span id="karaoke6">오, 좋은 방법이네요.</span>
-      <span id="karaoke7">근데 저는 책에 <span class="modal-trigger" onclick="openModal('modal1')">집중</span>하게 돼서 잠이 잘 안 와요.</span>
+      <span id="karaoke7">근데 저는 책에 집중하게 돼서 잠이 잘 안 와요.</span>
     </td>
     </tr>
     <tr>
       <td class="name">유키</td>
       <td>
-      <span id="karaoke8">그럴 때는 조용한 음악을 듣는 것도 <span class="modal-trigger" onclick="openModal('modal2')">효과</span>가 있어요.</span>
+      <span id="karaoke8">그럴 때는 조용한 음악을 듣는 것도 효과가 있어요.</span>
       <span id="karaoke9">항상 같은 시간에 자면 더 좋아요.</span>
   </td>
 </tr>
 <tr>
   <td class="name">준호</td>
   <td>
-     <span id="karaoke10">좋은 <span class="modal-trigger" onclick="openModal('modal3')">조언</span> 감사합니다.</span> <span id="karaoke11">오늘부터 그렇게 해 볼게요.</span>
+     <span id="karaoke10">좋은 조언 감사합니다.</span> <span id="karaoke11">오늘부터 그렇게 해 볼게요.</span>
   </td>
 </tr>  
     </table>
 </div>
   </div>
-
-  <!-- 問題4 -->
-<div class="question">
-  <div class="reading-header">
-    <button class="play-btn play-control" id="listeningPlayBtn" onclick="playListeningSequence()" title="듣기 시작">
-  <i class="fas fa-volume-up"></i>
-</button>
-    <button class="play-btn" id="listeningPauseResumeBtn" onclick="toggleListeningPauseResume()" title="일시정지 / 다시 듣기">
-      <i class="fas fa-pause"></i>
-    </button>
-    <span class="reading-title">다시 들어 봅시다.</span>
-    </div>
-    <div class="reading-text reading-box">
-  <table class="dialogue-table">
-    <tr>
-      <td class="name">유키</td>
-      <td>준호 씨, 요즘 피곤해 보여요. 밤에 잠은 잘 자요?</td>
-    </tr>
-    <tr>
-      <td class="name">준호</td>
-      <td>네, 매일 자는데도 계속 피곤해요. 자기 전에 휴대폰을 보는 습관 때문인 것 같아요.</td>
-    </tr>
-    <tr>
-      <td class="name">유키</td>
-      <td>저도 예전에는 그랬는데, 요즘은 휴대폰을 보는 대신에 책을 조금 읽어요.</td>
-    </tr>
-    <tr>
-      <td class="name">준호</td>
-      <td>오, 좋은 방법이네요. 근데 저는 책에 집중하게 돼서 잠이 잘 안 와요.</td>
-    </tr>
-    <tr>
-      <td class="name">유키</td>
-      <td>그럴 때는 조용한 음악을 듣는 것도 효과가 있어요. 항상 같은 시간에 자면 더 좋아요.</td>
-    </tr>
-    <tr>
-      <td class="name">준호</td>
-      <td>좋은 조언 감사합니다. 오늘부터 그렇게 해 볼게요.</td>
-    </tr>
-  </table>
-</div>
-  </div>
-
 
 
 <!-- 問題5 -->
