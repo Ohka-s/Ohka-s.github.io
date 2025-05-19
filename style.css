@@ -490,7 +490,6 @@ button:hover {
   font-weight: bold;
   font-size: 20px;
   margin-bottom: 10px;
-  cursor: pointer;
 }
 
 /* style.css に追加 */
@@ -644,8 +643,21 @@ button:hover {
   font-weight: 500;
   color: #003344;
   max-width: 480px;
-  margin: 18px auto;
-  text-align: left;       /* ←中のテキストだけ左揃えに */
+  margin: 18px auto;   
+}
+.word-button {
+  all: unset;
+  background-color: #e6f4f9;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  display: inline-flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
 
 
