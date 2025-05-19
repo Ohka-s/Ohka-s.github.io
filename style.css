@@ -636,14 +636,16 @@ button:hover {
   margin-top: 12px;
 }
 .example-focus {
-  background-color: #f0faff;
-  border: 2px solid #3399cc;
-  padding: 14px 20px;
-  border-radius: 10px;
-  font-size: 18px;
-  font-weight: bold;
+  background-color: #f7fbfd;
+  border: 1px solid #b3d9e6;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 500;
   color: #003344;
-  max-width: 500px;
-  margin: 20px auto;
+  max-width: 480px;
+  margin: 18px auto;
+  text-align: left;       /* ←中のテキストだけ左揃えに */
 }
+
 
