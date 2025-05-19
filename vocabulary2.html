@@ -37,8 +37,11 @@
 
 
   <!-- 問題2 -->
-  <div class="question">
-    <div class="word-box">대충</div>
+ <div class="question">
+  <button class="word-button" onclick="document.getElementById('wordAudio2').play()">
+    <i class="fas fa-volume-up speaker-icon" style="margin-right: 6px; font-size: 16px;"></i>대충
+  </button>
+  <audio id="wordAudio2" src="audio/audio2.mp3"></audio>
     <p>이 사람은 청소를 어떻게 해요?</p>
   <div style="margin-top: 10px;">
     <video width="320" height="240" controls>
@@ -51,8 +54,11 @@
   </div>
   
   <!-- 問題3 -->
-  <div class="question">
-    <div class="word-box">대충</div>
+<div class="question">
+  <button class="word-button" onclick="document.getElementById('wordAudio3').play()">
+    <i class="fas fa-volume-up speaker-icon" style="margin-right: 6px; font-size: 16px;"></i>대충
+  </button>
+  <audio id="wordAudio3" src="audio/audio2.mp3"></audio>
     <button class="example-btn" onclick="playAudio(1)">
     <i class="fas fa-volume-up speaker-icon"></i>
     시간이 없어서 숙제를 대충 했어요.</button>
