@@ -240,14 +240,16 @@
   function checkAnswer(index, correct) {
   const input = document.getElementById(`answer${index}`);
   const result = document.getElementById(`result${index}`);
-    if (input.value.trim() === correct) {
-      result.textContent = "◯";
-      result.style.color = "green";
-    } else {
-      result.textContent = "✕";
-      result.style.color = "red";
-    }
+  const userAnswer = input.value.trim();
+
+  if (userAnswer === correct) {
+    result.textContent = "◯";
+    result.style.color = "green";
+  } else {
+    result.textContent = `✕ 정답은 '${correct}'입니다!`;
+    result.style.color = "red";
   }
+}
 
   function checkAnswerChoice(clickedButton, selected, correct) {
     const parent = clickedButton.parentElement.parentElement; // choice-block
