@@ -227,6 +227,16 @@ let currentKaraokeAudio = null;
     "읽기 전", "읽기", "읽기", "읽기 후", "읽기 후", "읽기 후"
   ];
 
+  const readingAudios = [
+  document.getElementById("reading_line_1"),
+  document.getElementById("reading_line_2"),
+  document.getElementById("reading_line_3"),
+  document.getElementById("reading_line_4"),
+  document.getElementById("reading_line_5"),
+  document.getElementById("reading_line_6"),
+  document.getElementById("reading_line_7")
+];
+  
  function showQuestion(index) {
   // 🔽 ここから追加（音声をすべて止める）
   if (currentReadingAudio) {
@@ -458,17 +468,6 @@ function toggleText(button, targetId) {
       }
     });
   });
-
-  const readingAudios = [
-    document.getElementById("reading_line_1"),
-    document.getElementById("reading_line_2"),
-    document.getElementById("reading_line_3"),
-    document.getElementById("reading_line_4"),
-    document.getElementById("reading_line_5"),
-    document.getElementById("reading_line_6"),
-    document.getElementById("reading_line_7")
-  ];
-
   let isReadingPaused = false;
   let currentReadingAudio = null;
 
