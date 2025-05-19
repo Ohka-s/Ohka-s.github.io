@@ -435,7 +435,8 @@ button:hover {
 .choice-line .choice-block button {
   width: 48px;         /* 少し大きめに */
   height: 36px;
-  font-size: 20px;
+  font-size: 22px;
+  padding: 10px 16px;
   line-height: 1;      /* これがないと縦位置がズレる場合がある */
   text-align: center;
   padding: 0;
