@@ -228,6 +228,11 @@ if (currentListeningAudio) {
   currentListeningAudio.currentTime = 0;
   currentListeningAudio = null;
 }
+    if (currentKaraokeAudio) {
+  currentKaraokeAudio.pause();
+  currentKaraokeAudio.currentTime = 0;
+  currentKaraokeAudio = null;
+}
   questions.forEach((q, i) => {
     q.classList.toggle("active", i === index);
   });
@@ -589,6 +594,20 @@ function enablePlayButton() {
   const btn = document.getElementById("readingPlayBtn");
   if (btn) btn.disabled = false;
 }
+function playSingleAudio(id) {
+  const audios = document.querySelectorAll("audio");
+  audios.forEach(audio => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+
+  const target = document.getElementById(id);
+  if (target) {
+    target.currentTime = 0;
+    target.play();
+  }
+}
+
   
   // 初期表示
   showQuestion(current);
