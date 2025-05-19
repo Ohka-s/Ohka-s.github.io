@@ -433,9 +433,9 @@ button:hover {
   flex-shrink: 0;
 }
 .choice-line .choice-block button {
-  width: 48px;
-  height: 48px;
-  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  font-size: 26px;
   padding: 0;
   line-height: 1;
   text-align: center;
