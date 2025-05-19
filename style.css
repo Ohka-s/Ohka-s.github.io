@@ -674,3 +674,25 @@ button:hover {
     font-weight: 500;
   }
 
+.hint-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  color: #f4b400; /* 黄色系 */
+  margin-top: 10px;
+  padding: 4px;
+}
+
+.hint-btn:hover {
+  color: #ffcc33;
+}
+
+.hint-text {
+  margin-top: 8px;
+  background-color: #fff8dc;
+  padding: 10px;
+  border-left: 4px solid #f0c36d;
+  border-radius: 4px;
+}
+
