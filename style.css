@@ -523,8 +523,8 @@ button:hover {
 .example-btn {
   background-color: #f3f3f3;  /* 控えめな色 */
   border: none;
-  padding: 8px 12px;
-  margin: 8px 0;
+  padding: 6px 10px; 
+  margin: 6px 0; 
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
