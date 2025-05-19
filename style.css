@@ -433,12 +433,16 @@ button:hover {
   flex-shrink: 0;
 }
 .choice-line .choice-block button {
-  width: 48px;         /* 少し大きめに */
-  height: 36px;
-  font-size: 22px;
-  padding: 10px 16px;
-  line-height: 1;      /* これがないと縦位置がズレる場合がある */
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+  padding: 0;
+  line-height: 1;
   text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hidden-text {
