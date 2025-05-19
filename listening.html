@@ -709,6 +709,12 @@ let currentKaraokeAudio = null;
     currentListeningAudio = null;
   }
 
+const pauseBtnIcon = document.querySelector(`#listeningPauseResumeBtn${problemNum} i`);
+if (pauseBtnIcon) {
+  pauseBtnIcon.classList.remove("fa-play");
+  pauseBtnIcon.classList.add("fa-pause");
+}
+
   disableListeningPlayButton(problemNum);
   playNextListening(); // ← これだけでOK
 }
@@ -779,6 +785,13 @@ function enableListeningPlayButton(problemNum) {
     currentKaraokeAudio.currentTime = 0;
     currentKaraokeAudio = null;
   }
+
+const pauseIcon = document.querySelector("button[onclick='toggleKaraokePauseResume()'] i");
+if (pauseIcon) {
+  pauseIcon.classList.remove("fa-play");
+  pauseIcon.classList.add("fa-pause");
+}
+
 document.querySelectorAll(".karaoke-active").forEach(span => {
   span.classList.remove("karaoke-active");
 });
