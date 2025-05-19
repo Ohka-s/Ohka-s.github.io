@@ -520,28 +520,20 @@ function togglePauseResume() {
   let isRepeatPaused = false;
 let currentRepeatAudio = null;
 
-
+   const repeatDelays = [4000, 5000, 7500, 4000, 5200, 7000, 1200];
   function playRepeatSequence() {
-    repeatIndex = 0;
-    clearAllHighlights();
-    playNextRepeat();
+  repeatIndex = 0;
+  isRepeatPaused = false;
+  clearAllHighlights();
+
+  const icon = document.querySelector("#repeatPauseResumeBtn i");
+  if (icon) {
+    icon.classList.remove("fa-play");
+    icon.classList.add("fa-pause");
   }
 
-  function playNextRepeat() {
-    if (repeatIndex >= repeatAudios.length) return;
-
-    clearAllHighlights();
-
-    const audio = repeatAudios[repeatIndex];
-    const textSpan = document.getElementById(`karaoke${repeatIndex + 1}`);
-    if (textSpan) {
-      textSpan.classList.add("karaoke-active");
-    }
-currentRepeatAudio = audio; // 🔶追加
-    audio.currentTime = 0;
-    audio.play();
-
-    const repeatDelays = [4000, 5000, 7500, 4000, 5200, 7000, 1200];
+  playNextRepeat();
+}
 
 function playNextRepeat() {
   if (repeatIndex >= repeatAudios.length) return;
@@ -569,7 +561,7 @@ function playNextRepeat() {
   };
 }
 
-    }
+
 
 
   function clearAllHighlights() {
