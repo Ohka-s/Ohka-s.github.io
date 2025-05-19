@@ -490,6 +490,7 @@ button:hover {
   font-weight: bold;
   font-size: 20px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 /* style.css に追加 */
@@ -645,3 +646,4 @@ button:hover {
   max-width: 500px;
   margin: 20px auto;
 }
+
