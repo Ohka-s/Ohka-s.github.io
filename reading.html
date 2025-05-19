@@ -219,6 +219,15 @@
   ];
 
   function showQuestion(index) {
+    listeningAudios.forEach(audio => {
+  audio.pause();
+  audio.currentTime = 0;
+});
+if (currentListeningAudio) {
+  currentListeningAudio.pause();
+  currentListeningAudio.currentTime = 0;
+  currentListeningAudio = null;
+}
   questions.forEach((q, i) => {
     q.classList.toggle("active", i === index);
   });
