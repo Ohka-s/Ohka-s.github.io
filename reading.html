@@ -552,8 +552,8 @@ function playNextRepeat() {
 
   audio.onended = () => {
     if (!isRepeatPaused) {
-      const delay = repeatDelays[repeatIndex] || 500;
-      repeatIndex++;
+      repeatIndex++;  // 🔁 ここを先に
+      const delay = repeatDelays[repeatIndex] || 500;  // 🔁 次の文の delay を取得
       setTimeout(() => {
         playNextRepeat();
       }, delay);
