@@ -20,14 +20,14 @@
   <div class="question active">
     <img src="images/Image5_1.png" alt="읽기1" class="img-large" style="margin-bottom: 10px;">
 <p style="text-align: center;">
-  <span onclick="document.getElementById('audio5_1').play()" style="cursor: pointer;">
+  <span onclick="playSingleAudio('audio5_1')" style="cursor: pointer;">
     <i class="fas fa-volume-up speaker-icon" style="margin-right: 6px;"></i>
   </span>
   한국에서 친구들과 자주 먹는 음식이 있어요?
   <audio id="audio5_1" src="audio/audio5_1.mp3"></audio>
 </p>
 <p style="text-align: center;">
-  <span onclick="document.getElementById('audio5_2').play()" style="cursor: pointer;">
+  <span onclick="playSingleAudio('audio5_2')" style="cursor: pointer;">
     <i class="fas fa-volume-up speaker-icon" style="margin-right: 6px;"></i>
   </span>
   건강을 위해 고치고 싶은 생활 습관이 있어요?
@@ -40,7 +40,7 @@
   <button class="play-btn" id="readingPlayBtn" onclick="playReadingSequence()" title="본문 듣기">
     <i class="fas fa-volume-up"></i>
   </button>
-  <button class="play-btn" id="pauseResumeBtn" onclick="toggleReadingPauseResume()" title="일시정지 / 다시 듣기">
+  <button class="play-btn" id="pauseResumeBtn" onclick="togglePauseResume()" title="일시정지 / 다시 듣기">
   <i class="fas fa-pause"></i>
 </button>
     <span class="reading-title">다음은 하늘 씨의 생활 습관에 대한 글입니다. 읽어 봅시다.</span>
@@ -213,59 +213,13 @@
 
 <script>
   let current = 0;
-  let currentReadingAudio = null;
-let readingIndex = 0;
-let isReadingPaused = false;
-
-let currentRepeatAudio = null;
-let repeatIndex = 0;
-let isRepeatPaused = false;
-
-let currentKaraokeAudio = null;
   const questions = document.querySelectorAll(".question");
   const titles = [
     "읽기 전", "읽기", "읽기", "읽기 후", "읽기 후", "읽기 후"
   ];
 
-  const readingAudios = [
-  document.getElementById("reading_line_1"),
-  document.getElementById("reading_line_2"),
-  document.getElementById("reading_line_3"),
-  document.getElementById("reading_line_4"),
-  document.getElementById("reading_line_5"),
-  document.getElementById("reading_line_6"),
-  document.getElementById("reading_line_7")
-];
-  
- function showQuestion(index) {
-  // 🔽 ここから追加（音声をすべて止める）
-  if (currentReadingAudio) {
-    currentReadingAudio.pause();
-    currentReadingAudio.currentTime = 0;
-    currentReadingAudio = null;
-  }
-
-  if (currentRepeatAudio) {
-    currentRepeatAudio.pause();
-    currentRepeatAudio.currentTime = 0;
-    currentRepeatAudio = null;
-  }
-
-  if (currentKaraokeAudio) {
-    currentKaraokeAudio.pause();
-    currentKaraokeAudio.currentTime = 0;
-    currentKaraokeAudio = null;
-  }
-
-  isReadingPaused = false;
-  isRepeatPaused = false;
-  // 🔼 ここまで追加
-
-  readingAudios.forEach(audio => {
-    audio.pause();
-    audio.currentTime = 0;
-  });
-
+  function showQuestion(index) {
+  stopAllAudio();
   questions.forEach((q, i) => {
     q.classList.toggle("active", i === index);
   });
@@ -278,16 +232,22 @@ let currentKaraokeAudio = null;
 
   prevBtn.style.display = index === 0 ? "none" : "flex";
   nextBtn.style.display = index === questions.length - 1 ? "none" : "flex";
+
+  // ✅ 最後のページではドットを非表示
   if (progress) {
     progress.style.display = index === questions.length - 1 ? "none" : "flex";
   }
 
+  // ✅ 最後のページではタイトルも非表示
   const mainTitle = document.getElementById("main-title");
-  mainTitle.style.display = index === questions.length - 1 ? "none" : "block";
+  if (index === questions.length - 1) {
+    mainTitle.style.display = "none";
+  } else {
+    mainTitle.style.display = "block";
+  }
 
   updateNavigation();
 }
-
 
 
   function nextQuestion() {
@@ -365,29 +325,37 @@ let currentKaraokeAudio = null;
 
 function toggleText(button, targetId) {
   const wrapper = document.getElementById(targetId);
-  if (!wrapper) return;
-
   const normal = wrapper.querySelector(`#${targetId}-default`);
   const highlighted = wrapper.querySelector(`#${targetId}-highlighted`);
 
-  // すでにハイライトが表示中なら閉じる
+  // すでに表示中ならすべて閉じる（highlighted優先）
   if (highlighted && highlighted.style.display === "block") {
-    highlighted.style.display = "none";
-    if (normal) normal.style.display = "block";
-    wrapper.classList.remove('show');
+    // ハイライトを非表示
+    highlighted.style.display = "none";  
+    // 本文を非表示
+    if (normal) normal.style.display = "none";  
+    // 全体を非表示にする
+    wrapper.classList.remove('show');  
+    // ボタンのテキストを "[본문 보기]" に戻す
     button.textContent = "[본문 보기]";
     return;
   }
 
-  // 通常の表示切替
-  wrapper.classList.toggle('show');
-  if (wrapper.classList.contains('show')) {
-    if (normal) normal.style.display = "block";
-    if (highlighted) highlighted.style.display = "none";
-    button.textContent = "[본문 닫기]";
-  } else {
-    if (normal) normal.style.display = "none";
-    button.textContent = "[본문 보기]";
+  // 通常のトグル（normalとhighlightedを切り替える）
+  if (normal && highlighted) {
+    // 通常の本文とハイライト部分を両方表示
+    if (normal.style.display === "none" && highlighted.style.display === "none") {
+      normal.style.display = "block";  // 通常の本文を表示
+      highlighted.style.display = "block";  // ハイライト部分を表示
+      wrapper.classList.add('show');  // コンテナを表示
+      button.textContent = "[본문 닫기]";  // ボタンのテキストを "[본문 닫기]" に変更
+    } else {
+      // すでに両方表示されている場合、両方非表示にする
+      normal.style.display = "none";  // 通常の本文を非表示
+      highlighted.style.display = "none";  // ハイライト部分を非表示
+      wrapper.classList.remove('show');  // コンテナを非表示にする
+      button.textContent = "[본문 보기]";  // ボタンのテキストを "[본문 보기]" に変更
+    }
   }
 }
 
@@ -403,6 +371,7 @@ function toggleText(button, targetId) {
       const highlight = document.getElementById("reading4-highlighted");
 
       if (readingWrapper) {
+        readingWrapper.style.display = "block";
         readingWrapper.classList.add("show");
       }
       if (normal && highlight) {
@@ -468,72 +437,66 @@ function toggleText(button, targetId) {
       }
     });
   });
- 
+
+  const readingAudios = [
+    document.getElementById("reading_line_1"),
+    document.getElementById("reading_line_2"),
+    document.getElementById("reading_line_3"),
+    document.getElementById("reading_line_4"),
+    document.getElementById("reading_line_5"),
+    document.getElementById("reading_line_6"),
+    document.getElementById("reading_line_7")
+  ];
+
+ let currentIndex = 0;
+let isPaused = false;
+let currentAudio = null;
+
 function playReadingSequence() {
-    readingIndex = 0;
-    isReadingPaused = false;
+  currentIndex = 0;
+  isPaused = false;
+  disablePlayButton();
+  playNextReading();
+}
 
-    if (currentReadingAudio) {
-      currentReadingAudio.pause();
-      currentReadingAudio.currentTime = 0;
-      currentReadingAudio = null;
+function playNextReading() {
+  if (currentIndex >= readingAudios.length) {
+    enablePlayButton();
+    return;
+  }
+
+  currentAudio = readingAudios[currentIndex];
+  currentAudio.currentTime = 0;
+  currentAudio.play();
+
+  currentAudio.onended = () => {
+    if (!isPaused) {
+      currentIndex++;
+      setTimeout(() => {
+        playNextReading();
+      }, 300);
     }
+  };
+}
 
-    const icon = document.querySelector("#pauseResumeBtn i");
-    if (icon) {
-      icon.classList.remove("fa-play");
-      icon.classList.add("fa-pause");
-    }
+// 一時停止／再開トグル
+function togglePauseResume() {
+  if (!currentAudio) return;
 
-    disableReadingPlayButton();
-    playNextReadingLine();
+  const icon = document.querySelector("#pauseResumeBtn i");
+
+  if (isPaused) {
+    currentAudio.play();
+    icon.classList.remove("fa-play");
+    icon.classList.add("fa-pause");
+    isPaused = false;
+  } else {
+    currentAudio.pause();
+    icon.classList.remove("fa-pause");
+    icon.classList.add("fa-play");
+    isPaused = true;
   }
-
-function playNextReadingLine() {
-    if (readingIndex >= readingAudios.length) {
-      enableReadingPlayButton();
-      return;
-    }
-
-    currentReadingAudio = readingAudios[readingIndex];
-    currentReadingAudio.currentTime = 0;
-    currentReadingAudio.play();
-
-    currentReadingAudio.onended = () => {
-      if (!isReadingPaused) {
-        readingIndex++;
-        setTimeout(playNextReadingLine, 500);
-      }
-    };
-  }
-  
-function toggleReadingPauseResume() {
-    const icon = document.querySelector("#pauseResumeBtn i");
-    if (!currentReadingAudio) return;
-
-    if (isReadingPaused) {
-      currentReadingAudio.play();
-      icon.classList.remove("fa-play");
-      icon.classList.add("fa-pause");
-      isReadingPaused = false;
-      disableReadingPlayButton();
-    } else {
-      currentReadingAudio.pause();
-      icon.classList.remove("fa-pause");
-      icon.classList.add("fa-play");
-      isReadingPaused = true;
-      enableReadingPlayButton();
-    }
-  }
-function disableReadingPlayButton() {
-    const btn = document.getElementById("readingPlayBtn");
-    if (btn) btn.disabled = true;
-  }
-
-  function enableReadingPlayButton() {
-    const btn = document.getElementById("readingPlayBtn");
-    if (btn) btn.disabled = false;
-  }
+}
   function toggleRepeatPauseResume() {
   if (!currentRepeatAudio) return;
 
@@ -627,13 +590,16 @@ function enablePlayButton() {
   const btn = document.getElementById("readingPlayBtn");
   if (btn) btn.disabled = false;
 }
+  
+  
 function playSingleAudio(id) {
   const audios = document.querySelectorAll("audio");
-  audios.forEach(audio => {
-    audio.pause();
-    audio.currentTime = 0;
+  audios.forEach(a => {
+    if (!a.paused) {
+      a.pause();
+      a.currentTime = 0;
+    }
   });
-
   const target = document.getElementById(id);
   if (target) {
     target.currentTime = 0;
@@ -641,8 +607,7 @@ function playSingleAudio(id) {
   }
 }
 
-  
-  // 初期表示
+// 初期表示
   showQuestion(current);
 </script>
 
