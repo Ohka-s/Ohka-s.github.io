@@ -452,55 +452,75 @@ function toggleText(button, targetId) {
     document.getElementById("reading_line_7")
   ];
 
- let currentIndex = 0;
-let isPaused = false;
-let currentAudio = null;
+  let readingIndex = 0;
+  let isReadingPaused = false;
+  let currentReadingAudio = null;
 
 function playReadingSequence() {
-  currentIndex = 0;
-  isPaused = false;
-  disablePlayButton();
-  playNextReading();
-}
+    readingIndex = 0;
+    isReadingPaused = false;
 
-function playNextReading() {
-  if (currentIndex >= readingAudios.length) {
-    enablePlayButton();
-    return;
-  }
-
-  currentAudio = readingAudios[currentIndex];
-  currentAudio.currentTime = 0;
-  currentAudio.play();
-
-  currentAudio.onended = () => {
-    if (!isPaused) {
-      currentIndex++;
-      setTimeout(() => {
-        playNextReading();
-      }, 300);
+    if (currentReadingAudio) {
+      currentReadingAudio.pause();
+      currentReadingAudio.currentTime = 0;
+      currentReadingAudio = null;
     }
-  };
-}
 
-// 一時停止／再開トグル
-function togglePauseResume() {
-  if (!currentAudio) return;
+    const icon = document.querySelector("#pauseResumeBtn i");
+    if (icon) {
+      icon.classList.remove("fa-play");
+      icon.classList.add("fa-pause");
+    }
 
-  const icon = document.querySelector("#pauseResumeBtn i");
-
-  if (isPaused) {
-    currentAudio.play();
-    icon.classList.remove("fa-play");
-    icon.classList.add("fa-pause");
-    isPaused = false;
-  } else {
-    currentAudio.pause();
-    icon.classList.remove("fa-pause");
-    icon.classList.add("fa-play");
-    isPaused = true;
+    disableReadingPlayButton();
+    playNextReadingLine();
   }
-}
+
+function playNextReadingLine() {
+    if (readingIndex >= readingAudios.length) {
+      enableReadingPlayButton();
+      return;
+    }
+
+    currentReadingAudio = readingAudios[readingIndex];
+    currentReadingAudio.currentTime = 0;
+    currentReadingAudio.play();
+
+    currentReadingAudio.onended = () => {
+      if (!isReadingPaused) {
+        readingIndex++;
+        setTimeout(playNextReadingLine, 500);
+      }
+    };
+  }
+  
+/function toggleReadingPauseResume() {
+    const icon = document.querySelector("#pauseResumeBtn i");
+    if (!currentReadingAudio) return;
+
+    if (isReadingPaused) {
+      currentReadingAudio.play();
+      icon.classList.remove("fa-play");
+      icon.classList.add("fa-pause");
+      isReadingPaused = false;
+      disableReadingPlayButton();
+    } else {
+      currentReadingAudio.pause();
+      icon.classList.remove("fa-pause");
+      icon.classList.add("fa-play");
+      isReadingPaused = true;
+      enableReadingPlayButton();
+    }
+  }
+function disableReadingPlayButton() {
+    const btn = document.getElementById("readingPlayBtn");
+    if (btn) btn.disabled = true;
+  }
+
+  function enableReadingPlayButton() {
+    const btn = document.getElementById("readingPlayBtn");
+    if (btn) btn.disabled = false;
+  }
   function toggleRepeatPauseResume() {
   if (!currentRepeatAudio) return;
 
