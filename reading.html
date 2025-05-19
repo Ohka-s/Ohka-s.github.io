@@ -40,7 +40,7 @@
   <button class="play-btn" id="readingPlayBtn" onclick="playReadingSequence()" title="본문 듣기">
     <i class="fas fa-volume-up"></i>
   </button>
-  <button class="play-btn" id="pauseResumeBtn" onclick="togglePauseResume()" title="일시정지 / 다시 듣기">
+  <button class="play-btn" id="pauseResumeBtn" onclick="toggleReadingPauseResume()" title="일시정지 / 다시 듣기">
   <i class="fas fa-pause"></i>
 </button>
     <span class="reading-title">다음은 하늘 씨의 생활 습관에 대한 글입니다. 읽어 봅시다.</span>
@@ -213,26 +213,49 @@
 
 <script>
   let current = 0;
+  let currentReadingAudio = null;
+let readingIndex = 0;
+let isReadingPaused = false;
+
+let currentRepeatAudio = null;
+let repeatIndex = 0;
+let isRepeatPaused = false;
+
+let currentKaraokeAudio = null;
   const questions = document.querySelectorAll(".question");
   const titles = [
     "읽기 전", "읽기", "읽기", "읽기 후", "읽기 후", "읽기 후"
   ];
 
-  function showQuestion(index) {
-    readingAudios.forEach(audio => {
-  audio.pause();
-  audio.currentTime = 0;
-});
-if (currentReadingAudio) {
-  currentReadingAudio.pause();
-  currentReadingAudio.currentTime = 0;
-  currentReadingAudio = null;
-}
-    if (currentKaraokeAudio) {
-  currentKaraokeAudio.pause();
-  currentKaraokeAudio.currentTime = 0;
-  currentKaraokeAudio = null;
-}
+ function showQuestion(index) {
+  // 🔽 ここから追加（音声をすべて止める）
+  if (currentReadingAudio) {
+    currentReadingAudio.pause();
+    currentReadingAudio.currentTime = 0;
+    currentReadingAudio = null;
+  }
+
+  if (currentRepeatAudio) {
+    currentRepeatAudio.pause();
+    currentRepeatAudio.currentTime = 0;
+    currentRepeatAudio = null;
+  }
+
+  if (currentKaraokeAudio) {
+    currentKaraokeAudio.pause();
+    currentKaraokeAudio.currentTime = 0;
+    currentKaraokeAudio = null;
+  }
+
+  isReadingPaused = false;
+  isRepeatPaused = false;
+  // 🔼 ここまで追加
+
+  readingAudios.forEach(audio => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+
   questions.forEach((q, i) => {
     q.classList.toggle("active", i === index);
   });
@@ -245,22 +268,16 @@ if (currentReadingAudio) {
 
   prevBtn.style.display = index === 0 ? "none" : "flex";
   nextBtn.style.display = index === questions.length - 1 ? "none" : "flex";
-
-  // ✅ 最後のページではドットを非表示
   if (progress) {
     progress.style.display = index === questions.length - 1 ? "none" : "flex";
   }
 
-  // ✅ 最後のページではタイトルも非表示
   const mainTitle = document.getElementById("main-title");
-  if (index === questions.length - 1) {
-    mainTitle.style.display = "none";
-  } else {
-    mainTitle.style.display = "block";
-  }
+  mainTitle.style.display = index === questions.length - 1 ? "none" : "block";
 
   updateNavigation();
 }
+
 
 
   function nextQuestion() {
@@ -494,7 +511,7 @@ function playNextReadingLine() {
     };
   }
   
-/function toggleReadingPauseResume() {
+function toggleReadingPauseResume() {
     const icon = document.querySelector("#pauseResumeBtn i");
     if (!currentReadingAudio) return;
 
