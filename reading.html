@@ -541,14 +541,34 @@ currentRepeatAudio = audio; // 🔶追加
     audio.currentTime = 0;
     audio.play();
 
-    audio.onended = () => {
-  if (!isRepeatPaused) {
-    repeatIndex++;
-    setTimeout(() => {
-      playNextRepeat();
-    }, 500); // 0.5秒間の間（必要に応じて調整可）
+    const repeatDelays = [4000, 5000, 7500, 4000, 5200, 7000, 1200];
+
+function playNextRepeat() {
+  if (repeatIndex >= repeatAudios.length) return;
+
+  clearAllHighlights();
+
+  const audio = repeatAudios[repeatIndex];
+  const textSpan = document.getElementById(`karaoke${repeatIndex + 1}`);
+  if (textSpan) {
+    textSpan.classList.add("karaoke-active");
   }
-};
+
+  currentRepeatAudio = audio;
+  audio.currentTime = 0;
+  audio.play();
+
+  audio.onended = () => {
+    if (!isRepeatPaused) {
+      const delay = repeatDelays[repeatIndex] || 500;
+      repeatIndex++;
+      setTimeout(() => {
+        playNextRepeat();
+      }, delay);
+    }
+  };
+}
+
     }
 
 
