@@ -677,3 +677,15 @@ button:hover {
     font-size: 18px;
     font-weight: 500;
   }
+.example-audio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-align: center;
+}
+.example-audio .speaker-icon {
+  font-size: 20px;
+  color: #333;
+}
