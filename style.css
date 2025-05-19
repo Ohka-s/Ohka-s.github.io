@@ -216,6 +216,9 @@ button:hover {
 .nav-btn.hidden {
   display: none;
 }
+.arrow-pc {
+  display: inline;
+}
 .arrow-mobile {
   display: none;
 }
