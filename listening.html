@@ -114,7 +114,7 @@
     <button class="play-btn" onclick="toggleKaraokePauseResume()" title="일시정지 / 다시 듣기">
       <i class="fas fa-pause"></i>
     </button>
-    <span class="reading-title">듣고 따라서 읽어 봅시다.</span>
+    <span class="reading-title">다시 듣고 따라서 읽어 봅시다.</span>
   </div>
     <div class="reading-text reading-box karaoke-box">
     <table class="dialogue-table">
@@ -163,7 +163,7 @@
 
 <!-- 問題5 -->
 <div class="question">
-  <p>들은 내용에 맞는 것을 고르십시오.</p>
+  <p>문장의 내용이 들은 내용과 같으면 ○, 다르면 ✕ 하십시오.</p>
   <button class="toggle-text-btn" onclick="toggleText(this, 'reading4')">[본문 보기]</button>
   <div id="reading4" class="hidden-text">
   <!-- ⭐ 通常表示用（マーカーなし） -->
@@ -246,7 +246,7 @@
 
 <!-- 問題6 -->
 <div class="question">
- <p>들은 내용에 맞는 것을 고르십시오.</p>
+ <p>문장의 내용이 들은 내용과 같으면 ○, 다르면 ✕ 하십시오.</p>
   <button class="toggle-text-btn" onclick="toggleText(this, 'reading5')">[본문 보기]</button>
 <div id="reading5" class="hidden-text">
   <div id="reading5-default" class="reading-text">
@@ -328,7 +328,7 @@
 
 <!-- 問題7 -->
 <div class="question">
-  <p>들은 내용에 맞는 것을 고르십시오.</p>
+  <p>문장의 내용이 들은 내용과 같으면 ○, 다르면 ✕ 하십시오.</p>
     <button class="toggle-text-btn" onclick="toggleText(this, 'reading6')">[본문 보기]</button>
 <div id="reading6" class="hidden-text">
   <div id="reading6-default" class="reading-text">
@@ -896,6 +896,7 @@ document.querySelectorAll(".karaoke-active").forEach(span => {
 <div id="modal2" class="modal">
   <div class="modal-content">
     <span class="close-btn" onclick="closeModal('modal2')">×</span>
+    <img src="images/Image6_effect.png" alt="효과를 나타내는 이미지" style="max-width:100%; border-radius: 8px; margin-top: 10px;">
     <p><strong>효과</strong> [효ː과/효ː꽈]: effect, 效果, 効果</p>
   </div>
 </div>
@@ -904,6 +905,7 @@ document.querySelectorAll(".karaoke-active").forEach(span => {
 <div id="modal3" class="modal">
   <div class="modal-content">
     <span class="close-btn" onclick="closeModal('modal3')">×</span>
+    <img src="images/Image6_advice.png" alt="조언을 나타내는 이미지" style="max-width:100%; border-radius: 8px; margin-top: 10px;">
     <p><strong>조언</strong>[조ː언]: advice, 指教, 助言</p>
   </div>
 </div>
