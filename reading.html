@@ -324,37 +324,29 @@
 
 function toggleText(button, targetId) {
   const wrapper = document.getElementById(targetId);
+  if (!wrapper) return;
+
   const normal = wrapper.querySelector(`#${targetId}-default`);
   const highlighted = wrapper.querySelector(`#${targetId}-highlighted`);
 
-  // すでに表示中ならすべて閉じる（highlighted優先）
+  // すでにハイライトが表示中なら閉じる
   if (highlighted && highlighted.style.display === "block") {
-    // ハイライトを非表示
-    highlighted.style.display = "none";  
-    // 本文を非表示
-    if (normal) normal.style.display = "none";  
-    // 全体を非表示にする
-    wrapper.classList.remove('show');  
-    // ボタンのテキストを "[본문 보기]" に戻す
+    highlighted.style.display = "none";
+    if (normal) normal.style.display = "block";
+    wrapper.classList.remove('show');
     button.textContent = "[본문 보기]";
     return;
   }
 
-  // 通常のトグル（normalとhighlightedを切り替える）
-  if (normal && highlighted) {
-    // 通常の本文とハイライト部分を両方表示
-    if (normal.style.display === "none" && highlighted.style.display === "none") {
-      normal.style.display = "block";  // 通常の本文を表示
-      highlighted.style.display = "block";  // ハイライト部分を表示
-      wrapper.classList.add('show');  // コンテナを表示
-      button.textContent = "[본문 닫기]";  // ボタンのテキストを "[본문 닫기]" に変更
-    } else {
-      // すでに両方表示されている場合、両方非表示にする
-      normal.style.display = "none";  // 通常の本文を非表示
-      highlighted.style.display = "none";  // ハイライト部分を非表示
-      wrapper.classList.remove('show');  // コンテナを非表示にする
-      button.textContent = "[본문 보기]";  // ボタンのテキストを "[본문 보기]" に変更
-    }
+  // 通常の表示切替
+  wrapper.classList.toggle('show');
+  if (wrapper.classList.contains('show')) {
+    if (normal) normal.style.display = "block";
+    if (highlighted) highlighted.style.display = "none";
+    button.textContent = "[본문 닫기]";
+  } else {
+    if (normal) normal.style.display = "none";
+    button.textContent = "[본문 보기]";
   }
 }
 
