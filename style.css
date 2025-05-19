@@ -620,7 +620,6 @@ button:hover {
 
 .grammar-example {
   background-color: #e6f4ff;  /* 薄い青背景で目立たせる */
-  border-left: 6px solid #3399cc;  /* 左に強調ライン */
   padding: 12px 18px;
   border-radius: 10px;
   font-size: 18px;
@@ -635,4 +634,14 @@ button:hover {
   line-height: 1.6;
   margin-top: 12px;
 }
-
+.example-focus {
+  background-color: #f0faff;
+  border: 2px solid #3399cc;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #003344;
+  max-width: 500px;
+  margin: 20px auto;
+}
