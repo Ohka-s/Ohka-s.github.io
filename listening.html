@@ -573,16 +573,20 @@ listeningIndex = 0;
 
   // すでに表示中ならすべて閉じる（highlighted優先）
   if (highlighted && highlighted.style.display === "block") {
-    highlighted.style.display = "none";
-    if (normal) normal.style.display = "block";
-    wrapper.classList.remove('show');
+    highlighted.style.display = "none";  // ハイライト部分を非表示
+    if (normal) normal.style.display = "block";  // 通常の本文を表示
+    wrapper.classList.remove('show');  // 本文全体を非表示にする
     button.textContent = "[본문 보기]";
     return;
   }
 
   // 通常のトグル（normal表示のみ切り替える）
-  wrapper.classList.toggle('show');
-  button.textContent = wrapper.classList.contains('show') ? "[본문 닫기]" : "[본문 보기]";
+  // 通常の本文とハイライト部分を切り替える
+  if (normal) normal.style.display = "none";  // 通常の本文を非表示
+  if (highlighted) highlighted.style.display = "block";  // ハイライト部分を表示
+
+  wrapper.classList.add('show');  // 本文を表示する
+  button.textContent = "[본문 닫기]";
 }
 
 
