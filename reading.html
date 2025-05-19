@@ -456,6 +456,12 @@ function playReadingSequence() {
   currentIndex = 0;
   isPaused = false;
   disablePlayButton();
+  const icon = document.querySelector("#pauseResumeBtn i");
+  if (icon) {
+    icon.classList.remove("fa-play");
+    icon.classList.add("fa-pause");
+  }
+
   playNextReading();
 }
 
