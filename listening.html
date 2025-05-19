@@ -824,16 +824,21 @@ document.querySelectorAll(".karaoke-active").forEach(span => {
     if (span) span.classList.add("karaoke-active");
 
     if (audio) {
-      audio.currentTime = 0;
-      audio.play();
-      audio.onended = () => {
-        if (!isKaraokePaused) {
-          karaokeIndex++;
-          setTimeout(() => playNextKaraokeLine(), 500);
-        }
-      };
+        audio.currentTime = 0;
+        audio.play();
+        
+        // 各文に異なる遅延時間を設定（例として文ごとに0.5秒、1秒、1.5秒を設定）
+        const delayTimes = [3800, 3000, 4800, 5000, 7000, 3500, 5500, 4500, 4000, 3000, 4000]; // ミリ秒
+        const delayTime = delayTimes[karaokeIndex];  // 各文の遅延時間
+
+        audio.onended = () => {
+            if (!isKaraokePaused) {
+                karaokeIndex++;
+                setTimeout(() => playNextKaraokeLine(), delayTime); // 各文ごとに異なる間隔
+            }
+        };
     }
-  }
+}
 
   disableListeningPlayButton();
   playNextKaraokeLine();
