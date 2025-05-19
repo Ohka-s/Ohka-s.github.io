@@ -216,12 +216,6 @@ button:hover {
 .nav-btn.hidden {
   display: none;
 }
-.arrow-pc {
-  display: inline;
-}
-.arrow-mobile {
-  display: none;
-}
 
 @media screen and (max-width: 600px) {
   /* ナビゲーションボタン（← →） */
@@ -313,13 +307,6 @@ button:hover {
     max-width: 300px;
     display: block;
     margin: 0 auto 10px;
-  }
-  .arrow-pc {
-    display: none;
-  }
-
-  .arrow-mobile {
-    display: inline;
   }
 }
 
@@ -613,3 +600,20 @@ button:hover {
   padding: 2px 4px;
   transition: background-color 0.3s ease;
 }
+.arrow-pc {
+  display: inline;
+}
+
+.arrow-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .arrow-pc {
+    display: none !important;
+  }
+
+  .arrow-mobile {
+    display: inline !important;
+  }
+} 
