@@ -669,4 +669,8 @@ button:hover {
   transform: translateY(1px);  
 }
 
+ .choice-line > p {
+    font-size: 18px;
+    font-weight: 500;
+  }
 
