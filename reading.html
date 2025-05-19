@@ -219,14 +219,14 @@
   ];
 
   function showQuestion(index) {
-    listeningAudios.forEach(audio => {
+    readingAudios.forEach(audio => {
   audio.pause();
   audio.currentTime = 0;
 });
-if (currentListeningAudio) {
-  currentListeningAudio.pause();
-  currentListeningAudio.currentTime = 0;
-  currentListeningAudio = null;
+if (currentReadingAudio) {
+  currentReadingAudio.pause();
+  currentReadingAudio.currentTime = 0;
+  currentReadingAudio = null;
 }
     if (currentKaraokeAudio) {
   currentKaraokeAudio.pause();
