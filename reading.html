@@ -550,6 +550,12 @@ function playNextRepeat() {
   audio.currentTime = 0;
   audio.play();
 
+   const icon = document.querySelector("#repeatPauseResumeBtn i");
+  if (icon) {
+    icon.classList.remove("fa-play");
+    icon.classList.add("fa-pause");
+  }
+  
   audio.onended = () => {
     if (!isRepeatPaused) {
       repeatIndex++;  // 🔁 ここを先に
