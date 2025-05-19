@@ -131,12 +131,6 @@
   <input type="text" id="answer7">
   <button class="check-answer-btn" onclick="checkAnswer(7, '가르쳐 주는 대신에')">정답 확인</button>
   <p id="result7" class="result"></p>
-  <button class="hint-btn" onclick="toggleHint(7)" title="힌트">
-  <i class="fas fa-lightbulb"></i>
-</button>
-<div id="hint7" class="hint-text" style="display: none;">
-  <p>친구는 마이클 씨에게 한국어를 가르쳐 줘요.</p>
-</div>
 </div>
   
   <!-- 問題8 -->
@@ -148,12 +142,8 @@
   <input type="text" id="answer8">
   <button class="check-answer-btn" onclick="checkAnswer(8, '게임을 하는 대신에 책을 읽어요')">정답 확인</button>
   <p id="result8" class="result"></p>
-  <button class="hint-btn" onclick="toggleHint(8)" title="힌트">
-  <i class="fas fa-lightbulb"></i>
-</button>
-<div id="hint8" class="hint-text" style="display: none;">
-  <p>민지 씨는 요즘 게임을 안 해요. 책을 읽어요.</p>
 </div>
+  
   <div class="question">
   <p style="font-size: 20px; font-weight: bold;">🎉 학습을 완료했습니다!</p>
   <p>아래 버튼을 눌러 처음부터 다시 시작하거나, 다른 학습으로 이동해 보세요.</p>
@@ -291,12 +281,7 @@
       audio.play(); 
     }
   }
-  function toggleHint(index) {
-  const hint = document.getElementById(`hint${index}`);
-  if (hint) {
-    hint.style.display = hint.style.display === "none" ? "block" : "none";
-  }
-}
+  
   showQuestion(current);
 </script>
 
