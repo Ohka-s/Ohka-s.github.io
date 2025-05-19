@@ -162,21 +162,25 @@
 <button class="nav-btn right-btn" id="nextBtn" onclick="nextQuestion()">
   <i class="fas fa-chevron-right"></i>
 </button>
-  <audio id="grammar-audio1" src="audio/grammar2_1.mp3"></audio>
-  <audio id="grammar-audio2" src="audio/grammar2_2.mp3"></audio>
+  <audio id="grammar-audio1" src="audio/grammar3_3_1.mp3"></audio>
+  <audio id="grammar-audio2" src="audio/grammar3_3_2.mp3"></audio>
+  <audio id="grammar-audio3" src="audio/grammar3_3_3.mp3"></audio>
+<audio id="grammar-audio4" src="audio/grammar3_3_4.mp3"></audio>
+<audio id="grammar-audio5" src="audio/grammar3_3_5.mp3"></audio>
+
 
 <script>
   let current = 0;
   const questions = document.querySelectorAll(".question");
  const titles = [
-  "어휘-도입",
-  "어휘-제시",
-  "어휘-제시",
-  "어휘-제시",
-  "어휘-제시",
-  "어휘-연습1",
-  "어휘-연습2",
-  "어휘-연습2"
+  "문법-도입",
+  "문법-제시",
+  "문법-제시",
+  "문법-제시",
+  "문법-제시",
+  "문법-연습1",
+  "문법-연습2",
+  "문법-연습2"
 ];
 
  function showQuestion(index) {
@@ -264,12 +268,11 @@
   }
     function playGrammarAudio(index) {
       const audio = document.getElementById("grammar-audio" + index);
-      if (audio) {
-        audio.currentTime = 0;
-        audio.play();
-      }
+    if (audio) {
+      audio.currentTime = 0; 
+      audio.play(); 
     }
-
+  }
   
   showQuestion(current);
 </script>
