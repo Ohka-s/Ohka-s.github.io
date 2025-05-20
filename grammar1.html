@@ -155,11 +155,22 @@
 <div class="question">
   <p class="question-instruction">그림을 보고 빈 칸에 알맞게 쓰십시오.</p>
 <img src="images/Image3_7.png" alt="문법15" class="img-large" style="margin-bottom: 10px;">
-  <p>Q:마이클 씨는 한국 친구한테서 한국말을 배워요?</p>
-  <p>A:맞아요. 친구가 저한테 한국말을 __________제가 친구한테 영어를 가르쳐 줘요.</p>
+   <p>
+    <span onclick="document.getElementById('audio3_9_1').play()" style="cursor: pointer; margin-right: 6px;">
+      <i class="fas fa-volume-up speaker-icon"></i>
+    </span>
+    <strong>Q:</strong> 마이클 씨는 한국 친구한테서 한국말을 배워요?</p>
+  <p><strong>A:</strong> 맞아요. 친구가 저한테 한국말을 __________제가 친구한테 영어를 가르쳐 줘요.</p>
   <input type="text" id="answer7">
   <button class="check-answer-btn" onclick="checkAnswer(7, '가르쳐 주는 대신에')">정답 확인</button>
   <p id="result7" class="result"></p>
+<span id="audio-btn-correct7" onclick="document.getElementById('audio3_9_2').play()" 
+        style="display: none; cursor: pointer; margin-top: 10px;">
+    <i class="fas fa-volume-up speaker-icon" style="font-size: 20px;"></i>
+  </span>
+
+  <audio id="audio3_9_1" src="audio/audio3_9_1.mp3"></audio>
+  <audio id="audio3_9_2" src="audio/audio3_9_2.mp3"></audio>
 </div>
   
   <!-- 問題10 -->
