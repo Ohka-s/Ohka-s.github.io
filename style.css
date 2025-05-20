@@ -767,13 +767,13 @@ button:hover {
 }
 
 .inline-image {
-  width: 120px;
+  width: 140px;
   height: auto;
 }
 
 @media screen and (max-width: 600px) {
   .inline-image {
-    width: 80px;
+    width: 60px;
   }
 }
 
