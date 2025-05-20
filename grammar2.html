@@ -258,8 +258,8 @@
   const input = document.getElementById(`answer${index}`);
   const result = document.getElementById(`result${index}`);
   const userAnswer = input.value.trim();
+  const audioBtn = document.getElementById(`audio-btn-correct${index}`);  
 
-const audioBtn = document.getElementById(`audio-btn-correct${index}`);
 
   if (userAnswer === correct) {
     result.textContent = "◯ 정답입니다!";
