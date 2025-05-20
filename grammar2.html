@@ -106,22 +106,47 @@
 <div class="question">
   <p class="question-instruction">그림을 보고 빈 칸에 알맞게 쓰십시오.</p>
   <img src="images/Image4_7tv.png" alt="문법7" class="img-large" style="margin-bottom: 10px;">
-  <p>Q:우리 아이는 날마다 밤 늦게까지 텔레비전을 봐요.</p>
-  <p>A:그건 조금 걱정되네요. 아이에게 밤 9시까지만 _________.</p>
+  <p>
+    <span onclick="document.getElementById('audio4_7_1').play()" style="cursor: pointer; margin-right: 6px;">
+      <i class="fas fa-volume-up speaker-icon"></i>
+    </span>
+    <strong>Q:</strong>우리 아이는 날마다 밤 늦게까지 텔레비전을 봐요.</p>
+  <p><strong>A:</strong> 그건 조금 걱정되네요. 아이에게 밤 9시까지만 _________.</p>
   <input type="text" id="answer7">
   <button class="check-answer-btn" onclick="checkAnswer(7, '텔레비전을 보게 하세요')">정답 확인</button>
   <p id="result7" class="result"></p>
+<span id="audio-btn-correct7" onclick="document.getElementById('audio4_7_2').play()" 
+        style="display: none; cursor: pointer; margin-top: 10px;">
+    <i class="fas fa-volume-up speaker-icon" style="font-size: 20px;"></i>
+  </span>
+
+  <!-- 音声 -->
+  <audio id="audio4_7_1" src="audio/audio4_7_1.mp3"></audio>
+  <audio id="audio4_7_2" src="audio/audio4_7_2.mp3"></audio>
 </div>
   
   <!-- 問題8 -->
 <div class="question">
   <p class="question-instruction">그림을 보고 빈 칸에 알맞게 쓰십시오.</p>
   <img src="images/Image4_English.png" alt="문법8" class="img-large" style="margin-bottom: 10px;">
-  <p>Q:수아 씨는 영어 단어를 많이 아시네요.</p>
-  <p>A:네, 고등학교 때 선생님께서 단어를 많이 __________.</p>
+  <p>
+    <span onclick="document.getElementById('audio4_8_1').play()" style="cursor: pointer; margin-right: 6px;">
+      <i class="fas fa-volume-up speaker-icon"></i>
+    </span>
+    <strong>Q:</strong> 수아 씨는 영어 단어를 많이 아시네요.</p>
+  
+  <p><strong>A:</strong>네, 고등학교 때 선생님께서 단어를 많이 __________.</p>
   <input type="text" id="answer8">
   <button class="check-answer-btn" onclick="checkAnswer(8, '외우게 하셨어요')">정답 확인</button>
   <p id="result8" class="result"></p>
+<span id="audio-btn-correct8" onclick="document.getElementById('audio4_8_2').play()" 
+        style="display: none; cursor: pointer; margin-top: 10px;">
+    <i class="fas fa-volume-up speaker-icon" style="font-size: 20px;"></i>
+  </span>
+
+  <!-- 音声 -->
+  <audio id="audio4_8_1" src="audio/audio4_8_1.mp3"></audio>
+  <audio id="audio4_8_2" src="audio/audio4_8_2.mp3"></audio>
 </div>
   <div class="question">
   <p style="font-size: 20px; font-weight: bold;">🎉잘 하셨어요!</p>
@@ -229,12 +254,14 @@
   const result = document.getElementById(`result${index}`);
   const userAnswer = input.value.trim();
 
-  if (userAnswer === correct) {
+  if (input.value.trim() === correct) {
     result.textContent = "◯ 정답입니다!";
     result.style.color = "green";
+    if (audioBtn) audioBtn.style.display = "inline-block";
   } else {
     result.textContent = `✕ 정답은 '${correct}'입니다!`;
     result.style.color = "red";
+    if (audioBtn) audioBtn.style.display = "none";
   }
 }
 
