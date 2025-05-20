@@ -142,7 +142,7 @@
   <input type="text" id="answer6">
   <button class="check-answer-btn" onclick="checkAnswer(6, '먹는 대신에')">정답 확인</button>
   <p id="result6" class="result"></p>
-<<span id="audio-btn-correct6" onclick="document.getElementById('audio3_8').play()" 
+<span id="audio-btn-correct6" onclick="document.getElementById('audio3_8').play()" 
         style="display: none; cursor: pointer; margin-top: 10px;">
     <i class="fas fa-volume-up speaker-icon" style="font-size: 20px;"></i>
   </span>
@@ -177,11 +177,22 @@
 <div class="question">
   <p class="question-instruction">그림을 보고 빈 칸에 알맞게 쓰십시오.</p>
   <img src="images/Image3_8.png" alt="문법16" class="img-large" style="margin-bottom: 10px;">
-  <p>Q:민지 씨, 요즘 게임을 안 해요?</p>
-  <p>A:네, 요즘은 _________________.</p>
+  <p>
+    <span onclick="document.getElementById('audio3_10_1').play()" style="cursor: pointer; margin-right: 6px;">
+      <i class="fas fa-volume-up speaker-icon"></i>
+    </span>
+    <strong>Q:</strong>민지 씨, 요즘 게임을 안 해요?</p>
+  <p><strong>A:</strong> 네, 요즘은 _________________.</p>
   <input type="text" id="answer8">
   <button class="check-answer-btn" onclick="checkAnswer(8, '게임을 하는 대신에 책을 읽어요')">정답 확인</button>
   <p id="result8" class="result"></p>
+<span id="audio-btn-correct8" onclick="document.getElementById('audio3_10_2').play()" 
+        style="display: none; cursor: pointer; margin-top: 10px;">
+    <i class="fas fa-volume-up speaker-icon" style="font-size: 20px;"></i>
+  </span>
+
+  <audio id="audio3_10_1" src="audio/audio3_10_1.mp3"></audio>
+  <audio id="audio3_10_2" src="audio/audio3_10_2.mp3"></audio>
 </div>
   
   <div class="question">
