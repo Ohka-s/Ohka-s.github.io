@@ -201,14 +201,21 @@
   function checkAnswer(index, correct) {
     const input = document.getElementById(`answer${index}`);
     const result = document.getElementById(`result${index}`);
-    if (input.value.trim() === correct) {
-      result.textContent = "◯ 정답입니다!";
-      result.style.color = "green";
-    } else {
-      result.textContent = "✕ 정답은 '습관'입니다!";
-      result.style.color = "red";
+    const audioBtn = document.getElementById(`audio-btn-correct${index}`);
+  if (input.value.trim() === correct) {
+    result.textContent = "◯ 정답입니다!";
+    result.style.color = "green";
+    if (audioBtn) {
+      audioBtn.style.display = "inline-block"; // 正解時にスピーカーボタン表示
+    }
+  } else {
+    result.textContent = `✕ 정답은 '${correct}'입니다!`;
+    result.style.color = "red";
+    if (audioBtn) {
+      audioBtn.style.display = "none"; // 不正解なら非表示のまま
     }
   }
+}
 
   function checkAnswerChoice(clickedButton, selected, correct) {
     const parent = clickedButton.parentElement.parentElement; // choice-block
