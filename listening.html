@@ -871,11 +871,15 @@ document.querySelectorAll(".karaoke-active").forEach(span => {
 <div id="modal1" class="modal">
   <div class="modal-content">
     <span class="close-btn" onclick="closeModal('modal1')">×</span>
-<img src="images/Image6_concentration.png" alt="집중을 나타내는 이미지" style="max-width:100%; border-radius: 8px; margin-top: 10px;">
-    <p> <span onclick="document.getElementById('audio-focus').play()" style="cursor: pointer; margin-right: 10px;">
-    <i class="fas fa-volume-up speaker-icon"></i>
-  </span><strong>집중</strong>[집쭝]: concentration, 集中, 集中
-  <audio id="audio-focus" src="audio/focus.mp3"></audio></p>
+    <img src="images/Image6_concentration.png" alt="집중을 나타내는 이미지" style="max-width:100%; border-radius: 8px; margin-top: 10px;">
+
+    <div class="word-audio-line">
+      <span onclick="document.getElementById('audio-focus').play()" style="cursor: pointer;">
+        <i class="fas fa-volume-up speaker-icon"></i>
+      </span>
+      <span><strong>집중</strong> [집쭝]: concentration, 集中, 集中</span>
+      <audio id="audio-focus" src="audio/focus.mp3"></audio>
+    </div>
   </div>
 </div>
 
@@ -884,10 +888,14 @@ document.querySelectorAll(".karaoke-active").forEach(span => {
   <div class="modal-content">
     <span class="close-btn" onclick="closeModal('modal2')">×</span>
     <img src="images/Image6_effect.png" alt="효과를 나타내는 이미지" style="max-width:100%; border-radius: 8px; margin-top: 10px;">
-    <p><span onclick="document.getElementById('audio-effect').play()" style="cursor: pointer; margin-right: 10px;">
-    <i class="fas fa-volume-up speaker-icon"></i>
-  </span><strong>효과</strong> [효ː과/효ː꽈]: effect, 效果, 効果
-    <audio id="audio-effect" src="audio/effect.mp3"></audio></p>
+
+    <div class="word-audio-line">
+      <span onclick="document.getElementById('audio-effect').play()" style="cursor: pointer;">
+        <i class="fas fa-volume-up speaker-icon"></i>
+      </span>
+      <span><strong>효과</strong> [효ː과/효ː꽈]: effect, 效果, 効果</span>
+      <audio id="audio-effect" src="audio/effect.mp3"></audio>
+    </div>
   </div>
 </div>
 
@@ -896,11 +904,16 @@ document.querySelectorAll(".karaoke-active").forEach(span => {
   <div class="modal-content">
     <span class="close-btn" onclick="closeModal('modal3')">×</span>
     <img src="images/Image6_advice.png" alt="조언을 나타내는 이미지" style="max-width:100%; border-radius: 8px; margin-top: 10px;">
-    <p><span onclick="document.getElementById('audio-advice').play()" style="cursor: pointer; margin-right: 10px;">
-    <i class="fas fa-volume-up speaker-icon"></i>
-  </span><strong>조언</strong>[조ː언]: advice, 指教, 助言
-  <audio id="audio-advice" src="audio/advice.mp3"></audio></p>
+
+    <div class="word-audio-line">
+      <span onclick="document.getElementById('audio-advice').play()" style="cursor: pointer;">
+        <i class="fas fa-volume-up speaker-icon"></i>
+      </span>
+      <span><strong>조언</strong> [조ː언]: advice, 指教, 助言</span>
+      <audio id="audio-advice" src="audio/advice.mp3"></audio>
+    </div>
   </div>
 </div>
+
 </body>
 </html>
