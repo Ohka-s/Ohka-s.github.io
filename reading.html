@@ -642,24 +642,46 @@ function playSingleAudio(id) {
   <div class="modal-content">
     <span class="close-btn" onclick="closeModal('overeating')">×</span>
     <img src="images/Image5_2.png" alt="과식을 나타내는 이미지" style="max-width:100%; border-radius: 8px; margin-top: 10px;">
-    <p><strong>과식</strong> [과ː식]: overeating, 暴饮暴食, 過食</p>
+
+    <div class="word-audio-line">
+      <span onclick="document.getElementById('audio-overeating').play()" style="cursor: pointer;">
+        <i class="fas fa-volume-up speaker-icon"></i>
+      </span>
+      <span><strong>과식</strong> [과ː식]: overeating, 暴饮暴食, 過食</span>
+      <audio id="audio-overeating" src="audio/overeating.mp3"></audio>
+    </div>
   </div>
 </div>
 
-  <!-- 피로 모달 -->
+<!-- 피로 모달 -->
 <div id="modal-fatigue" class="modal">
   <div class="modal-content">
     <span class="close-btn" onclick="closeModal('fatigue')">×</span>
     <img src="images/Image5_3.png" alt="피로를 나타내는 이미지" style="max-width:100%; border-radius: 8px; margin-top: 10px;">
-     <p><strong>피로</strong> [피로]: tiredness, 疲劳, 疲労</p>
+
+    <div class="word-audio-line">
+      <span onclick="document.getElementById('audio-fatigue').play()" style="cursor: pointer;">
+        <i class="fas fa-volume-up speaker-icon"></i>
+      </span>
+      <span><strong>피로</strong> [피로]: tiredness, 疲劳, 疲労</span>
+      <audio id="audio-fatigue" src="audio/fatigue.mp3"></audio>
+    </div>
   </div>
 </div>
-   <!-- 변화 모달 -->
+
+<!-- 변화 모달 -->
 <div id="modal-change" class="modal">
   <div class="modal-content">
     <span class="close-btn" onclick="closeModal('change')">×</span>
     <img src="images/Image5_change.png" alt="변화를 나타내는 이미지" style="max-width:100%; border-radius: 8px; margin-top: 10px;">
-    <p><strong>변화</strong> [변ː화]: change, 变化 , 変化</p>
+
+    <div class="word-audio-line">
+      <span onclick="document.getElementById('audio-change').play()" style="cursor: pointer;">
+        <i class="fas fa-volume-up speaker-icon"></i>
+      </span>
+      <span><strong>변화</strong> [변ː화]: change, 变化 , 変化</span>
+      <audio id="audio-change" src="audio/change.mp3"></audio>
+    </div>
   </div>
 </div>
 
