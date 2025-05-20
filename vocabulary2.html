@@ -117,9 +117,10 @@
     <input type="text" id="answer2">
     <button class="check-answer-btn" onclick="checkAnswer(2, '대충')">정답 확인</button>
     <p id="result2" class="result"></p>
-<button id="audio-btn-correct2" onclick="document.getElementById('audio2_5_2').play()" style="display:none; margin-top:10px;">
-    <i class="fas fa-volume-up speaker-icon" style="margin-right: 4px;"></i> 예시 문장 듣기
-  </button>
+<span id="audio-btn-correct2" onclick="document.getElementById('audio2_5_2').play()" 
+        style="display:none; cursor:pointer; margin-top: 10px; display: inline-block;">
+    <i class="fas fa-volume-up speaker-icon" style="font-size: 20px;"></i>
+  </span>
 
   <!-- 音声ファイル -->
   <audio id="audio2_5_1" src="audio/audio2_5_1.mp3"></audio>
