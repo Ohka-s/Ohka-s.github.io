@@ -259,22 +259,23 @@
   const result = document.getElementById(`result${index}`);
   const userAnswer = input.value.trim();
 
-   if (userAnswer === correct) {
+const audioBtn = document.getElementById(`audio-btn-correct${index}`);
+
+  if (userAnswer === correct) {
     result.textContent = "◯ 정답입니다!";
     result.style.color = "green";
-    if (audioBtn) audioBtn.style.display = "inline-block";
+    if (audioBtn) audioBtn.style.display = "inline-block";  
   } else {
     result.textContent = `✕ 정답은 '${correct}'입니다!`;
     result.style.color = "red";
     if (audioBtn) audioBtn.style.display = "none";
   }
 }
-
   function checkAnswerChoice(clickedButton, selected, correct) {
     const parent = clickedButton.parentElement.parentElement; // choice-block
     const allOverlays = parent.querySelectorAll('.result-overlay');
 
-    // 全ての表示をリセット
+
     allOverlays.forEach(overlay => {
       overlay.textContent = "";
     });
