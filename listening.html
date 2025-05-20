@@ -717,7 +717,7 @@ if (pauseBtnIcon) {
 }
 
   disableListeningPlayButton(problemNum);
-  playNextListening(); // ← これだけでOK
+  playNextListening(); 
 }
 
 
@@ -749,13 +749,13 @@ function toggleListeningPauseResume(problemNum) {
     icon.classList.remove("fa-play");
     icon.classList.add("fa-pause");
     isListeningPaused = false;
-    disableListeningPlayButton(problemNum); // 再生中は再生ボタンを無効に
+    disableListeningPlayButton(problemNum); 
   } else {
     currentListeningAudio.pause();
     icon.classList.remove("fa-pause");
     icon.classList.add("fa-play");
     isListeningPaused = true;
-    enableListeningPlayButton(problemNum); // 一時停止中のみ再生ボタンを有効に
+    enableListeningPlayButton(problemNum); 
   }
 }
 
@@ -829,13 +829,13 @@ document.querySelectorAll(".karaoke-active").forEach(span => {
         audio.play();
         
         // 各文に異なる遅延時間を設定（例として文ごとに0.5秒、1秒、1.5秒を設定）
-        const delayTimes = [3800, 3000, 4800, 5000, 7000, 3500, 5500, 4500, 4000, 3000, 4000]; // ミリ秒
-        const delayTime = delayTimes[karaokeIndex];  // 各文の遅延時間
+        const delayTimes = [3500, 3000, 4500, 5000, 7000, 3300, 5500, 4500, 4000, 2800, 4000]; 
+        const delayTime = delayTimes[karaokeIndex];  
 
         audio.onended = () => {
             if (!isKaraokePaused) {
                 karaokeIndex++;
-                setTimeout(() => playNextKaraokeLine(), delayTime); // 各文ごとに異なる間隔
+                setTimeout(() => playNextKaraokeLine(), delayTime); 
             }
         };
     }
