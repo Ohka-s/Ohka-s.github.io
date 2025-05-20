@@ -588,7 +588,12 @@ function stopAllAudio() {
     audio.pause();
     audio.currentTime = 0;
   });
-  clearAllHighlights(); // カラオケのマーカーも消す
+    currentAudio = null;           
+  currentRepeatAudio = null;     
+  isPaused = false;              
+  isRepeatPaused = false;
+  
+  clearAllHighlights(); 
   enablePlayButton();
 }
 function disablePlayButton() {
