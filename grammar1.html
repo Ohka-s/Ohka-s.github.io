@@ -203,6 +203,7 @@
 ];
 
  function showQuestion(index) {
+   stopAllAudio();
   questions.forEach((q, i) => {
     q.classList.toggle("active", i === index);
   });
@@ -294,6 +295,13 @@
       audio.play(); 
     }
   }
+  function stopAllAudio() {
+  const audios = document.querySelectorAll("audio");
+  audios.forEach(audio => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+}
   
   showQuestion(current);
 </script>
