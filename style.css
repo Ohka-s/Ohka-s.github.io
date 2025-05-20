@@ -182,8 +182,8 @@ button:hover {
 .nav-btn {
   position: fixed;
   bottom: 30px;
-  width: 44px;        /* ← 幅を広げる */
-  height: 44px;       /* ← 高さも広げる */
+  width: 50px;        /* ← 幅を広げる */
+  height: 50px;       /* ← 高さも広げる */
   border: none;
   border-radius: 50%;
   color: white;
@@ -199,7 +199,7 @@ button:hover {
 }
 
 .nav-btn i {
-  font-size: 32px; /* ← アイコンも少し大きく */
+  font-size: 34px; /* ← アイコンも少し大きく */
 }
 
 .left-btn {
