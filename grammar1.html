@@ -273,12 +273,16 @@
   const result = document.getElementById(`result${index}`);
   const userAnswer = input.value.trim();
 
+  const audioBtn = document.getElementById(`audio-btn-correct${index}`);
+  
   if (userAnswer === correct) {
     result.textContent = "◯ 정답입니다!";
     result.style.color = "green";
+    if (audioBtn) audioBtn.style.display = "inline-block";  // ✅ 追加表示
   } else {
     result.textContent = `✕ 정답은 '${correct}'입니다!`;
     result.style.color = "red";
+    if (audioBtn) audioBtn.style.display = "none";          // ✅ 間違えたら非表示
   }
 }
 
