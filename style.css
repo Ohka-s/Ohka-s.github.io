@@ -722,3 +722,18 @@ button:hover {
     margin-top: 10px;
   }
 }
+
+.word-audio-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  font-size: 18px;
+  color: #333;
+}
+
+.word-audio-line .speaker-icon {
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+}
