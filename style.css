@@ -724,12 +724,14 @@ button:hover {
 }
 
 .word-audio-line {
-  display: flex;
+  display: inline-flex;         
   align-items: center;
   gap: 10px;
   margin-top: 12px;
   font-size: 18px;
   color: #333;
+  justify-content: center;       
+  text-align: center;            
 }
 
 .word-audio-line .speaker-icon {
