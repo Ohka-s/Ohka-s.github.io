@@ -107,12 +107,25 @@
   <div class="question">
     <p class="question-instruction">빈 칸에 알맞은 단어를 쓰십시오.</p>
     <img src="images/Image2_5.png" alt="어휘10" class="img-large" style="margin-bottom: 10px;">
-    <p>Q:표정이 안 좋네요. 무슨 일이 있었어요?</p>
-    <p>A:시험 준비를 __________ 해서 점수가 낮았어요.</p>
+    <p>
+    <span onclick="document.getElementById('audio2_5_1').play()" style="cursor: pointer;">
+      <i class="fas fa-volume-up speaker-icon" style="margin-right: 6px;"></i>
+    </span>
+    <strong>Q:</strong> 표정이 안 좋네요. 무슨 일이 있었어요?</p>
+
+  <p><strong>A:</strong>시험 준비를 __________ 해서 점수가 낮았어요.</p>
     <input type="text" id="answer2">
     <button class="check-answer-btn" onclick="checkAnswer(2, '대충')">정답 확인</button>
     <p id="result2" class="result"></p>
-  </div>
+<button id="audio-btn-correct2" onclick="document.getElementById('audio2_5_2').play()" style="display:none; margin-top:10px;">
+    <i class="fas fa-volume-up speaker-icon" style="margin-right: 4px;"></i> 예시 문장 듣기
+  </button>
+
+  <!-- 音声ファイル -->
+  <audio id="audio2_5_1" src="audio/audio2_5_1.mp3"></audio>
+  <audio id="audio2_5_2" src="audio/audio2_5_2.mp3"></audio>
+</div> 
+
 <div class="question">
   <p style="font-size: 20px; font-weight: bold;">🎉잘 하셨어요!</p>
   <p>아래 버튼을 눌러 처음부터 다시 시작하거나, 다른 학습으로 이동해 보세요.</p>
@@ -204,14 +217,21 @@
   function checkAnswer(index, correct) {
     const input = document.getElementById(`answer${index}`);
     const result = document.getElementById(`result${index}`);
-    if (input.value.trim() === correct) {
-      result.textContent = "◯ 정답입니다!";
-      result.style.color = "green";
-    } else {
-      result.textContent = "✕ 정답은 '대충'입니다!";
-      result.style.color = "red";
+    const audioBtn = document.getElementById(`audio-btn-correct${index}`);
+  if (input.value.trim() === correct) {
+    result.textContent = "◯ 정답입니다!";
+    result.style.color = "green";
+    if (audioBtn) {
+      audioBtn.style.display = "inline-block"; // 正解時に再生ボタンを表示
+    }
+  } else {
+    result.textContent = `✕ 정답은 '${correct}'입니다!`;
+    result.style.color = "red";
+    if (audioBtn) {
+      audioBtn.style.display = "none"; // 間違えたときは隠す
     }
   }
+}
 
   function checkAnswerChoice(clickedButton, selected, correct) {
     const parent = clickedButton.parentElement.parentElement; // choice-block
