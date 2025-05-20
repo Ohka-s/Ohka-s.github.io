@@ -96,8 +96,9 @@
         <button onclick="checkAnswerChoice(this, '자주', '대충')">자주</button>
       </div>
       <div style="position: relative; display: inline-block; margin: 5px;">
-        <div class="result-overlay"></div>
-        <button onclick="checkAnswerChoice(this, '대충', '대충')">대충</button>
+      <div class="result-overlay"></div>
+      <button onclick="checkAnswerChoice(this, '대충', '대충')">대충</button>
+      <audio src="audio/audio2_4.mp3"></audio>
       </div>
     </div>
   </div>
@@ -225,6 +226,12 @@
     if (selected === correct) {
       resultOverlay.textContent = "◯";
       resultOverlay.style.color = "green";
+      const audio = clickedButton.parentElement.querySelector("audio");
+    if (audio) {
+      audio.pause();
+      audio.currentTime = 0;
+      audio.play();
+    }
     } else {
       resultOverlay.textContent = "✕";
       resultOverlay.style.color = "red";
