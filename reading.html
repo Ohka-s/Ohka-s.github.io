@@ -440,6 +440,7 @@ function playReadingSequence() {
   currentIndex = 0;
   isPaused = false;
   disablePlayButton();
+  const pauseBtn = document.getElementById("pauseResumeBtn");
   const icon = document.querySelector("#pauseResumeBtn i");
   if (icon) {
     icon.classList.remove("fa-play");
