@@ -437,21 +437,16 @@ let isPaused = false;
 let currentAudio = null;
 
 function playReadingSequence() {
-  if (isPaused && currentAudio) {
-    currentAudio.play();
-    const icon = document.querySelector("#pauseResumeBtn i");
-    if (icon) {
-      icon.classList.remove("fa-play");
-      icon.classList.add("fa-pause");
-    }
-    isPaused = false;
-    return; // 再スタートさせない
+  // もし再生中の音声があれば完全リセットして最初から
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+    currentAudio = null;
   }
-
-  currentIndex = 0;
   isPaused = false;
+  currentIndex = 0;
+
   disablePlayButton();
-  const pauseBtn = document.getElementById("pauseResumeBtn");
   const icon = document.querySelector("#pauseResumeBtn i");
   if (icon) {
     icon.classList.remove("fa-play");
@@ -484,22 +479,27 @@ function playNextReading() {
 
 // 一時停止／再開トグル
 function togglePauseResume() {
-  if (!currentAudio) return;
+  if (!currentAudio) return;     // まだ再生していなければ無視
 
   const icon = document.querySelector("#pauseResumeBtn i");
 
   if (isPaused) {
+    // ▶️ → ⏸（再開）
     currentAudio.play();
     icon.classList.remove("fa-play");
     icon.classList.add("fa-pause");
     isPaused = false;
+    disablePlayButton();         // 再生中は「最初から再生」ボタンを無効化
   } else {
+    // ⏸ → ▶️（一時停止）
     currentAudio.pause();
     icon.classList.remove("fa-pause");
     icon.classList.add("fa-play");
     isPaused = true;
+    enablePlayButton();          // 一時停止中は「最初から再生」ボタンを有効化
   }
 }
+
   function toggleRepeatPauseResume() {
   if (!currentRepeatAudio) return;
 
