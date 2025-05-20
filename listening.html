@@ -734,7 +734,7 @@ function playNextListening() {
   currentListeningAudio.onended = () => {
     if (!isListeningPaused) {
       listeningIndex++;
-      setTimeout(() => playNextListening(), 500);
+      setTimeout(() => playNextListening(), 300);
     }
   };
 }
