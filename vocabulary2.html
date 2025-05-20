@@ -141,6 +141,7 @@
   ];
 
   function showQuestion(index) {
+    stopAllMedia();
   questions.forEach((q, i) => {
     q.classList.toggle("active", i === index);
   });
@@ -242,6 +243,21 @@
     audios[index].play();
   }
 }
+
+  function stopAllMedia() {
+  const audios = document.querySelectorAll("audio");
+  audios.forEach(audio => {
+    audio.pause();
+    audio.currentTime = 0;
+  });
+
+  const videos = document.querySelectorAll("video");
+  videos.forEach(video => {
+    video.pause();
+    video.currentTime = 0;
+  });
+}
+
 
   showQuestion(current);
 </script>
