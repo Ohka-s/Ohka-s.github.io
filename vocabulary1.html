@@ -95,12 +95,22 @@
   <div class="question">
     <p class="question-instruction">빈 칸에 알맞은 단어을 쓰십시오.</p>
     <img src="images/Image1_5.png" alt="어휘5" class="img-large" style="margin-bottom: 10px;">
-    <p>Q: 요즘 잠을 잘 못 자서 아침마다 피곤해.</p>
-    <p>A: 매일 같은 시간에 자고 일어나는_______을 만들어 보면 어때?</p>
+     <p>
+    <span onclick="document.getElementById('audio1_5_1').play()" style="cursor: pointer;">
+      <i class="fas fa-volume-up speaker-icon" style="margin-right: 6px;"></i>
+    </span>
+    <strong>Q:</strong> 요즘 잠을 잘 못 자서 아침마다 피곤해.</p>
+   <p><strong>A:</strong> 매일 같은 시간에 자고 일어나는_______을 만들어 보면 어때?</p>
     <input type="text" id="answer2">
     <button class="check-answer-btn" onclick="checkAnswer(2, '습관')">정답 확인</button>
     <p id="result2" class="result"></p>
-  </div>
+    <button id="audio-btn-correct2" onclick="document.getElementById('audio1_5_2').play()" style="display:none; margin-top:10px;">
+    <i class="fas fa-volume-up speaker-icon" style="margin-right: 4px;"></i> 예시 문장 듣기
+  </button>
+  <audio id="audio1_5_1" src="audio/audio1_5_1.mp3"></audio>
+  <audio id="audio1_5_2" src="audio/audio1_5_2.mp3"></audio>
+</div>
+  
   <div class="question">
   <p style="font-size: 20px; font-weight: bold;">🎉잘 하셨어요!</p>
   <p>아래 버튼을 눌러 처음부터 다시 시작하거나, 다른 학습으로 이동해 보세요.</p>
