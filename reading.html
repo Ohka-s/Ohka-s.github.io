@@ -437,6 +437,17 @@ let isPaused = false;
 let currentAudio = null;
 
 function playReadingSequence() {
+  if (isPaused && currentAudio) {
+    currentAudio.play();
+    const icon = document.querySelector("#pauseResumeBtn i");
+    if (icon) {
+      icon.classList.remove("fa-play");
+      icon.classList.add("fa-pause");
+    }
+    isPaused = false;
+    return; // 再スタートさせない
+  }
+
   currentIndex = 0;
   isPaused = false;
   disablePlayButton();
@@ -449,6 +460,7 @@ function playReadingSequence() {
 
   playNextReading();
 }
+
 
 function playNextReading() {
   if (currentIndex >= readingAudios.length) {
