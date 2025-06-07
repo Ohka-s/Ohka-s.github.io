@@ -554,7 +554,7 @@ listeningIndex = 0;
 
     if (selected === correct) {
       if (result) {
-        result.textContent = "◯ 정답입니다!";
+        result.textContent = "◯ 정답입니다! <a href="javascript:void(0)" onclick="openHint(\'' + hintId + '\')" style="color: blue; text-decoration: underline;">해설 보기</a>';
         result.style.color = "green";
       }
     } else {
