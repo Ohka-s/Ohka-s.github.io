@@ -97,7 +97,7 @@
   <img src="images/Image4_6.png" alt="tv"class="img-large" style="margin-bottom: 10px;">
   <p>어렸을 때 어머니가 저에게 우유를 많이 __________았/었어요.(마시다)</p>
   <input type="text" id="answer6">
-  <button class="check-answer-btn" onclick="checkAnswer(6, '마시게 하셨어요')">정답 확인</button>
+  <button class="check-answer-btn" onclick="checkAnswer(6, '마시게 하셨어요', '마시게 했어요')">정답 확인</button>
   <p id="result6" class="result"></p>
 <span id="audio-btn-correct6" onclick="document.getElementById('audio4_6').play()" 
         style="display: none; cursor: pointer; margin-top: 10px;">
@@ -254,19 +254,20 @@
     document.getElementById("nextBtn").classList.toggle("hidden", current === questions.length - 1);
   }
 
-  function checkAnswer(index, correct) {
+ function checkAnswer(index, ...correctAnswers) {
   const input = document.getElementById(`answer${index}`);
   const result = document.getElementById(`result${index}`);
   const userAnswer = input.value.trim();
-  const audioBtn = document.getElementById(`audio-btn-correct${index}`);  
+  const audioBtn = document.getElementById(`audio-btn-correct${index}`);
 
+  const isCorrect = correctAnswers.includes(userAnswer);
 
   if (userAnswer === correct) {
     result.textContent = "◯ 정답입니다!";
     result.style.color = "green";
     if (audioBtn) audioBtn.style.display = "inline-block";  
   } else {
-    result.textContent = `✕ 정답은 '${correct}'입니다!`;
+    result.textContent = `✕ 정답은 '${correctAnswers.join("', '")}'입니다!`;
     result.style.color = "red";
     if (audioBtn) audioBtn.style.display = "none";
   }
